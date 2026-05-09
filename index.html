@@ -332,9 +332,9 @@
 
   <!-- Header -->
   <header class="header">
-    <div class="header__overline">Learning Path</div>
-    <h1 class="header__title">AI 学习路线图</h1>
-    <p class="header__desc">
+    <div class="header__overline" data-i18n="header.overline">Learning Path</div>
+    <h1 class="header__title" data-i18n="header.title">AI 学习路线图</h1>
+    <p class="header__desc" data-i18n="header.desc">
       从编程基础到专业方向的系统化学习路径。四个阶段循序渐进，每个阶段涵盖核心技能、推荐资源与实战项目。
     </p>
   </header>
@@ -342,10 +342,10 @@
   <!-- Controls -->
   <div class="controls">
     <div class="controls__legend">
-      <span class="legend-item"><span class="legend-dot" style="background:var(--color-stage-1)"></span>基础</span>
-      <span class="legend-item"><span class="legend-dot" style="background:var(--color-stage-2)"></span>中级</span>
-      <span class="legend-item"><span class="legend-dot" style="background:var(--color-stage-3)"></span>高级</span>
-      <span class="legend-item"><span class="legend-dot" style="background:var(--color-stage-4)"></span>专业</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--color-stage-1)"></span><span data-i18n="legend.beginner">基础</span></span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--color-stage-2)"></span><span data-i18n="legend.intermediate">中级</span></span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--color-stage-3)"></span><span data-i18n="legend.advanced">高级</span></span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--color-stage-4)"></span><span data-i18n="legend.specialized">专业</span></span>
     </div>
     <button class="theme-toggle" onclick="toggleTheme()" aria-label="切换主题">
       <svg class="theme-toggle__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -367,22 +367,24 @@
       <a class="share-btn" href="https://github.com/dray1220/ai-learning-roadmap" target="_blank" rel="noopener" aria-label="GitHub 仓库">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
       </a>
-    </div>
+    <button class="lang-toggle" onclick="toggleLang()" aria-label="Switch language">
+      <span id="lang-label">EN</span>
+    </button>
   </div>
 
   <!-- Progress Overview -->
   <div class="progress-overview">
-    <div class="progress-overview__title">学习进度</div>
+    <div class="progress-overview__title" data-i18n="progress.title">学习进度</div>
     <div class="progress-bar-track"><div class="progress-bar-fill" id="progress-fill"></div></div>
     <div class="progress-stats">
-      <span id="progress-text">0 / 4 阶段</span>
+      <span id="progress-text" data-i18n="progress.text">0 / 4 阶段</span>
       <span id="progress-pct">0%</span>
     </div>
     <div class="progress-stages" id="progress-stages">
-      <div class="progress-stage progress-stage--locked"><span class="progress-stage__dot"></span>基础阶段</div>
-      <div class="progress-stage progress-stage--locked"><span class="progress-stage__dot"></span>机器学习</div>
-      <div class="progress-stage progress-stage--locked"><span class="progress-stage__dot"></span>深度学习</div>
-      <div class="progress-stage progress-stage--locked"><span class="progress-stage__dot"></span>专业方向</div>
+      <div class="progress-stage progress-stage--locked"><span class="progress-stage__dot"></span><span data-i18n="progress.stage1">基础阶段</span></div>
+      <div class="progress-stage progress-stage--locked"><span class="progress-stage__dot"></span><span data-i18n="progress.stage2">机器学习</span></div>
+      <div class="progress-stage progress-stage--locked"><span class="progress-stage__dot"></span><span data-i18n="progress.stage3">深度学习</span></div>
+      <div class="progress-stage progress-stage--locked"><span class="progress-stage__dot"></span><span data-i18n="progress.stage4">专业方向</span></div>
     </div>
   </div>
 
@@ -396,43 +398,43 @@
         <div class="stage__header">
           <div>
             <span class="stage__badge">Beginner</span>
-            <h2 class="stage__title">基础阶段</h2>
-            <p class="stage__subtitle">构建数学与编程基石</p>
+            <h2 class="stage__title" data-i18n="stage1.title">基础阶段</h2>
+            <p class="stage__subtitle" data-i18n="stage1.subtitle">构建数学与编程基石</p>
           </div>
           <div class="stage__time">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            预计 2 — 3 个月
+            <span data-i18n="stage1.time">预计 2 — 3 个月</span>
           </div>
         </div>
         <div class="skills">
-          <div class="skill"><div class="skill__name">Python 编程</div><div class="skill__desc">语法基础、数据结构、面向对象、常用库（NumPy / Pandas）</div><div class="skill__tags"><span class="tag">Python 3</span><span class="tag">NumPy</span><span class="tag">Pandas</span></div></div>
-          <div class="skill"><div class="skill__name">线性代数</div><div class="skill__desc">向量与矩阵运算、特征值分解、奇异值分解（SVD）</div><div class="skill__tags"><span class="tag">矩阵</span><span class="tag">向量空间</span><span class="tag">SVD</span></div></div>
-          <div class="skill"><div class="skill__name">概率论与数理统计</div><div class="skill__desc">概率分布、贝叶斯定理、假设检验、最大似然估计</div><div class="skill__tags"><span class="tag">贝叶斯</span><span class="tag">分布</span><span class="tag">MLE</span></div></div>
-          <div class="skill"><div class="skill__name">微积分基础</div><div class="skill__desc">导数与偏导、链式法则、梯度、积分基础</div><div class="skill__tags"><span class="tag">导数</span><span class="tag">偏导</span><span class="tag">梯度</span></div></div>
+          <div class="skill"><div class="skill__name" data-i18n="sk.Python 编程">Python 编程</div><div class="skill__desc" data-i18n="sd.语法基础、数据结构、面向对象、常用库（NumPy ">语法基础、数据结构、面向对象、常用库（NumPy / Pandas）</div><div class="skill__tags"><span class="tag">Python 3</span><span class="tag">NumPy</span><span class="tag">Pandas</span></div></div>
+          <div class="skill"><div class="skill__name" data-i18n="sk.线性代数">线性代数</div><div class="skill__desc" data-i18n="sd.向量与矩阵运算、特征值分解、奇异值分解（SVD）">向量与矩阵运算、特征值分解、奇异值分解（SVD）</div><div class="skill__tags"><span class="tag" data-i18n="tag.矩阵">矩阵</span><span class="tag" data-i18n="tag.向量空间">向量空间</span><span class="tag">SVD</span></div></div>
+          <div class="skill"><div class="skill__name" data-i18n="sk.概率论与数理统计">概率论与数理统计</div><div class="skill__desc" data-i18n="sd.概率分布、贝叶斯定理、假设检验、最大似然估计">概率分布、贝叶斯定理、假设检验、最大似然估计</div><div class="skill__tags"><span class="tag" data-i18n="tag.贝叶斯">贝叶斯</span><span class="tag" data-i18n="tag.分布">分布</span><span class="tag">MLE</span></div></div>
+          <div class="skill"><div class="skill__name" data-i18n="sk.微积分基础">微积分基础</div><div class="skill__desc" data-i18n="sd.导数与偏导、链式法则、梯度、积分基础">导数与偏导、链式法则、梯度、积分基础</div><div class="skill__tags"><span class="tag" data-i18n="tag.导数">导数</span><span class="tag" data-i18n="tag.偏导">偏导</span><span class="tag" data-i18n="tag.梯度">梯度</span></div></div>
         </div>
         <button class="stage__details-toggle" onclick="toggleDetails(this)" aria-expanded="false" aria-controls="details-0">
           <svg class="stage__details-toggle__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-          展开：学习资源、前置要求、实战项目
+          <span data-i18n="details.expand">展开：学习资源、前置要求、实战项目</span>
         </button>
         <div class="stage__details" id="details-0" aria-hidden="true">
           <div class="details-section">
-            <div class="details-section__title">前置要求</div>
-            <div class="prerequisites"><span class="prereq">高中数学基础</span><span class="prereq">基本计算机操作</span><span class="prereq">无需编程经验</span></div>
+            <div class="details-section__title" data-i18n="details.prerequisites">前置要求</div>
+            <div class="prerequisites"><span class="prereq" data-i18n="prereq.高中数学基础">高中数学基础</span><span class="prereq" data-i18n="prereq.基本计算机操作">基本计算机操作</span><span class="prereq" data-i18n="prereq.无需编程经验">无需编程经验</span></div>
           </div>
           <div class="details-section">
-            <div class="details-section__title">推荐资源</div>
+            <div class="details-section__title" data-i18n="details.resources">推荐资源</div>
             <ul class="resources">
-              <li><span class="resource__icon resource__icon--course">课</span><div class="resource__content"><div class="resource__name"><a href="https://www.coursera.org/learn/python" target="_blank" rel="noopener">Python for Everybody (Coursera)</a></div><div class="resource__type">密歇根大学 · 免费旁听</div></div></li>
-              <li><span class="resource__icon resource__icon--course">课</span><div class="resource__content"><div class="resource__name"><a href="https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/" target="_blank" rel="noopener">MIT 18.06 线性代数 (OCW)</a></div><div class="resource__type">Gilbert Strang · 经典课程</div></div></li>
-              <li><span class="resource__icon resource__icon--book">书</span><div class="resource__content"><div class="resource__name"><a href="https://nostarch.com/automatestuff2" target="_blank" rel="noopener">Automate the Boring Stuff with Python</a></div><div class="resource__type">Al Sweigart · 免费在线版</div></div></li>
+              <li><span class="resource__icon resource__icon--course" data-i18n="resource.course">课</span><div class="resource__content"><div class="resource__name"><a href="https://www.coursera.org/learn/python" target="_blank" rel="noopener">Python for Everybody (Coursera)</a></div><div class="resource__type" data-i18n="rt.密歇根大学 · 免费">密歇根大学 · 免费旁听</div></div></li>
+              <li><span class="resource__icon resource__icon--course" data-i18n="resource.course">课</span><div class="resource__content"><div class="resource__name"><a href="https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/" target="_blank" rel="noopener">MIT 18.06 线性代数 (OCW)</a></div><div class="resource__type" data-i18n="rt.Gilbert St">Gilbert Strang · 经典课程</div></div></li>
+              <li><span class="resource__icon resource__icon--book" data-i18n="resource.book">书</span><div class="resource__content"><div class="resource__name"><a href="https://nostarch.com/automatestuff2" target="_blank" rel="noopener">Automate the Boring Stuff with Python</a></div><div class="resource__type" data-i18n="rt.Al Sweigar">Al Sweigart · 免费在线版</div></div></li>
             </ul>
           </div>
           <div class="details-section">
-            <div class="details-section__title">实战项目</div>
+            <div class="details-section__title" data-i18n="details.projects">实战项目</div>
             <ul class="projects">
-              <li><strong>数据分析小工具：</strong>用 Pandas 读取 CSV，完成清洗、分组聚合、可视化</li>
-              <li><strong>概率模拟：</strong>用 Python 模拟掷骰子/抽牌实验，验证大数定律</li>
-              <li><strong>矩阵运算器：</strong>实现矩阵乘法、求逆、特征值计算的 Python 脚本</li>
+              <li><strong data-i18n="pj.数据分析小工具：">Data Analysis Tool: </strong>用 Pandas 读取 CSV，完成清洗、分组聚合、可视化</li>
+              <li><strong data-i18n="pj.概率模拟：">Probability Simulation: </strong>用 Python 模拟掷骰子/抽牌实验，验证大数定律</li>
+              <li><strong data-i18n="pj.矩阵运算器：">Matrix Calculator: </strong>实现矩阵乘法、求逆、特征值计算的 Python 脚本</li>
             </ul>
           </div>
         </div>
@@ -446,43 +448,43 @@
         <div class="stage__header">
           <div>
             <span class="stage__badge">Intermediate</span>
-            <h2 class="stage__title">机器学习阶段</h2>
-            <p class="stage__subtitle">掌握经典算法与完整建模流程</p>
+            <h2 class="stage__title" data-i18n="stage2.title">机器学习阶段</h2>
+            <p class="stage__subtitle" data-i18n="stage2.subtitle">掌握经典算法与完整建模流程</p>
           </div>
           <div class="stage__time">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            预计 3 — 4 个月
+            <span data-i18n="stage2.time">预计 3 — 4 个月</span>
           </div>
         </div>
         <div class="skills">
-          <div class="skill"><div class="skill__name">经典 ML 算法</div><div class="skill__desc">线性回归、逻辑回归、决策树、随机森林、SVM、K-Means</div><div class="skill__tags"><span class="tag">sklearn</span><span class="tag">回归</span><span class="tag">分类</span><span class="tag">聚类</span></div></div>
-          <div class="skill"><div class="skill__name">数据处理</div><div class="skill__desc">缺失值处理、数据标准化、类别编码、数据划分</div><div class="skill__tags"><span class="tag">清洗</span><span class="tag">标准化</span><span class="tag">编码</span></div></div>
-          <div class="skill"><div class="skill__name">特征工程</div><div class="skill__desc">特征选择、降维（PCA）、特征构造、交叉特征</div><div class="skill__tags"><span class="tag">PCA</span><span class="tag">特征选择</span><span class="tag">构造</span></div></div>
-          <div class="skill"><div class="skill__name">模型评估</div><div class="skill__desc">交叉验证、混淆矩阵、ROC/AUC、精确率-召回率、过拟合与正则化</div><div class="skill__tags"><span class="tag">CV</span><span class="tag">AUC</span><span class="tag">正则化</span></div></div>
+          <div class="skill"><div class="skill__name" data-i18n="sk.经典 ML 算法">经典 ML 算法</div><div class="skill__desc" data-i18n="sd.线性回归、逻辑回归、决策树、随机森林、SVM、K-">线性回归、逻辑回归、决策树、随机森林、SVM、K-Means</div><div class="skill__tags"><span class="tag">sklearn</span><span class="tag" data-i18n="tag.回归">回归</span><span class="tag" data-i18n="tag.分类">分类</span><span class="tag" data-i18n="tag.聚类">聚类</span></div></div>
+          <div class="skill"><div class="skill__name" data-i18n="sk.数据处理">数据处理</div><div class="skill__desc" data-i18n="sd.缺失值处理、数据标准化、类别编码、数据划分">缺失值处理、数据标准化、类别编码、数据划分</div><div class="skill__tags"><span class="tag" data-i18n="tag.清洗">清洗</span><span class="tag" data-i18n="tag.标准化">标准化</span><span class="tag" data-i18n="tag.编码">编码</span></div></div>
+          <div class="skill"><div class="skill__name" data-i18n="sk.特征工程">特征工程</div><div class="skill__desc" data-i18n="sd.特征选择、降维（PCA）、特征构造、交叉特征">特征选择、降维（PCA）、特征构造、交叉特征</div><div class="skill__tags"><span class="tag">PCA</span><span class="tag" data-i18n="tag.特征选择">特征选择</span><span class="tag" data-i18n="tag.构造">构造</span></div></div>
+          <div class="skill"><div class="skill__name" data-i18n="sk.模型评估">模型评估</div><div class="skill__desc" data-i18n="sd.交叉验证、混淆矩阵、ROC/AUC、精确率-召回率">交叉验证、混淆矩阵、ROC/AUC、精确率-召回率、过拟合与正则化</div><div class="skill__tags"><span class="tag">CV</span><span class="tag">AUC</span><span class="tag" data-i18n="tag.正则化">正则化</span></div></div>
         </div>
         <button class="stage__details-toggle" onclick="toggleDetails(this)" aria-expanded="false" aria-controls="details-1">
           <svg class="stage__details-toggle__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-          展开：学习资源、前置要求、实战项目
+          <span data-i18n="details.expand">展开：学习资源、前置要求、实战项目</span>
         </button>
         <div class="stage__details" id="details-1" aria-hidden="true">
           <div class="details-section">
-            <div class="details-section__title">前置要求</div>
-            <div class="prerequisites"><span class="prereq">Python 熟练</span><span class="prereq">线性代数基础</span><span class="prereq">概率论基础</span><span class="prereq">NumPy / Pandas</span></div>
+            <div class="details-section__title" data-i18n="details.prerequisites">前置要求</div>
+            <div class="prerequisites"><span class="prereq" data-i18n="prereq.Python 熟练">Python 熟练</span><span class="prereq" data-i18n="prereq.线性代数基础">线性代数基础</span><span class="prereq" data-i18n="prereq.概率论基础">概率论基础</span><span class="prereq" data-i18n="prereq.NumPy / Pand">NumPy / Pandas</span></div>
           </div>
           <div class="details-section">
-            <div class="details-section__title">推荐资源</div>
+            <div class="details-section__title" data-i18n="details.resources">推荐资源</div>
             <ul class="resources">
-              <li><span class="resource__icon resource__icon--course">课</span><div class="resource__content"><div class="resource__name"><a href="https://www.coursera.org/learn/machine-learning" target="_blank" rel="noopener">Machine Learning Specialization (Coursera)</a></div><div class="resource__type">Andrew Ng · 2022 更新版</div></div></li>
-              <li><span class="resource__icon resource__icon--book">书</span><div class="resource__content"><div class="resource__name"><a href="https://www.oreilly.com/library/view/hands-on-machine-learning/9781098125974/" target="_blank" rel="noopener">Hands-On ML with Scikit-Learn, Keras & TensorFlow</a></div><div class="resource__type">Aurélien Géron · 实战导向</div></div></li>
-              <li><span class="resource__icon resource__icon--course">课</span><div class="resource__content"><div class="resource__name"><a href="https://www.kaggle.com/learn" target="_blank" rel="noopener">Kaggle Learn — ML Courses</a></div><div class="resource__type">免费 · 交互式学习</div></div></li>
+              <li><span class="resource__icon resource__icon--course" data-i18n="resource.course">课</span><div class="resource__content"><div class="resource__name"><a href="https://www.coursera.org/learn/machine-learning" target="_blank" rel="noopener">Machine Learning Specialization (Coursera)</a></div><div class="resource__type" data-i18n="rt.Andrew Ng ">Andrew Ng · 2022 更新版</div></div></li>
+              <li><span class="resource__icon resource__icon--book" data-i18n="resource.book">书</span><div class="resource__content"><div class="resource__name"><a href="https://www.oreilly.com/library/view/hands-on-machine-learning/9781098125974/" target="_blank" rel="noopener">Hands-On ML with Scikit-Learn, Keras & TensorFlow</a></div><div class="resource__type" data-i18n="rt.Aurélien G">Aurélien Géron · 实战导向</div></div></li>
+              <li><span class="resource__icon resource__icon--course" data-i18n="resource.course">课</span><div class="resource__content"><div class="resource__name"><a href="https://www.kaggle.com/learn" target="_blank" rel="noopener">Kaggle Learn — ML Courses</a></div><div class="resource__type" data-i18n="rt.免费 · 交互式学习">免费 · 交互式学习</div></div></li>
             </ul>
           </div>
           <div class="details-section">
-            <div class="details-section__title">实战项目</div>
+            <div class="details-section__title" data-i18n="details.projects">实战项目</div>
             <ul class="projects">
-              <li><strong>房价预测：</strong>用 Kaggle Housing 数据集，完成从数据清洗到模型部署的完整流程</li>
-              <li><strong>客户流失分析：</strong>电信/银行数据集，构建分类模型 + 特征重要性分析</li>
-              <li><strong>聚类分组：</strong>对电商用户行为数据进行 K-Means 分群 + 可视化</li>
+              <li><strong data-i18n="pj.房价预测：">House Price Prediction: </strong>用 Kaggle Housing 数据集，完成从数据清洗到模型部署的完整流程</li>
+              <li><strong data-i18n="pj.客户流失分析：">Customer Churn Analysis: </strong>电信/银行数据集，构建分类模型 + 特征重要性分析</li>
+              <li><strong data-i18n="pj.聚类分组：">User Clustering: </strong>对电商用户行为数据进行 K-Means 分群 + 可视化</li>
             </ul>
           </div>
         </div>
@@ -496,46 +498,46 @@
         <div class="stage__header">
           <div>
             <span class="stage__badge">Advanced</span>
-            <h2 class="stage__title">深度学习阶段</h2>
-            <p class="stage__subtitle">神经网络架构与现代深度学习框架</p>
+            <h2 class="stage__title" data-i18n="stage3.title">深度学习阶段</h2>
+            <p class="stage__subtitle" data-i18n="stage3.subtitle">神经网络架构与现代深度学习框架</p>
           </div>
           <div class="stage__time">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            预计 4 — 6 个月
+            <span data-i18n="stage3.time">预计 4 — 6 个月</span>
           </div>
         </div>
         <div class="skills">
-          <div class="skill"><div class="skill__name">神经网络基础</div><div class="skill__desc">感知机、多层网络、反向传播、激活函数、损失函数、优化器</div><div class="skill__tags"><span class="tag">BP</span><span class="tag">ReLU</span><span class="tag">SGD</span><span class="tag">Adam</span></div></div>
-          <div class="skill"><div class="skill__name">CNN（卷积神经网络）</div><div class="skill__desc">卷积层、池化、经典架构（ResNet、VGG）、数据增强</div><div class="skill__tags"><span class="tag">Conv2D</span><span class="tag">ResNet</span><span class="tag">池化</span></div></div>
-          <div class="skill"><div class="skill__name">RNN / LSTM</div><div class="skill__desc">循环神经网络、长短期记忆网络、序列建模、注意力机制入门</div><div class="skill__tags"><span class="tag">LSTM</span><span class="tag">GRU</span><span class="tag">序列</span></div></div>
-          <div class="skill"><div class="skill__name">Transformer</div><div class="skill__desc">Self-Attention、多头注意力、位置编码、Encoder-Decoder 架构</div><div class="skill__tags"><span class="tag">Attention</span><span class="tag">Positional</span><span class="tag">BERT</span></div></div>
-          <div class="skill"><div class="skill__name">深度学习框架</div><div class="skill__desc">PyTorch 或 TensorFlow 核心 API、张量操作、自动求导、模型训练循环</div><div class="skill__tags"><span class="tag">PyTorch</span><span class="tag">TensorFlow</span><span class="tag">Autograd</span></div></div>
+          <div class="skill"><div class="skill__name" data-i18n="sk.神经网络基础">神经网络基础</div><div class="skill__desc" data-i18n="sd.感知机、多层网络、反向传播、激活函数、损失函数、优">感知机、多层网络、反向传播、激活函数、损失函数、优化器</div><div class="skill__tags"><span class="tag">BP</span><span class="tag">ReLU</span><span class="tag">SGD</span><span class="tag">Adam</span></div></div>
+          <div class="skill"><div class="skill__name" data-i18n="sk.CNN（卷积神经网络）">CNN（卷积神经网络）</div><div class="skill__desc" data-i18n="sd.卷积层、池化、经典架构（ResNet、VGG）、数">卷积层、池化、经典架构（ResNet、VGG）、数据增强</div><div class="skill__tags"><span class="tag">Conv2D</span><span class="tag">ResNet</span><span class="tag" data-i18n="tag.池化">池化</span></div></div>
+          <div class="skill"><div class="skill__name" data-i18n="sk.RNN / LSTM">RNN / LSTM</div><div class="skill__desc" data-i18n="sd.循环神经网络、长短期记忆网络、序列建模、注意力机制">循环神经网络、长短期记忆网络、序列建模、注意力机制入门</div><div class="skill__tags"><span class="tag">LSTM</span><span class="tag">GRU</span><span class="tag" data-i18n="tag.序列">序列</span></div></div>
+          <div class="skill"><div class="skill__name" data-i18n="sk.Transformer">Transformer</div><div class="skill__desc" data-i18n="sd.Self-Attention、多头注意力、位置编码">Self-Attention、多头注意力、位置编码、Encoder-Decoder 架构</div><div class="skill__tags"><span class="tag">Attention</span><span class="tag">Positional</span><span class="tag">BERT</span></div></div>
+          <div class="skill"><div class="skill__name" data-i18n="sk.深度学习框架">深度学习框架</div><div class="skill__desc" data-i18n="sd.PyTorch 或 TensorFlow 核心 A">PyTorch 或 TensorFlow 核心 API、张量操作、自动求导、模型训练循环</div><div class="skill__tags"><span class="tag">PyTorch</span><span class="tag">TensorFlow</span><span class="tag">Autograd</span></div></div>
         </div>
         <button class="stage__details-toggle" onclick="toggleDetails(this)" aria-expanded="false" aria-controls="details-2">
           <svg class="stage__details-toggle__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-          展开：学习资源、前置要求、实战项目
+          <span data-i18n="details.expand">展开：学习资源、前置要求、实战项目</span>
         </button>
         <div class="stage__details" id="details-2" aria-hidden="true">
           <div class="details-section">
-            <div class="details-section__title">前置要求</div>
-            <div class="prerequisites"><span class="prereq">机器学习基础</span><span class="prereq">Python 熟练</span><span class="prereq">微积分（梯度/链式法则）</span><span class="prereq">sklearn 经验</span></div>
+            <div class="details-section__title" data-i18n="details.prerequisites">前置要求</div>
+            <div class="prerequisites"><span class="prereq" data-i18n="prereq.机器学习基础">机器学习基础</span><span class="prereq" data-i18n="prereq.Python 熟练">Python 熟练</span><span class="prereq" data-i18n="prereq.微积分（梯度/链式法则）">微积分（梯度/链式法则）</span><span class="prereq" data-i18n="prereq.sklearn 经验">sklearn 经验</span></div>
           </div>
           <div class="details-section">
-            <div class="details-section__title">推荐资源</div>
+            <div class="details-section__title" data-i18n="details.resources">推荐资源</div>
             <ul class="resources">
-              <li><span class="resource__icon resource__icon--course">课</span><div class="resource__content"><div class="resource__name"><a href="https://www.fast.ai/" target="_blank" rel="noopener">Practical Deep Learning (fast.ai)</a></div><div class="resource__type">Jeremy Howard · 实战优先 · 免费</div></div></li>
-              <li><span class="resource__icon resource__icon--course">课</span><div class="resource__content"><div class="resource__name"><a href="https://cs231n.stanford.edu/" target="_blank" rel="noopener">CS231n — CNN for Visual Recognition</a></div><div class="resource__type">Stanford · Andrej Karpathy</div></div></li>
-              <li><span class="resource__icon resource__icon--book">书</span><div class="resource__content"><div class="resource__name"><a href="https://d2l.ai/" target="_blank" rel="noopener">动手学深度学习 (Dive into Deep Learning)</a></div><div class="resource__type">李沐 · PyTorch 版 · 免费在线</div></div></li>
-              <li><span class="resource__icon resource__icon--course">课</span><div class="resource__content"><div class="resource__name"><a href="https://www.youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi" target="_blank" rel="noopener">Neural Networks (3Blue1Brown)</a></div><div class="resource__type">直观理解 · 数学可视化</div></div></li>
+              <li><span class="resource__icon resource__icon--course" data-i18n="resource.course">课</span><div class="resource__content"><div class="resource__name"><a href="https://www.fast.ai/" target="_blank" rel="noopener">Practical Deep Learning (fast.ai)</a></div><div class="resource__type" data-i18n="rt.Jeremy How">Jeremy Howard · 实战优先 · 免费</div></div></li>
+              <li><span class="resource__icon resource__icon--course" data-i18n="resource.course">课</span><div class="resource__content"><div class="resource__name"><a href="https://cs231n.stanford.edu/" target="_blank" rel="noopener">CS231n — CNN for Visual Recognition</a></div><div class="resource__type" data-i18n="rt.Stanford ·">Stanford · Andrej Karpathy</div></div></li>
+              <li><span class="resource__icon resource__icon--book" data-i18n="resource.book">书</span><div class="resource__content"><div class="resource__name"><a href="https://d2l.ai/" target="_blank" rel="noopener">动手学深度学习 (Dive into Deep Learning)</a></div><div class="resource__type" data-i18n="rt.李沐 · PyTor">李沐 · PyTorch 版 · 免费在线</div></div></li>
+              <li><span class="resource__icon resource__icon--course" data-i18n="resource.course">课</span><div class="resource__content"><div class="resource__name"><a href="https://www.youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi" target="_blank" rel="noopener">Neural Networks (3Blue1Brown)</a></div><div class="resource__type" data-i18n="rt.直观理解 · 数学可">直观理解 · 数学可视化</div></div></li>
             </ul>
           </div>
           <div class="details-section">
-            <div class="details-section__title">实战项目</div>
+            <div class="details-section__title" data-i18n="details.projects">实战项目</div>
             <ul class="projects">
-              <li><strong>手写数字识别：</strong>从零搭建 MNIST 分类器，理解反向传播和训练循环</li>
-              <li><strong>猫狗分类器：</strong>CNN + 数据增强，对比不同架构（VGG / ResNet）的效果</li>
-              <li><strong>文本生成：</strong>用 LSTM 训练莎士比亚风格文本生成模型</li>
-              <li><strong>图像风格迁移：</strong>实现 Neural Style Transfer，理解内容损失与风格损失</li>
+              <li><strong data-i18n="pj.手写数字识别：">Handwritten Digit Recognition: </strong>从零搭建 MNIST 分类器，理解反向传播和训练循环</li>
+              <li><strong data-i18n="pj.猫狗分类器：">Cat vs Dog Classifier: </strong>CNN + 数据增强，对比不同架构（VGG / ResNet）的效果</li>
+              <li><strong data-i18n="pj.文本生成：">Text Generation: </strong>用 LSTM 训练莎士比亚风格文本生成模型</li>
+              <li><strong data-i18n="pj.图像风格迁移：">Neural Style Transfer: </strong>实现 Neural Style Transfer，理解内容损失与风格损失</li>
             </ul>
           </div>
         </div>
@@ -549,47 +551,47 @@
         <div class="stage__header">
           <div>
             <span class="stage__badge">Specialization</span>
-            <h2 class="stage__title">专业方向</h2>
-            <p class="stage__subtitle">选择细分领域深入钻研</p>
+            <h2 class="stage__title" data-i18n="stage4.title">专业方向</h2>
+            <p class="stage__subtitle" data-i18n="stage4.subtitle">选择细分领域深入钻研</p>
           </div>
           <div class="stage__time">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            预计 6 个月+（按方向）
+            <span data-i18n="stage4.time">预计 6 个月+（按方向）</span>
           </div>
         </div>
         <div class="skills">
-          <div class="skill"><div class="skill__name">自然语言处理 (NLP)</div><div class="skill__desc">文本分类、命名实体识别、机器翻译、Prompt Engineering</div><div class="skill__tags"><span class="tag">HuggingFace</span><span class="tag">LLM</span><span class="tag">Prompt</span></div></div>
-          <div class="skill"><div class="skill__name">计算机视觉 (CV)</div><div class="skill__desc">目标检测（YOLO）、图像分割、图像生成、多模态</div><div class="skill__tags"><span class="tag">YOLO</span><span class="tag">Segmentation</span><span class="tag">Diffusion</span></div></div>
-          <div class="skill"><div class="skill__name">强化学习 (RL)</div><div class="skill__desc">MDP、Q-Learning、策略梯度、PPO、多智能体</div><div class="skill__tags"><span class="tag">PPO</span><span class="tag">Q-Learning</span><span class="tag">Gym</span></div></div>
-          <div class="skill"><div class="skill__name">生成式 AI (LLM)</div><div class="skill__desc">大模型微调（LoRA / QLoRA）、RAG 架构、Agent 开发、模型部署</div><div class="skill__tags"><span class="tag">LoRA</span><span class="tag">RAG</span><span class="tag">Agent</span><span class="tag">vLLM</span></div></div>
-          <div class="skill"><div class="skill__name">MLOps</div><div class="skill__desc">模型版本管理、CI/CD for ML、监控与漂移检测、容器化部署</div><div class="skill__tags"><span class="tag">MLflow</span><span class="tag">Docker</span><span class="tag">K8s</span></div></div>
+          <div class="skill"><div class="skill__name" data-i18n="sk.自然语言处理 (NLP)">自然语言处理 (NLP)</div><div class="skill__desc" data-i18n="sd.文本分类、命名实体识别、机器翻译、Prompt E">文本分类、命名实体识别、机器翻译、Prompt Engineering</div><div class="skill__tags"><span class="tag">HuggingFace</span><span class="tag">LLM</span><span class="tag">Prompt</span></div></div>
+          <div class="skill"><div class="skill__name" data-i18n="sk.计算机视觉 (CV)">计算机视觉 (CV)</div><div class="skill__desc" data-i18n="sd.目标检测（YOLO）、图像分割、图像生成、多模态">目标检测（YOLO）、图像分割、图像生成、多模态</div><div class="skill__tags"><span class="tag">YOLO</span><span class="tag">Segmentation</span><span class="tag">Diffusion</span></div></div>
+          <div class="skill"><div class="skill__name" data-i18n="sk.强化学习 (RL)">强化学习 (RL)</div><div class="skill__desc" data-i18n="sd.MDP、Q-Learning、策略梯度、PPO、多">MDP、Q-Learning、策略梯度、PPO、多智能体</div><div class="skill__tags"><span class="tag">PPO</span><span class="tag">Q-Learning</span><span class="tag">Gym</span></div></div>
+          <div class="skill"><div class="skill__name" data-i18n="sk.生成式 AI (LLM)">生成式 AI (LLM)</div><div class="skill__desc" data-i18n="sd.大模型微调（LoRA / QLoRA）、RAG 架">大模型微调（LoRA / QLoRA）、RAG 架构、Agent 开发、模型部署</div><div class="skill__tags"><span class="tag">LoRA</span><span class="tag">RAG</span><span class="tag">Agent</span><span class="tag">vLLM</span></div></div>
+          <div class="skill"><div class="skill__name" data-i18n="sk.MLOps">MLOps</div><div class="skill__desc" data-i18n="sd.模型版本管理、CI/CD for ML、监控与漂移">模型版本管理、CI/CD for ML、监控与漂移检测、容器化部署</div><div class="skill__tags"><span class="tag">MLflow</span><span class="tag">Docker</span><span class="tag">K8s</span></div></div>
         </div>
         <button class="stage__details-toggle" onclick="toggleDetails(this)" aria-expanded="false" aria-controls="details-3">
           <svg class="stage__details-toggle__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-          展开：学习资源、前置要求、实战项目
+          <span data-i18n="details.expand">展开：学习资源、前置要求、实战项目</span>
         </button>
         <div class="stage__details" id="details-3" aria-hidden="true">
           <div class="details-section">
-            <div class="details-section__title">前置要求</div>
-            <div class="prerequisites"><span class="prereq">深度学习基础</span><span class="prereq">PyTorch 熟练</span><span class="prereq">理解 Transformer</span><span class="prereq">选择 1-2 个方向</span></div>
+            <div class="details-section__title" data-i18n="details.prerequisites">前置要求</div>
+            <div class="prerequisites"><span class="prereq" data-i18n="prereq.深度学习基础">深度学习基础</span><span class="prereq" data-i18n="prereq.PyTorch 熟练">PyTorch 熟练</span><span class="prereq" data-i18n="prereq.理解 Transform">理解 Transformer</span><span class="prereq" data-i18n="prereq.选择 1-2 个方向">选择 1-2 个方向</span></div>
           </div>
           <div class="details-section">
-            <div class="details-section__title">推荐资源</div>
+            <div class="details-section__title" data-i18n="details.resources">推荐资源</div>
             <ul class="resources">
-              <li><span class="resource__icon resource__icon--course">课</span><div class="resource__content"><div class="resource__name"><a href="https://www.deeplearning.ai/short-courses/" target="_blank" rel="noopener">DeepLearning.AI Short Courses</a></div><div class="resource__type">LLM / RAG / LangChain · 免费</div></div></li>
-              <li><span class="resource__icon resource__icon--book">书</span><div class="resource__content"><div class="resource__name"><a href="https://huggingface.co/learn" target="_blank" rel="noopener">HuggingFace NLP Course</a></div><div class="resource__type">免费在线 · Transformer 实战</div></div></li>
-              <li><span class="resource__icon resource__icon--course">课</span><div class="resource__content"><div class="resource__name"><a href="https://spinningup.openai.com/" target="_blank" rel="noopener">Spinning Up in Deep RL (OpenAI)</a></div><div class="resource__type">强化学习入门 · 免费</div></div></li>
-              <li><span class="resource__icon resource__icon--course">课</span><div class="resource__content"><div class="resource__name"><a href="https://fullstackdeeplearning.com/llm-bootcamp/" target="_blank" rel="noopener">Full Stack LLM Bootcamp</a></div><div class="resource__type">LLM 应用开发实战</div></div></li>
+              <li><span class="resource__icon resource__icon--course" data-i18n="resource.course">课</span><div class="resource__content"><div class="resource__name"><a href="https://www.deeplearning.ai/short-courses/" target="_blank" rel="noopener">DeepLearning.AI Short Courses</a></div><div class="resource__type" data-i18n="rt.LLM / RAG ">LLM / RAG / LangChain · 免费</div></div></li>
+              <li><span class="resource__icon resource__icon--book" data-i18n="resource.book">书</span><div class="resource__content"><div class="resource__name"><a href="https://huggingface.co/learn" target="_blank" rel="noopener">HuggingFace NLP Course</a></div><div class="resource__type" data-i18n="rt.免费在线 · Tra">免费在线 · Transformer 实战</div></div></li>
+              <li><span class="resource__icon resource__icon--course" data-i18n="resource.course">课</span><div class="resource__content"><div class="resource__name"><a href="https://spinningup.openai.com/" target="_blank" rel="noopener">Spinning Up in Deep RL (OpenAI)</a></div><div class="resource__type" data-i18n="rt.强化学习入门 · 免">强化学习入门 · 免费</div></div></li>
+              <li><span class="resource__icon resource__icon--course" data-i18n="resource.course">课</span><div class="resource__content"><div class="resource__name"><a href="https://fullstackdeeplearning.com/llm-bootcamp/" target="_blank" rel="noopener">Full Stack LLM Bootcamp</a></div><div class="resource__type" data-i18n="rt.LLM 应用开发实战">LLM 应用开发实战</div></div></li>
             </ul>
           </div>
           <div class="details-section">
-            <div class="details-section__title">实战项目</div>
+            <div class="details-section__title" data-i18n="details.projects">实战项目</div>
             <ul class="projects">
-              <li><strong>RAG 知识库：</strong>用 LangChain + 向量数据库构建文档问答系统</li>
-              <li><strong>LLM 微调：</strong>用 LoRA 在开源模型上微调特定领域任务</li>
-              <li><strong>目标检测系统：</strong>用 YOLOv8 训练自定义数据集的物体检测模型</li>
-              <li><strong>ML Pipeline：</strong>用 MLflow + Docker 搭建端到端模型训练/部署流水线</li>
-              <li><strong>AI Agent：</strong>构建能调用工具（搜索、API、文件读写）的自主 Agent</li>
+              <li><strong data-i18n="pj.RAG 知识库：">RAG Knowledge Base: </strong>用 LangChain + 向量数据库构建文档问答系统</li>
+              <li><strong data-i18n="pj.LLM 微调：">LLM Fine-tuning: </strong>用 LoRA 在开源模型上微调特定领域任务</li>
+              <li><strong data-i18n="pj.目标检测系统：">Object Detection System: </strong>用 YOLOv8 训练自定义数据集的物体检测模型</li>
+              <li><strong data-i18n="pj.ML Pipeline：">ML Pipeline: </strong>用 MLflow + Docker 搭建端到端模型训练/部署流水线</li>
+              <li><strong data-i18n="pj.AI Agent：">AI Agent: </strong>构建能调用工具（搜索、API、文件读写）的自主 Agent</li>
             </ul>
           </div>
         </div>
@@ -601,33 +603,343 @@
   <!-- Footer -->
   <footer class="footer">
     <div class="footer__cta">
-      <span class="footer__cta-text">觉得有用？</span>
+      <span class="footer__cta-text"><span data-i18n="footer.cta">觉得有用？</span></span>
       <a class="star-btn" href="https://github.com/dray1220/ai-learning-roadmap" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L15.09 8.26L24 9.27L17.54 14.74L19.18 24L12 19.27L4.82 24L6.46 14.74L0 9.27L8.91 8.26Z"/></svg>
-        Star on GitHub
+        <span data-i18n="footer.star">Star on GitHub</span>
       </a>
     </div>
-    <p class="footer__note">
+    <p class="footer__note" data-i18n="footer.note">
       时间预估基于每天 2 — 3 小时的学习节奏。实际进度因人而异，建议以掌握核心概念而非完成时长为目标。
     </p>
-    <p class="footer__meta">Generated by Open Design + Hermes Agent · 2026</p>
+    <p class="footer__meta" data-i18n="footer.meta">Generated by Open Design + Hermes Agent · 2026</p>
   </footer>
 
 </div>
 
 <script>
+  /* ── i18n ─────────────────────────────────────────────────── */
+  var I18N = {
+    en: {
+      'header.overline': 'Learning Path',
+      'header.title': 'AI Learning Roadmap',
+      'header.desc': 'A systematic learning path from fundamentals to specialization. Four progressive stages, each covering core skills, recommended resources, and hands-on projects.',
+      'legend.beginner': 'Beginner',
+      'legend.intermediate': 'Intermediate',
+      'legend.advanced': 'Advanced',
+      'legend.specialized': 'Specialized',
+      'progress.title': 'Learning Progress',
+      'progress.text': '0 / 4 stages',
+      'progress.stage1': 'Fundamentals',
+      'progress.stage2': 'Machine Learning',
+      'progress.stage3': 'Deep Learning',
+      'progress.stage4': 'Specializations',
+      'stage1.title': 'Fundamentals',
+      'stage1.subtitle': 'Build the math and programming foundation',
+      'stage1.time': 'Est. 2 — 3 months',
+      'stage2.title': 'Machine Learning',
+      'stage2.subtitle': 'Master classic algorithms and the full modeling pipeline',
+      'stage2.time': 'Est. 3 — 4 months',
+      'stage3.title': 'Deep Learning',
+      'stage3.subtitle': 'Neural network architectures and modern deep learning frameworks',
+      'stage3.time': 'Est. 4 — 6 months',
+      'stage4.title': 'Specializations',
+      'stage4.subtitle': 'Choose a niche area and go deep',
+      'stage4.time': 'Est. 6+ months (per track)',
+      'details.expand': 'Expand: Resources, Prerequisites & Projects',
+      'details.prerequisites': 'Prerequisites',
+      'details.resources': 'Recommended Resources',
+      'details.projects': 'Hands-on Projects',
+      'resource.course': 'Course',
+      'resource.book': 'Book',
+      'footer.cta': 'Find this useful?',
+      'footer.star': 'Star on GitHub',
+      'footer.note': 'Time estimates assume 2–3 hours of study per day. Actual progress varies — focus on mastering core concepts, not just clocking hours.',
+      'footer.meta': 'Generated by Open Design + Hermes Agent · 2026',
+      'theme.light': 'Dark Mode',
+      'theme.dark': 'Light Mode',
+      'sd.MDP、Q-Learning、策略梯度、PPO、多': 'MDP, Q-Learning, policy gradients, PPO, multi-agent',
+      'sd.PyTorch 或 TensorFlow 核心 A': 'PyTorch or TensorFlow core APIs, tensor operations, autograd, training loops',
+      'sd.Self-Attention、多头注意力、位置编码': 'Self-Attention, multi-head attention, positional encoding, Encoder-Decoder architecture',
+      'sd.交叉验证、混淆矩阵、ROC/AUC、精确率-召回率': 'Cross-validation, confusion matrix, ROC/AUC, precision-recall, overfitting & regularization',
+      'sd.卷积层、池化、经典架构（ResNet、VGG）、数': 'Convolutional layers, pooling, classic architectures (ResNet, VGG), data augmentation',
+      'sd.向量与矩阵运算、特征值分解、奇异值分解（SVD）': 'Vector & matrix operations, eigenvalue decomposition, SVD',
+      'sd.大模型微调（LoRA / QLoRA）、RAG 架': 'LLM fine-tuning (LoRA/QLoRA), RAG architecture, Agent development, model deployment',
+      'sd.导数与偏导、链式法则、梯度、积分基础': 'Derivatives & partial derivatives, chain rule, gradients, integral basics',
+      'sd.循环神经网络、长短期记忆网络、序列建模、注意力机制': 'Recurrent neural networks, LSTM, sequence modeling, intro to attention',
+      'sd.感知机、多层网络、反向传播、激活函数、损失函数、优': 'Perceptrons, multi-layer networks, backpropagation, activation/loss functions, optimizers',
+      'sd.文本分类、命名实体识别、机器翻译、Prompt E': 'Text classification, NER, machine translation, Prompt Engineering',
+      'sd.概率分布、贝叶斯定理、假设检验、最大似然估计': "Probability distributions, Bayes' theorem, hypothesis testing, MLE",
+      'sd.模型版本管理、CI/CD for ML、监控与漂移': 'Model versioning, CI/CD for ML, monitoring & drift detection, containerized deployment',
+      'sd.特征选择、降维（PCA）、特征构造、交叉特征': 'Feature selection, dimensionality reduction (PCA), feature construction, cross-features',
+      'sd.目标检测（YOLO）、图像分割、图像生成、多模态': 'Object detection (YOLO), image segmentation, image generation, multimodal',
+      'sd.线性回归、逻辑回归、决策树、随机森林、SVM、K-': 'Linear/logistic regression, decision trees, random forests, SVM, K-Means',
+      'sd.缺失值处理、数据标准化、类别编码、数据划分': 'Missing values, data standardization, categorical encoding, data splitting',
+      'sd.语法基础、数据结构、面向对象、常用库（NumPy ': 'Syntax basics, data structures, OOP, essential libraries (NumPy/Pandas)',
+      'sk.CNN（卷积神经网络）': 'CNN (Convolutional Neural Networks)',
+      'sk.MLOps': 'MLOps',
+      'sk.Python 编程': 'Python Programming',
+      'sk.RNN / LSTM': 'RNN / LSTM',
+      'sk.Transformer': 'Transformer',
+      'sk.强化学习 (RL)': 'Reinforcement Learning (RL)',
+      'sk.微积分基础': 'Calculus Basics',
+      'sk.数据处理': 'Data Processing',
+      'sk.概率论与数理统计': 'Probability & Statistics',
+      'sk.模型评估': 'Model Evaluation',
+      'sk.深度学习框架': 'Deep Learning Frameworks',
+      'sk.特征工程': 'Feature Engineering',
+      'sk.生成式 AI (LLM)': 'Generative AI (LLM)',
+      'sk.神经网络基础': 'Neural Network Fundamentals',
+      'sk.线性代数': 'Linear Algebra',
+      'sk.经典 ML 算法': 'Classic ML Algorithms',
+      'sk.自然语言处理 (NLP)': 'Natural Language Processing (NLP)',
+      'sk.计算机视觉 (CV)': 'Computer Vision (CV)',
+      'tag.偏导': 'Partial Derivatives',
+      'tag.分布': 'Distributions',
+      'tag.分类': 'Classification',
+      'tag.向量空间': 'Vector Spaces',
+      'tag.回归': 'Regression',
+      'tag.导数': 'Derivatives',
+      'tag.序列': 'Sequences',
+      'tag.构造': 'Construction',
+      'tag.标准化': 'Standardization',
+      'tag.梯度': 'Gradients',
+      'tag.池化': 'Pooling',
+      'tag.清洗': 'Cleaning',
+      'tag.特征选择': 'Feature Selection',
+      'tag.矩阵': 'Matrices',
+      'tag.编码': 'Encoding',
+      'tag.聚类': 'Clustering',
+      'tag.贝叶斯': 'Bayes',
+      'tag.序列': 'Sequences',
+      'tag.正则化': 'Regularization',
+      'prereq.高中数学基础': 'High school math',
+      'prereq.基本计算机操作': 'Basic computer skills',
+      'prereq.无需编程经验': 'No coding experience needed',
+      'prereq.Python 熟练': 'Python proficiency',
+      'prereq.线性代数基础': 'Linear algebra basics',
+      'prereq.概率论基础': 'Probability basics',
+      'prereq.NumPy / Pand': 'NumPy / Pandas',
+      'prereq.机器学习基础': 'ML fundamentals',
+      'prereq.微积分（梯度/链式法则）': 'Calculus (gradients/chain rule)',
+      'prereq.sklearn 经验': 'sklearn experience',
+      'prereq.深度学习基础': 'DL fundamentals',
+      'prereq.PyTorch 熟练': 'PyTorch proficiency',
+      'prereq.理解 Transform': 'Understanding of Transformers',
+      'prereq.选择 1-2 个方向': 'Pick 1-2 tracks',
+      'rt.密歇根大学 · 免费': 'Univ. of Michigan · Free audit',
+      'rt.Gilbert St': 'Gilbert Strang · Classic course',
+      'rt.Al Sweigar': 'Al Sweigart · Free online',
+      'rt.Andrew Ng ': 'Andrew Ng · 2022 edition',
+      'rt.Aurélien G': 'Aurélien Géron · Hands-on',
+      'rt.免费 · 交互式学习': 'Free · Interactive',
+      'rt.Jeremy How': 'Jeremy Howard · Code-first · Free',
+      'rt.Stanford ·': 'Stanford · Andrej Karpathy',
+      'rt.李沐 · PyTor': 'Mu Li · PyTorch · Free online',
+      'rt.直观理解 · 数学可': 'Intuitive · Math visualization',
+      'rt.LLM / RAG ': 'LLM / RAG / LangChain · Free',
+      'rt.免费在线 · Tra': 'Free online · Transformer hands-on',
+      'rt.强化学习入门 · 免': 'RL intro · Free',
+      'rt.LLM 应用开发实战': 'LLM app dev hands-on',
+      'lang.btn': '中文',
+    },
+    zh: {
+      'header.overline': 'Learning Path',
+      'header.title': 'AI 学习路线图',
+      'header.desc': '从编程基础到专业方向的系统化学习路径。四个阶段循序渐进，每个阶段涵盖核心技能、推荐资源与实战项目。',
+      'legend.beginner': '基础',
+      'legend.intermediate': '中级',
+      'legend.advanced': '高级',
+      'legend.specialized': '专业',
+      'progress.title': '学习进度',
+      'progress.text': '0 / 4 阶段',
+      'progress.stage1': '基础阶段',
+      'progress.stage2': '机器学习',
+      'progress.stage3': '深度学习',
+      'progress.stage4': '专业方向',
+      'stage1.title': '基础阶段',
+      'stage1.subtitle': '构建数学与编程基石',
+      'stage1.time': '预计 2 — 3 个月',
+      'stage2.title': '机器学习阶段',
+      'stage2.subtitle': '掌握经典算法与完整建模流程',
+      'stage2.time': '预计 3 — 4 个月',
+      'stage3.title': '深度学习阶段',
+      'stage3.subtitle': '神经网络架构与现代深度学习框架',
+      'stage3.time': '预计 4 — 6 个月',
+      'stage4.title': '专业方向',
+      'stage4.subtitle': '选择细分领域深入钻研',
+      'stage4.time': '预计 6 个月+（按方向）',
+      'details.expand': '展开：学习资源、前置要求、实战项目',
+      'details.prerequisites': '前置要求',
+      'details.resources': '推荐资源',
+      'details.projects': '实战项目',
+      'resource.course': '课',
+      'resource.book': '书',
+      'footer.cta': '觉得有用？',
+      'footer.star': 'Star on GitHub',
+      'footer.note': '时间预估基于每天 2 — 3 小时的学习节奏。实际进度因人而异，建议以掌握核心概念而非完成时长为目标。',
+      'footer.meta': 'Generated by Open Design + Hermes Agent · 2026',
+      'theme.light': '暗色模式',
+      'theme.dark': '浅色模式',
+      'sd.MDP、Q-Learning、策略梯度、PPO、多': 'MDP、Q-Learning、策略梯度、PPO、多智能体',
+      'sd.PyTorch 或 TensorFlow 核心 A': 'PyTorch 或 TensorFlow 核心 API、张量操作、自动求导、模型训练循环',
+      'sd.Self-Attention、多头注意力、位置编码': 'Self-Attention、多头注意力、位置编码、Encoder-Decoder 架构',
+      'sd.交叉验证、混淆矩阵、ROC/AUC、精确率-召回率': '交叉验证、混淆矩阵、ROC/AUC、精确率-召回率、过拟合与正则化',
+      'sd.卷积层、池化、经典架构（ResNet、VGG）、数': '卷积层、池化、经典架构（ResNet、VGG）、数据增强',
+      'sd.向量与矩阵运算、特征值分解、奇异值分解（SVD）': '向量与矩阵运算、特征值分解、奇异值分解（SVD）',
+      'sd.大模型微调（LoRA / QLoRA）、RAG 架': '大模型微调（LoRA / QLoRA）、RAG 架构、Agent 开发、模型部署',
+      'sd.导数与偏导、链式法则、梯度、积分基础': '导数与偏导、链式法则、梯度、积分基础',
+      'sd.循环神经网络、长短期记忆网络、序列建模、注意力机制': '循环神经网络、长短期记忆网络、序列建模、注意力机制入门',
+      'sd.感知机、多层网络、反向传播、激活函数、损失函数、优': '感知机、多层网络、反向传播、激活函数、损失函数、优化器',
+      'sd.文本分类、命名实体识别、机器翻译、Prompt E': '文本分类、命名实体识别、机器翻译、Prompt Engineering',
+      'sd.概率分布、贝叶斯定理、假设检验、最大似然估计': '概率分布、贝叶斯定理、假设检验、最大似然估计',
+      'sd.模型版本管理、CI/CD for ML、监控与漂移': '模型版本管理、CI/CD for ML、监控与漂移检测、容器化部署',
+      'sd.特征选择、降维（PCA）、特征构造、交叉特征': '特征选择、降维（PCA）、特征构造、交叉特征',
+      'sd.目标检测（YOLO）、图像分割、图像生成、多模态': '目标检测（YOLO）、图像分割、图像生成、多模态',
+      'sd.线性回归、逻辑回归、决策树、随机森林、SVM、K-': '线性回归、逻辑回归、决策树、随机森林、SVM、K-Means',
+      'sd.缺失值处理、数据标准化、类别编码、数据划分': '缺失值处理、数据标准化、类别编码、数据划分',
+      'sd.语法基础、数据结构、面向对象、常用库（NumPy ': '语法基础、数据结构、面向对象、常用库（NumPy / Pandas）',
+      'sk.CNN（卷积神经网络）': 'CNN（卷积神经网络）',
+      'sk.MLOps': 'MLOps',
+      'sk.Python 编程': 'Python 编程',
+      'sk.RNN / LSTM': 'RNN / LSTM',
+      'sk.Transformer': 'Transformer',
+      'sk.强化学习 (RL)': '强化学习 (RL)',
+      'sk.微积分基础': '微积分基础',
+      'sk.数据处理': '数据处理',
+      'sk.概率论与数理统计': '概率论与数理统计',
+      'sk.模型评估': '模型评估',
+      'sk.深度学习框架': '深度学习框架',
+      'sk.特征工程': '特征工程',
+      'sk.生成式 AI (LLM)': '生成式 AI (LLM)',
+      'sk.神经网络基础': '神经网络基础',
+      'sk.线性代数': '线性代数',
+      'sk.经典 ML 算法': '经典 ML 算法',
+      'sk.自然语言处理 (NLP)': '自然语言处理 (NLP)',
+      'sk.计算机视觉 (CV)': '计算机视觉 (CV)',
+      'tag.偏导': '偏导',
+      'tag.分布': '分布',
+      'tag.分类': '分类',
+      'tag.向量空间': '向量空间',
+      'tag.回归': '回归',
+      'tag.导数': '导数',
+      'tag.序列': '序列',
+      'tag.构造': '构造',
+      'tag.标准化': '标准化',
+      'tag.梯度': '梯度',
+      'tag.池化': '池化',
+      'tag.清洗': '清洗',
+      'tag.特征选择': '特征选择',
+      'tag.矩阵': '矩阵',
+      'tag.编码': '编码',
+      'tag.聚类': '聚类',
+      'tag.贝叶斯': '贝叶斯',
+      'tag.序列': '序列',
+      'tag.正则化': '正则化',
+      'prereq.高中数学基础': '高中数学基础',
+      'prereq.基本计算机操作': '基本计算机操作',
+      'prereq.无需编程经验': '无需编程经验',
+      'prereq.Python 熟练': 'Python 熟练',
+      'prereq.线性代数基础': '线性代数基础',
+      'prereq.概率论基础': '概率论基础',
+      'prereq.NumPy / Pand': 'NumPy / Pandas',
+      'prereq.机器学习基础': '机器学习基础',
+      'prereq.微积分（梯度/链式法则）': '微积分（梯度/链式法则）',
+      'prereq.sklearn 经验': 'sklearn 经验',
+      'prereq.深度学习基础': '深度学习基础',
+      'prereq.PyTorch 熟练': 'PyTorch 熟练',
+      'prereq.理解 Transform': '理解 Transformer',
+      'prereq.选择 1-2 个方向': '选择 1-2 个方向',
+      'rt.密歇根大学 · 免费': '密歇根大学 · 免费旁听',
+      'rt.Gilbert St': 'Gilbert Strang · 经典课程',
+      'rt.Al Sweigar': 'Al Sweigart · 免费在线版',
+      'rt.Andrew Ng ': 'Andrew Ng · 2022 更新版',
+      'rt.Aurélien G': 'Aurélien Géron · 实战导向',
+      'rt.免费 · 交互式学习': '免费 · 交互式学习',
+      'rt.Jeremy How': 'Jeremy Howard · 实战优先 · 免费',
+      'rt.Stanford ·': 'Stanford · Andrej Karpathy',
+      'rt.李沐 · PyTor': '李沐 · PyTorch 版 · 免费在线',
+      'rt.直观理解 · 数学可': '直观理解 · 数学可视化',
+      'rt.LLM / RAG ': 'LLM / RAG / LangChain · 免费',
+      'rt.免费在线 · Tra': '免费在线 · Transformer 实战',
+      'rt.强化学习入门 · 免': '强化学习入门 · 免费',
+      'rt.LLM 应用开发实战': 'LLM 应用开发实战',
+      'lang.btn': 'EN',
+    }
+  };
+
+  var currentLang = 'zh';
+
+  function detectLang() {
+    var saved = localStorage.getItem('lang');
+    if (saved && (saved === 'en' || saved === 'zh')) return saved;
+    return (navigator.language || '').toLowerCase().includes('zh') ? 'zh' : 'en';
+  }
+
+  function applyLang(lang) {
+    currentLang = lang;
+    localStorage.setItem('lang', lang);
+    var t = I18N[lang];
+    document.querySelectorAll('[data-i18n]').forEach(function(el) {
+      var key = el.getAttribute('data-i18n');
+      if (t[key] !== undefined) {
+        el.textContent = t[key];
+      }
+    });
+    // Theme label
+    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    var themeLabel = document.getElementById('theme-label');
+    if (themeLabel) themeLabel.textContent = isDark ? t['theme.dark'] : t['theme.light'];
+    // Lang button
+    var langLabel = document.getElementById('lang-label');
+    if (langLabel) langLabel.textContent = t['lang.btn'];
+    // SEO meta tags
+    if (lang === 'en') {
+      document.title = 'AI Learning Roadmap 2026 | From Zero to Specialized';
+      var dm = document.querySelector('meta[name="description"]');
+      if (dm) dm.setAttribute('content', 'Systematic AI learning path: Python basics → Machine Learning → Deep Learning → NLP/CV/LLM specializations. Each stage includes recommended courses, hands-on projects, and time estimates.');
+      var ot = document.querySelector('meta[property="og:title"]');
+      if (ot) ot.setAttribute('content', 'AI Learning Roadmap 2026');
+      var od = document.querySelector('meta[property="og:description"]');
+      if (od) od.setAttribute('content', 'Systematic learning path from zero to specialized tracks, with curated resources and hands-on projects');
+      var tt = document.querySelector('meta[name="twitter:title"]');
+      if (tt) tt.setAttribute('content', 'AI Learning Roadmap 2026');
+      var td = document.querySelector('meta[name="twitter:description"]');
+      if (td) td.setAttribute('content', 'Systematic learning path from zero to specialized tracks');
+    } else {
+      document.title = 'AI 学习路线图 2026 | 从零基础到专业方向';
+      var dm = document.querySelector('meta[name="description"]');
+      if (dm) dm.setAttribute('content', '系统化 AI 学习路径：Python 基础 → 机器学习 → 深度学习 → NLP/CV/LLM 专业方向。每个阶段含推荐课程、实战项目、预计时间。');
+      var ot = document.querySelector('meta[property="og:title"]');
+      if (ot) ot.setAttribute('content', 'AI 学习路线图 2026');
+      var od = document.querySelector('meta[property="og:description"]');
+      if (od) od.setAttribute('content', '从零基础到专业方向的系统化学习路径，含推荐资源与实战项目');
+      var tt = document.querySelector('meta[name="twitter:title"]');
+      if (tt) tt.setAttribute('content', 'AI 学习路线图 2026');
+      var td = document.querySelector('meta[name="twitter:description"]');
+      if (td) td.setAttribute('content', '从零基础到专业方向的系统化学习路径');
+    }
+    document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+  }
+
+  function toggleLang() {
+    applyLang(currentLang === 'en' ? 'zh' : 'en');
+  }
+
+
   /* ── Theme Toggle ──────────────────────────────────────────── */
   function toggleTheme() {
-    const html = document.documentElement;
-    const current = html.getAttribute('data-theme');
-    const label = document.getElementById('theme-label');
+    var html = document.documentElement;
+    var current = html.getAttribute('data-theme');
+    var label = document.getElementById('theme-label');
+    var t = I18N[currentLang] || I18N.zh;
     if (current === 'dark') {
       html.removeAttribute('data-theme');
-      label.textContent = '暗色模式';
+      label.textContent = t['theme.light'];
       localStorage.setItem('theme', 'light');
     } else {
       html.setAttribute('data-theme', 'dark');
-      label.textContent = '浅色模式';
+      label.textContent = t['theme.dark'];
       localStorage.setItem('theme', 'dark');
     }
   }
