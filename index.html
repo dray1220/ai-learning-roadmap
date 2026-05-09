@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI 学习路线图 2026 | 从零基础到专业方向</title>
+<meta name="description" content="系统化 AI 学习路径：Python 基础 → 机器学习 → 深度学习 → NLP/CV/LLM 专业方向。每个阶段含推荐课程、实战项目、预计时间。">
+<meta name="keywords" content="AI学习路线,机器学习入门,深度学习教程,LLM学习路径,人工智能学习">
+<meta property="og:title" content="AI 学习路线图 2026">
+<meta property="og:description" content="从零基础到专业方向的系统化学习路径，含推荐资源与实战项目">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://og-pics.vercel.app/api/og?title=AI学习路线图2026&desc=从零基础到专业方向">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="AI 学习路线图 2026">
+<meta name="twitter:description" content="从零基础到专业方向的系统化学习路径">
+<link rel="canonical" href="https://dray1220.github.io/ai-learning-roadmap/">
+<style>
+  /* ── Design Tokens (inherited from v1) ────────────────────── */
+  :root {
+    /* Neutrals */
+    --color-bg:       #fafafa;
+    --color-surface:  #ffffff;
+    --color-surface-alt:#f5f5f5;
+    --color-border:   #e5e5e5;
+    --color-border-hi:#d4d4d4;
+    --color-muted:    #737373;
+    --color-text:     #171717;
+    --color-text-sec: #525252;
+
+    /* Accent */
+    --color-accent:   #2563eb;
+    --color-accent-s: #1d4ed8;
+    --color-accent-bg:#eff6ff;
+    --color-accent-br:#bfdbfe;
+    --color-accent-soft:rgba(37,99,235,0.08);
+
+    /* Stage colors */
+    --color-stage-1:  #16a34a;  --color-stage-1-bg:#f0fdf4;  --color-stage-1-br:#bbf7d0;  --color-stage-1-soft:rgba(22,163,74,0.08);
+    --color-stage-2:  #ca8a04;  --color-stage-2-bg:#fefce8;  --color-stage-2-br:#fef08a;  --color-stage-2-soft:rgba(202,138,4,0.08);
+    --color-stage-3:  #9333ea;  --color-stage-3-bg:#faf5ff;  --color-stage-3-br:#e9d5ff;  --color-stage-3-soft:rgba(147,51,234,0.08);
+    --color-stage-4:  #dc2626;  --color-stage-4-bg:#fef2f2;  --color-stage-4-br:#fecaca;  --color-stage-4-soft:rgba(220,38,38,0.08);
+
+    /* Typography */
+    --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-mono: "JetBrains Mono", "SF Mono", "Fira Code", monospace;
+    --text-xs:   0.75rem;
+    --text-sm:   0.8125rem;
+    --text-base: 0.9375rem;
+    --text-lg:   1.125rem;
+    --text-xl:   1.375rem;
+    --text-2xl:  1.75rem;
+    --text-3xl:  2.25rem;
+
+    /* Spacing */
+    --space-1: 0.25rem;  --space-2: 0.5rem;  --space-3: 0.75rem;
+    --space-4: 1rem;     --space-5: 1.25rem; --space-6: 1.5rem;
+    --space-8: 2rem;     --space-10:2.5rem;  --space-12:3rem;
+    --space-16:4rem;     --space-20:5rem;    --space-24:6rem;
+
+    /* Radii */
+    --radius-sm: 0.375rem;  --radius-md: 0.5rem;  --radius-lg: 0.75rem;  --radius-xl: 1rem;
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.04), 0 1px 3px rgba(0,0,0,0.06);
+    --shadow-md: 0 2px 6px rgba(0,0,0,0.05), 0 4px 12px rgba(0,0,0,0.06);
+    --shadow-lg: 0 4px 16px rgba(0,0,0,0.06), 0 8px 24px rgba(0,0,0,0.08);
+
+    /* Transitions */
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --duration-fast: 150ms;
+    --duration-base: 250ms;
+    --duration-slow: 400ms;
+
+    /* Layout */
+    --max-w: 72rem;
+    --timeline-w: 2px;
+    --sidebar-w: 240px;
+  }
+
+  /* ── Dark Mode ─────────────────────────────────────────────── */
+  [data-theme="dark"] {
+    --color-bg:       #0a0a0a;  --color-surface:  #171717;  --color-surface-alt:#1c1c1c;
+    --color-border:   #262626;  --color-border-hi:#404040;  --color-muted: #737373;
+    --color-text:     #fafafa;  --color-text-sec: #a3a3a3;
+    --color-accent:   #3b82f6;  --color-accent-s: #60a5fa;  --color-accent-bg:#172554;
+    --color-accent-br:#1e3a5f;  --color-accent-soft:rgba(59,130,246,0.12);
+    --color-stage-1:#22c55e; --color-stage-1-bg:#052e16; --color-stage-1-br:#14532d; --color-stage-1-soft:rgba(34,197,94,0.12);
+    --color-stage-2:#eab308; --color-stage-2-bg:#422006; --color-stage-2-br:#713f12; --color-stage-2-soft:rgba(234,179,8,0.12);
+    --color-stage-3:#a855f7; --color-stage-3-bg:#3b0764; --color-stage-3-br:#581c87; --color-stage-3-soft:rgba(168,85,247,0.12);
+    --color-stage-4:#ef4444; --color-stage-4-bg:#450a0a; --color-stage-4-br:#7f1d1d; --color-stage-4-soft:rgba(239,68,68,0.12);
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.2), 0 1px 3px rgba(0,0,0,0.3);
+    --shadow-md: 0 2px 6px rgba(0,0,0,0.2), 0 4px 12px rgba(0,0,0,0.3);
+    --shadow-lg: 0 4px 16px rgba(0,0,0,0.3), 0 8px 24px rgba(0,0,0,0.4);
+  }
+
+  /* ── Reset & Base ──────────────────────────────────────────── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+  body {
+    font-family: var(--font-sans); font-size: var(--text-base); line-height: 1.6;
+    color: var(--color-text); background: var(--color-bg);
+    transition: background var(--duration-base) var(--ease-out), color var(--duration-base) var(--ease-out);
+  }
+  a { color: var(--color-accent); text-decoration: none; transition: color var(--duration-fast) var(--ease-out); }
+  a:hover { color: var(--color-accent-s); text-decoration: underline; }
+
+  /* ── Layout ────────────────────────────────────────────────── */
+  .page { max-width: var(--max-w); margin: 0 auto; padding: var(--space-16) var(--space-6); }
+  @media (max-width: 640px) { .page { padding: var(--space-10) var(--space-4); } }
+
+  /* ── Header ────────────────────────────────────────────────── */
+  .header { margin-bottom: var(--space-12); padding-bottom: var(--space-8); border-bottom: 1px solid var(--color-border); }
+  .header__overline {
+    font-size: var(--text-xs); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--color-accent); margin-bottom: var(--space-4);
+  }
+  .header__title { font-size: var(--text-3xl); font-weight: 700; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: var(--space-4); }
+  .header__desc { font-size: var(--text-lg); color: var(--color-text-sec); max-width: 42rem; line-height: 1.65; }
+
+  /* ── Controls Bar ──────────────────────────────────────────── */
+  .controls { display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-10); gap: var(--space-4); flex-wrap: wrap; }
+  .controls__legend { display: flex; gap: var(--space-6); flex-wrap: wrap; }
+  .legend-item { display: flex; align-items: center; gap: var(--space-2); font-size: var(--text-sm); color: var(--color-text-sec); }
+  .legend-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .theme-toggle {
+    display: flex; align-items: center; gap: var(--space-2); background: none;
+    border: 1px solid var(--color-border); border-radius: var(--radius-md);
+    padding: var(--space-2) var(--space-3); color: var(--color-text-sec); font-size: var(--text-sm);
+    cursor: pointer; font-family: var(--font-sans); transition: border-color var(--duration-fast) var(--ease-out), color var(--duration-fast) var(--ease-out);
+  }
+  .theme-toggle:hover { border-color: var(--color-border-hi); color: var(--color-text); }
+  .theme-toggle__icon { width: 16px; height: 16px; display: block; }
+
+  /* ── Progress Overview ─────────────────────────────────────── */
+  .progress-overview {
+    background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg);
+    padding: var(--space-8); margin-bottom: var(--space-12);
+  }
+  .progress-overview__title { font-size: var(--text-sm); font-weight: 600; margin-bottom: var(--space-6); color: var(--color-text-sec); text-transform: uppercase; letter-spacing: 0.06em; }
+  .progress-bar-track {
+    height: 8px; background: var(--color-bg); border-radius: 4px; overflow: hidden; margin-bottom: var(--space-4);
+  }
+  .progress-bar-fill {
+    height: 100%; border-radius: 4px; background: var(--color-accent);
+    transition: width var(--duration-slow) var(--ease-out); width: 0%;
+  }
+  .progress-stats { display: flex; justify-content: space-between; font-size: var(--text-xs); color: var(--color-muted); }
+  .progress-stages { display: flex; gap: var(--space-4); margin-top: var(--space-6); flex-wrap: wrap; }
+  .progress-stage {
+    display: flex; align-items: center; gap: var(--space-2); font-size: var(--text-xs); color: var(--color-text-sec);
+    padding: var(--space-2) var(--space-3); border-radius: var(--radius-sm);
+    background: var(--color-bg); border: 1px solid var(--color-border);
+  }
+  .progress-stage__dot { width: 6px; height: 6px; border-radius: 50%; }
+  .progress-stage--done .progress-stage__dot { background: var(--color-stage-1); }
+  .progress-stage--active .progress-stage__dot { background: var(--color-accent); animation: pulse 2s infinite; }
+  .progress-stage--locked .progress-stage__dot { background: var(--color-muted); opacity: 0.4; }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+  @media (prefers-reduced-motion: reduce) { .progress-stage--active .progress-stage__dot { animation: none; } }
+
+  /* ── Timeline ──────────────────────────────────────────────── */
+  .timeline { position: relative; padding-left: var(--space-10); }
+  .timeline::before { content: ''; position: absolute; left: 7px; top: 0; bottom: 0; width: var(--timeline-w); background: var(--color-border); border-radius: 1px; }
+  @media (max-width: 640px) { .timeline { padding-left: var(--space-8); } .timeline::before { left: 5px; } }
+
+  /* ── Stage Node ────────────────────────────────────────────── */
+  .stage { position: relative; margin-bottom: var(--space-12); }
+  .stage:last-child { margin-bottom: 0; }
+  .stage { opacity: 0; transform: translateY(12px); animation: fadeUp 0.5s var(--ease-out) forwards; }
+  .stage:nth-child(1) { animation-delay: 0.1s; } .stage:nth-child(2) { animation-delay: 0.2s; }
+  .stage:nth-child(3) { animation-delay: 0.3s; } .stage:nth-child(4) { animation-delay: 0.4s; }
+  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+  @media (prefers-reduced-motion: reduce) { .stage { opacity: 1; transform: none; animation: none; } }
+
+  /* Node dot */
+  .stage__dot {
+    position: absolute; left: calc(-1 * var(--space-10) + 1px); top: var(--space-6);
+    width: 14px; height: 14px; border-radius: 50%; border: 2px solid var(--color-border);
+    background: var(--color-bg); transition: border-color var(--duration-fast) var(--ease-out), background var(--duration-fast) var(--ease-out), transform var(--duration-fast) var(--ease-out);
+  }
+  .stage:hover .stage__dot { transform: scale(1.2); }
+  .stage--1 .stage__dot { border-color: var(--color-stage-1); background: var(--color-stage-1); }
+  .stage--2 .stage__dot { border-color: var(--color-stage-2); background: var(--color-stage-2); }
+  .stage--3 .stage__dot { border-color: var(--color-stage-3); background: var(--color-stage-3); }
+  .stage--4 .stage__dot { border-color: var(--color-stage-4); background: var(--color-stage-4); }
+  @media (max-width: 640px) { .stage__dot { left: calc(-1 * var(--space-8) + 1px); width: 12px; height: 12px; } }
+
+  /* ── Stage Card ────────────────────────────────────────────── */
+  .stage__card {
+    background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg);
+    padding: var(--space-8); transition: border-color var(--duration-fast) var(--ease-out), box-shadow var(--duration-fast) var(--ease-out);
+  }
+  .stage__card:hover { border-color: var(--color-border-hi); box-shadow: var(--shadow-sm); }
+
+  /* Stage header */
+  .stage__header { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--space-4); margin-bottom: var(--space-6); flex-wrap: wrap; }
+  .stage__badge {
+    display: inline-flex; align-items: center; gap: var(--space-2); font-size: var(--text-xs); font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.06em; padding: var(--space-1) var(--space-3);
+    border-radius: 100px; border: 1px solid;
+  }
+  .stage--1 .stage__badge { color: var(--color-stage-1); border-color: var(--color-stage-1-br); background: var(--color-stage-1-bg); }
+  .stage--2 .stage__badge { color: var(--color-stage-2); border-color: var(--color-stage-2-br); background: var(--color-stage-2-bg); }
+  .stage--3 .stage__badge { color: var(--color-stage-3); border-color: var(--color-stage-3-br); background: var(--color-stage-3-bg); }
+  .stage--4 .stage__badge { color: var(--color-stage-4); border-color: var(--color-stage-4-br); background: var(--color-stage-4-bg); }
+
+  .stage__title { font-size: var(--text-xl); font-weight: 600; letter-spacing: -0.02em; margin-bottom: var(--space-1); }
+  .stage__subtitle { font-size: var(--text-sm); color: var(--color-muted); }
+  .stage__time { display: flex; align-items: center; gap: var(--space-2); font-size: var(--text-sm); color: var(--color-muted); white-space: nowrap; padding-top: var(--space-1); }
+  .stage__time svg { width: 14px; height: 14px; flex-shrink: 0; opacity: 0.6; }
+
+  /* ── Skills Grid ───────────────────────────────────────────── */
+  .skills { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: var(--space-4); }
+  @media (max-width: 480px) { .skills { grid-template-columns: 1fr; } }
+
+  .skill {
+    padding: var(--space-4); border: 1px solid var(--color-border); border-radius: var(--radius-md);
+    transition: border-color var(--duration-fast) var(--ease-out), background var(--duration-fast) var(--ease-out);
+    cursor: default;
+  }
+  .skill:hover { border-color: var(--color-border-hi); background: var(--color-bg); }
+  .skill__name { font-size: var(--text-sm); font-weight: 600; margin-bottom: var(--space-1); color: var(--color-text); }
+  .skill__desc { font-size: var(--text-xs); color: var(--color-muted); line-height: 1.55; }
+  .skill__tags { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-3); }
+  .tag {
+    font-size: 0.6875rem; font-family: var(--font-mono); padding: 1px var(--space-2);
+    border-radius: var(--radius-sm); background: var(--color-bg); color: var(--color-text-sec);
+    border: 1px solid var(--color-border); letter-spacing: 0.01em;
+  }
+
+  /* ── Expandable Details ────────────────────────────────────── */
+  .stage__details-toggle {
+    display: flex; align-items: center; gap: var(--space-2); margin-top: var(--space-6);
+    padding: var(--space-3) var(--space-4); border: 1px solid var(--color-border); border-radius: var(--radius-md);
+    background: none; color: var(--color-text-sec); font-size: var(--text-sm); cursor: pointer;
+    font-family: var(--font-sans); width: 100%; text-align: left;
+    transition: border-color var(--duration-fast) var(--ease-out), background var(--duration-fast) var(--ease-out), color var(--duration-fast) var(--ease-out);
+  }
+  .stage__details-toggle:hover { border-color: var(--color-border-hi); background: var(--color-bg); color: var(--color-text); }
+  .stage__details-toggle__icon { width: 16px; height: 16px; transition: transform var(--duration-base) var(--ease-out); flex-shrink: 0; }
+  .stage__details-toggle[aria-expanded="true"] .stage__details-toggle__icon { transform: rotate(180deg); }
+  .stage__details {
+    max-height: 0; overflow: hidden; transition: max-height var(--duration-slow) var(--ease-out), opacity var(--duration-base) var(--ease-out);
+    opacity: 0;
+  }
+  .stage__details[aria-hidden="false"] { max-height: 2000px; opacity: 1; margin-top: var(--space-6); }
+
+  .details-section { margin-bottom: var(--space-6); }
+  .details-section:last-child { margin-bottom: 0; }
+  .details-section__title {
+    font-size: var(--text-sm); font-weight: 600; margin-bottom: var(--space-3);
+    padding-bottom: var(--space-2); border-bottom: 1px solid var(--color-border);
+  }
+
+  /* Resources list */
+  .resources { list-style: none; }
+  .resources li {
+    padding: var(--space-3) var(--space-4); border: 1px solid var(--color-border); border-radius: var(--radius-md);
+    margin-bottom: var(--space-2); display: flex; align-items: flex-start; gap: var(--space-3);
+    transition: border-color var(--duration-fast) var(--ease-out), background var(--duration-fast) var(--ease-out);
+  }
+  .resources li:hover { border-color: var(--color-border-hi); background: var(--color-bg); }
+  .resources li:last-child { margin-bottom: 0; }
+  .resource__icon {
+    width: 28px; height: 28px; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; font-size: var(--text-xs); font-weight: 700;
+  }
+  .resource__icon--course { background: var(--color-accent-soft); color: var(--color-accent); }
+  .resource__icon--book { background: var(--color-stage-3-soft); color: var(--color-stage-3); }
+  .resource__icon--project { background: var(--color-stage-1-soft); color: var(--color-stage-1); }
+  .resource__content { flex: 1; }
+  .resource__name { font-size: var(--text-sm); font-weight: 600; margin-bottom: 2px; }
+  .resource__name a { color: inherit; }
+  .resource__name a:hover { color: var(--color-accent); text-decoration: underline; }
+  .resource__type { font-size: var(--text-xs); color: var(--color-muted); }
+
+  /* Prerequisites */
+  .prerequisites { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+  .prereq {
+    display: inline-flex; align-items: center; gap: var(--space-1); font-size: var(--text-xs);
+    padding: var(--space-1) var(--space-3); border-radius: 100px;
+    background: var(--color-bg); border: 1px solid var(--color-border); color: var(--color-text-sec);
+  }
+
+  /* Projects list */
+  .projects { list-style: none; }
+  .projects li {
+    padding: var(--space-3) var(--space-4); margin-bottom: var(--space-2);
+    border-left: 3px solid var(--color-accent-br); background: var(--color-accent-soft);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0; font-size: var(--text-sm);
+  }
+  .projects li:last-child { margin-bottom: 0; }
+  .projects li strong { font-weight: 600; color: var(--color-text); }
+
+  /* ── Footer ────────────────────────────────────────────────── */
+  .footer { margin-top: var(--space-16); padding-top: var(--space-8); border-top: 1px solid var(--color-border); text-align: center; color: var(--color-muted); font-size: var(--text-sm); }
+  .footer__note { max-width: 32rem; margin: 0 auto var(--space-4); line-height: 1.6; }
+  .footer__meta { font-size: var(--text-xs); opacity: 0.7; }
+
+  /* ── Utility ───────────────────────────────────────────────── */
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header__overline">Learning Path</div>
+    <h1 class="header__title">AI 学习路线图</h1>
+    <p class="header__desc">
+      从编程基础到专业方向的系统化学习路径。四个阶段循序渐进，每个阶段涵盖核心技能、推荐资源与实战项目。
+    </p>
+  </header>
+
+  <!-- Controls -->
+  <div class="controls">
+    <div class="controls__legend">
+      <span class="legend-item"><span class="legend-dot" style="background:var(--color-stage-1)"></span>基础</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--color-stage-2)"></span>中级</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--color-stage-3)"></span>高级</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--color-stage-4)"></span>专业</span>
+    </div>
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="切换主题">
+      <svg class="theme-toggle__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="5"/>
+        <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+        <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+      </svg>
+      <span id="theme-label">暗色模式</span>
+    </button>
+  </div>
+
+  <!-- Progress Overview -->
+  <div class="progress-overview">
+    <div class="progress-overview__title">学习进度</div>
+    <div class="progress-bar-track"><div class="progress-bar-fill" id="progress-fill"></div></div>
+    <div class="progress-stats">
+      <span id="progress-text">0 / 4 阶段</span>
+      <span id="progress-pct">0%</span>
+    </div>
+    <div class="progress-stages" id="progress-stages">
+      <div class="progress-stage progress-stage--locked"><span class="progress-stage__dot"></span>基础阶段</div>
+      <div class="progress-stage progress-stage--locked"><span class="progress-stage__dot"></span>机器学习</div>
+      <div class="progress-stage progress-stage--locked"><span class="progress-stage__dot"></span>深度学习</div>
+      <div class="progress-stage progress-stage--locked"><span class="progress-stage__dot"></span>专业方向</div>
+    </div>
+  </div>
+
+  <!-- Timeline -->
+  <div class="timeline" role="list" aria-label="学习阶段">
+
+    <!-- Stage 1: Beginner -->
+    <div class="stage stage--1" role="listitem" data-stage="0">
+      <div class="stage__dot" aria-hidden="true"></div>
+      <div class="stage__card">
+        <div class="stage__header">
+          <div>
+            <span class="stage__badge">Beginner</span>
+            <h2 class="stage__title">基础阶段</h2>
+            <p class="stage__subtitle">构建数学与编程基石</p>
+          </div>
+          <div class="stage__time">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            预计 2 — 3 个月
+          </div>
+        </div>
+        <div class="skills">
+          <div class="skill"><div class="skill__name">Python 编程</div><div class="skill__desc">语法基础、数据结构、面向对象、常用库（NumPy / Pandas）</div><div class="skill__tags"><span class="tag">Python 3</span><span class="tag">NumPy</span><span class="tag">Pandas</span></div></div>
+          <div class="skill"><div class="skill__name">线性代数</div><div class="skill__desc">向量与矩阵运算、特征值分解、奇异值分解（SVD）</div><div class="skill__tags"><span class="tag">矩阵</span><span class="tag">向量空间</span><span class="tag">SVD</span></div></div>
+          <div class="skill"><div class="skill__name">概率论与数理统计</div><div class="skill__desc">概率分布、贝叶斯定理、假设检验、最大似然估计</div><div class="skill__tags"><span class="tag">贝叶斯</span><span class="tag">分布</span><span class="tag">MLE</span></div></div>
+          <div class="skill"><div class="skill__name">微积分基础</div><div class="skill__desc">导数与偏导、链式法则、梯度、积分基础</div><div class="skill__tags"><span class="tag">导数</span><span class="tag">偏导</span><span class="tag">梯度</span></div></div>
+        </div>
+        <button class="stage__details-toggle" onclick="toggleDetails(this)" aria-expanded="false" aria-controls="details-0">
+          <svg class="stage__details-toggle__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          展开：学习资源、前置要求、实战项目
+        </button>
+        <div class="stage__details" id="details-0" aria-hidden="true">
+          <div class="details-section">
+            <div class="details-section__title">前置要求</div>
+            <div class="prerequisites"><span class="prereq">高中数学基础</span><span class="prereq">基本计算机操作</span><span class="prereq">无需编程经验</span></div>
+          </div>
+          <div class="details-section">
+            <div class="details-section__title">推荐资源</div>
+            <ul class="resources">
+              <li><span class="resource__icon resource__icon--course">课</span><div class="resource__content"><div class="resource__name"><a href="https://www.coursera.org/learn/python" target="_blank" rel="noopener">Python for Everybody (Coursera)</a></div><div class="resource__type">密歇根大学 · 免费旁听</div></div></li>
+              <li><span class="resource__icon resource__icon--course">课</span><div class="resource__content"><div class="resource__name"><a href="https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/" target="_blank" rel="noopener">MIT 18.06 线性代数 (OCW)</a></div><div class="resource__type">Gilbert Strang · 经典课程</div></div></li>
+              <li><span class="resource__icon resource__icon--book">书</span><div class="resource__content"><div class="resource__name"><a href="https://nostarch.com/automatestuff2" target="_blank" rel="noopener">Automate the Boring Stuff with Python</a></div><div class="resource__type">Al Sweigart · 免费在线版</div></div></li>
+            </ul>
+          </div>
+          <div class="details-section">
+            <div class="details-section__title">实战项目</div>
+            <ul class="projects">
+              <li><strong>数据分析小工具：</strong>用 Pandas 读取 CSV，完成清洗、分组聚合、可视化</li>
+              <li><strong>概率模拟：</strong>用 Python 模拟掷骰子/抽牌实验，验证大数定律</li>
+              <li><strong>矩阵运算器：</strong>实现矩阵乘法、求逆、特征值计算的 Python 脚本</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stage 2: Intermediate -->
+    <div class="stage stage--2" role="listitem" data-stage="1">
+      <div class="stage__dot" aria-hidden="true"></div>
+      <div class="stage__card">
+        <div class="stage__header">
+          <div>
+            <span class="stage__badge">Intermediate</span>
+            <h2 class="stage__title">机器学习阶段</h2>
+            <p class="stage__subtitle">掌握经典算法与完整建模流程</p>
+          </div>
+          <div class="stage__time">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            预计 3 — 4 个月
+          </div>
+        </div>
+        <div class="skills">
+          <div class="skill"><div class="skill__name">经典 ML 算法</div><div class="skill__desc">线性回归、逻辑回归、决策树、随机森林、SVM、K-Means</div><div class="skill__tags"><span class="tag">sklearn</span><span class="tag">回归</span><span class="tag">分类</span><span class="tag">聚类</span></div></div>
+          <div class="skill"><div class="skill__name">数据处理</div><div class="skill__desc">缺失值处理、数据标准化、类别编码、数据划分</div><div class="skill__tags"><span class="tag">清洗</span><span class="tag">标准化</span><span class="tag">编码</span></div></div>
+          <div class="skill"><div class="skill__name">特征工程</div><div class="skill__desc">特征选择、降维（PCA）、特征构造、交叉特征</div><div class="skill__tags"><span class="tag">PCA</span><span class="tag">特征选择</span><span class="tag">构造</span></div></div>
+          <div class="skill"><div class="skill__name">模型评估</div><div class="skill__desc">交叉验证、混淆矩阵、ROC/AUC、精确率-召回率、过拟合与正则化</div><div class="skill__tags"><span class="tag">CV</span><span class="tag">AUC</span><span class="tag">正则化</span></div></div>
+        </div>
+        <button class="stage__details-toggle" onclick="toggleDetails(this)" aria-expanded="false" aria-controls="details-1">
+          <svg class="stage__details-toggle__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          展开：学习资源、前置要求、实战项目
+        </button>
+        <div class="stage__details" id="details-1" aria-hidden="true">
+          <div class="details-section">
+            <div class="details-section__title">前置要求</div>
+            <div class="prerequisites"><span class="prereq">Python 熟练</span><span class="prereq">线性代数基础</span><span class="prereq">概率论基础</span><span class="prereq">NumPy / Pandas</span></div>
+          </div>
+          <div class="details-section">
+            <div class="details-section__title">推荐资源</div>
+            <ul class="resources">
+              <li><span class="resource__icon resource__icon--course">课</span><div class="resource__content"><div class="resource__name"><a href="https://www.coursera.org/learn/machine-learning" target="_blank" rel="noopener">Machine Learning Specialization (Coursera)</a></div><div class="resource__type">Andrew Ng · 2022 更新版</div></div></li>
+              <li><span class="resource__icon resource__icon--book">书</span><div class="resource__content"><div class="resource__name"><a href="https://www.oreilly.com/library/view/hands-on-machine-learning/9781098125974/" target="_blank" rel="noopener">Hands-On ML with Scikit-Learn, Keras & TensorFlow</a></div><div class="resource__type">Aurélien Géron · 实战导向</div></div></li>
+              <li><span class="resource__icon resource__icon--course">课</span><div class="resource__content"><div class="resource__name"><a href="https://www.kaggle.com/learn" target="_blank" rel="noopener">Kaggle Learn — ML Courses</a></div><div class="resource__type">免费 · 交互式学习</div></div></li>
+            </ul>
+          </div>
+          <div class="details-section">
+            <div class="details-section__title">实战项目</div>
+            <ul class="projects">
+              <li><strong>房价预测：</strong>用 Kaggle Housing 数据集，完成从数据清洗到模型部署的完整流程</li>
+              <li><strong>客户流失分析：</strong>电信/银行数据集，构建分类模型 + 特征重要性分析</li>
+              <li><strong>聚类分组：</strong>对电商用户行为数据进行 K-Means 分群 + 可视化</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stage 3: Advanced -->
+    <div class="stage stage--3" role="listitem" data-stage="2">
+      <div class="stage__dot" aria-hidden="true"></div>
+      <div class="stage__card">
+        <div class="stage__header">
+          <div>
+            <span class="stage__badge">Advanced</span>
+            <h2 class="stage__title">深度学习阶段</h2>
+            <p class="stage__subtitle">神经网络架构与现代深度学习框架</p>
+          </div>
+          <div class="stage__time">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            预计 4 — 6 个月
+          </div>
+        </div>
+        <div class="skills">
+          <div class="skill"><div class="skill__name">神经网络基础</div><div class="skill__desc">感知机、多层网络、反向传播、激活函数、损失函数、优化器</div><div class="skill__tags"><span class="tag">BP</span><span class="tag">ReLU</span><span class="tag">SGD</span><span class="tag">Adam</span></div></div>
+          <div class="skill"><div class="skill__name">CNN（卷积神经网络）</div><div class="skill__desc">卷积层、池化、经典架构（ResNet、VGG）、数据增强</div><div class="skill__tags"><span class="tag">Conv2D</span><span class="tag">ResNet</span><span class="tag">池化</span></div></div>
+          <div class="skill"><div class="skill__name">RNN / LSTM</div><div class="skill__desc">循环神经网络、长短期记忆网络、序列建模、注意力机制入门</div><div class="skill__tags"><span class="tag">LSTM</span><span class="tag">GRU</span><span class="tag">序列</span></div></div>
+          <div class="skill"><div class="skill__name">Transformer</div><div class="skill__desc">Self-Attention、多头注意力、位置编码、Encoder-Decoder 架构</div><div class="skill__tags"><span class="tag">Attention</span><span class="tag">Positional</span><span class="tag">BERT</span></div></div>
+          <div class="skill"><div class="skill__name">深度学习框架</div><div class="skill__desc">PyTorch 或 TensorFlow 核心 API、张量操作、自动求导、模型训练循环</div><div class="skill__tags"><span class="tag">PyTorch</span><span class="tag">TensorFlow</span><span class="tag">Autograd</span></div></div>
+        </div>
+        <button class="stage__details-toggle" onclick="toggleDetails(this)" aria-expanded="false" aria-controls="details-2">
+          <svg class="stage__details-toggle__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          展开：学习资源、前置要求、实战项目
+        </button>
+        <div class="stage__details" id="details-2" aria-hidden="true">
+          <div class="details-section">
+            <div class="details-section__title">前置要求</div>
+            <div class="prerequisites"><span class="prereq">机器学习基础</span><span class="prereq">Python 熟练</span><span class="prereq">微积分（梯度/链式法则）</span><span class="prereq">sklearn 经验</span></div>
+          </div>
+          <div class="details-section">
+            <div class="details-section__title">推荐资源</div>
+            <ul class="resources">
+              <li><span class="resource__icon resource__icon--course">课</span><div class="resource__content"><div class="resource__name"><a href="https://www.fast.ai/" target="_blank" rel="noopener">Practical Deep Learning (fast.ai)</a></div><div class="resource__type">Jeremy Howard · 实战优先 · 免费</div></div></li>
+              <li><span class="resource__icon resource__icon--course">课</span><div class="resource__content"><div class="resource__name"><a href="https://cs231n.stanford.edu/" target="_blank" rel="noopener">CS231n — CNN for Visual Recognition</a></div><div class="resource__type">Stanford · Andrej Karpathy</div></div></li>
+              <li><span class="resource__icon resource__icon--book">书</span><div class="resource__content"><div class="resource__name"><a href="https://d2l.ai/" target="_blank" rel="noopener">动手学深度学习 (Dive into Deep Learning)</a></div><div class="resource__type">李沐 · PyTorch 版 · 免费在线</div></div></li>
+              <li><span class="resource__icon resource__icon--course">课</span><div class="resource__content"><div class="resource__name"><a href="https://www.youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi" target="_blank" rel="noopener">Neural Networks (3Blue1Brown)</a></div><div class="resource__type">直观理解 · 数学可视化</div></div></li>
+            </ul>
+          </div>
+          <div class="details-section">
+            <div class="details-section__title">实战项目</div>
+            <ul class="projects">
+              <li><strong>手写数字识别：</strong>从零搭建 MNIST 分类器，理解反向传播和训练循环</li>
+              <li><strong>猫狗分类器：</strong>CNN + 数据增强，对比不同架构（VGG / ResNet）的效果</li>
+              <li><strong>文本生成：</strong>用 LSTM 训练莎士比亚风格文本生成模型</li>
+              <li><strong>图像风格迁移：</strong>实现 Neural Style Transfer，理解内容损失与风格损失</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stage 4: Specialization -->
+    <div class="stage stage--4" role="listitem" data-stage="3">
+      <div class="stage__dot" aria-hidden="true"></div>
+      <div class="stage__card">
+        <div class="stage__header">
+          <div>
+            <span class="stage__badge">Specialization</span>
+            <h2 class="stage__title">专业方向</h2>
+            <p class="stage__subtitle">选择细分领域深入钻研</p>
+          </div>
+          <div class="stage__time">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            预计 6 个月+（按方向）
+          </div>
+        </div>
+        <div class="skills">
+          <div class="skill"><div class="skill__name">自然语言处理 (NLP)</div><div class="skill__desc">文本分类、命名实体识别、机器翻译、Prompt Engineering</div><div class="skill__tags"><span class="tag">HuggingFace</span><span class="tag">LLM</span><span class="tag">Prompt</span></div></div>
+          <div class="skill"><div class="skill__name">计算机视觉 (CV)</div><div class="skill__desc">目标检测（YOLO）、图像分割、图像生成、多模态</div><div class="skill__tags"><span class="tag">YOLO</span><span class="tag">Segmentation</span><span class="tag">Diffusion</span></div></div>
+          <div class="skill"><div class="skill__name">强化学习 (RL)</div><div class="skill__desc">MDP、Q-Learning、策略梯度、PPO、多智能体</div><div class="skill__tags"><span class="tag">PPO</span><span class="tag">Q-Learning</span><span class="tag">Gym</span></div></div>
+          <div class="skill"><div class="skill__name">生成式 AI (LLM)</div><div class="skill__desc">大模型微调（LoRA / QLoRA）、RAG 架构、Agent 开发、模型部署</div><div class="skill__tags"><span class="tag">LoRA</span><span class="tag">RAG</span><span class="tag">Agent</span><span class="tag">vLLM</span></div></div>
+          <div class="skill"><div class="skill__name">MLOps</div><div class="skill__desc">模型版本管理、CI/CD for ML、监控与漂移检测、容器化部署</div><div class="skill__tags"><span class="tag">MLflow</span><span class="tag">Docker</span><span class="tag">K8s</span></div></div>
+        </div>
+        <button class="stage__details-toggle" onclick="toggleDetails(this)" aria-expanded="false" aria-controls="details-3">
+          <svg class="stage__details-toggle__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          展开：学习资源、前置要求、实战项目
+        </button>
+        <div class="stage__details" id="details-3" aria-hidden="true">
+          <div class="details-section">
+            <div class="details-section__title">前置要求</div>
+            <div class="prerequisites"><span class="prereq">深度学习基础</span><span class="prereq">PyTorch 熟练</span><span class="prereq">理解 Transformer</span><span class="prereq">选择 1-2 个方向</span></div>
+          </div>
+          <div class="details-section">
+            <div class="details-section__title">推荐资源</div>
+            <ul class="resources">
+              <li><span class="resource__icon resource__icon--course">课</span><div class="resource__content"><div class="resource__name"><a href="https://www.deeplearning.ai/short-courses/" target="_blank" rel="noopener">DeepLearning.AI Short Courses</a></div><div class="resource__type">LLM / RAG / LangChain · 免费</div></div></li>
+              <li><span class="resource__icon resource__icon--book">书</span><div class="resource__content"><div class="resource__name"><a href="https://huggingface.co/learn" target="_blank" rel="noopener">HuggingFace NLP Course</a></div><div class="resource__type">免费在线 · Transformer 实战</div></div></li>
+              <li><span class="resource__icon resource__icon--course">课</span><div class="resource__content"><div class="resource__name"><a href="https://spinningup.openai.com/" target="_blank" rel="noopener">Spinning Up in Deep RL (OpenAI)</a></div><div class="resource__type">强化学习入门 · 免费</div></div></li>
+              <li><span class="resource__icon resource__icon--course">课</span><div class="resource__content"><div class="resource__name"><a href="https://fullstackdeeplearning.com/llm-bootcamp/" target="_blank" rel="noopener">Full Stack LLM Bootcamp</a></div><div class="resource__type">LLM 应用开发实战</div></div></li>
+            </ul>
+          </div>
+          <div class="details-section">
+            <div class="details-section__title">实战项目</div>
+            <ul class="projects">
+              <li><strong>RAG 知识库：</strong>用 LangChain + 向量数据库构建文档问答系统</li>
+              <li><strong>LLM 微调：</strong>用 LoRA 在开源模型上微调特定领域任务</li>
+              <li><strong>目标检测系统：</strong>用 YOLOv8 训练自定义数据集的物体检测模型</li>
+              <li><strong>ML Pipeline：</strong>用 MLflow + Docker 搭建端到端模型训练/部署流水线</li>
+              <li><strong>AI Agent：</strong>构建能调用工具（搜索、API、文件读写）的自主 Agent</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p class="footer__note">
+      时间预估基于每天 2 — 3 小时的学习节奏。实际进度因人而异，建议以掌握核心概念而非完成时长为目标。
+    </p>
+    <p class="footer__meta">Generated by Open Design + Hermes Agent · 2026</p>
+  </footer>
+
+</div>
+
+<script>
+  /* ── Theme Toggle ──────────────────────────────────────────── */
+  function toggleTheme() {
+    const html = document.documentElement;
+    const current = html.getAttribute('data-theme');
+    const label = document.getElementById('theme-label');
+    if (current === 'dark') {
+      html.removeAttribute('data-theme');
+      label.textContent = '暗色模式';
+      localStorage.setItem('theme', 'light');
+    } else {
+      html.setAttribute('data-theme', 'dark');
+      label.textContent = '浅色模式';
+      localStorage.setItem('theme', 'dark');
+    }
+  }
+  (function() {
+    const saved = localStorage.getItem('theme');
+    if (saved === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      document.getElementById('theme-label').textContent = '浅色模式';
+    }
+  })();
+
+  /* ── Expandable Details ───────────────────────────────────── */
+  function toggleDetails(btn) {
+    const expanded = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!expanded));
+    const detailsId = btn.getAttribute('aria-controls');
+    const details = document.getElementById(detailsId);
+    details.setAttribute('aria-hidden', String(expanded));
+  }
+
+  /* ── Progress Tracking ────────────────────────────────────── */
+  (function() {
+    const STORAGE_KEY = 'ai-learning-progress';
+    const stages = document.querySelectorAll('.stage');
+    const fill = document.getElementById('progress-fill');
+    const text = document.getElementById('progress-text');
+    const pct = document.getElementById('progress-pct');
+    const stageEls = document.querySelectorAll('#progress-stages .progress-stage');
+
+    function loadProgress() {
+      try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [false,false,false,false]; } catch { return [false,false,false,false]; }
+    }
+
+    function saveProgress(p) { localStorage.setItem(STORAGE_KEY, JSON.stringify(p)); }
+
+    function render(p) {
+      const done = p.filter(Boolean).length;
+      const percentage = Math.round((done / p.length) * 100);
+      fill.style.width = percentage + '%';
+      text.textContent = done + ' / ' + p.length + ' 阶段';
+      pct.textContent = percentage + '%';
+      stageEls.forEach(function(el, i) {
+        el.className = 'progress-stage';
+        if (p[i]) el.classList.add('progress-stage--done');
+        else if (i === done) el.classList.add('progress-stage--active');
+        else el.classList.add('progress-stage--locked');
+      });
+    }
+
+    // Click a stage dot to toggle
+    stages.forEach(function(stage, i) {
+      var dot = stage.querySelector('.stage__dot');
+      dot.style.cursor = 'pointer';
+      dot.title = '点击标记此阶段为' + (loadProgress()[i] ? '未完成' : '已完成');
+      dot.addEventListener('click', function() {
+        var p = loadProgress();
+        p[i] = !p[i];
+        saveProgress(p);
+        render(p);
+        // Update dot title
+        dot.title = '点击标记此阶段为' + (p[i] ? '未完成' : '已完成');
+      });
+    });
+
+    render(loadProgress());
+  })();
+</script>
+
+</body>
+</html>
