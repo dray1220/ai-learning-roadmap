@@ -14,316 +14,754 @@
 <meta name="twitter:title" content="AI 学习路线图 2026">
 <meta name="twitter:description" content="从零基础到专业方向的系统化学习路径">
 <link rel="canonical" href="https://dray1220.github.io/ai-learning-roadmap/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  /* ── Design Tokens (inherited from v1) ────────────────────── */
-  :root {
-    /* Neutrals */
-    --color-bg:       #fafafa;
-    --color-surface:  #ffffff;
-    --color-surface-alt:#f5f5f5;
-    --color-border:   #e5e5e5;
-    --color-border-hi:#d4d4d4;
-    --color-muted:    #737373;
-    --color-text:     #171717;
-    --color-text-sec: #525252;
+/* ============================================================
+   Design Tokens — DESIGN.md: AI Learning Roadmap
+   Monochrome-first editorial layout
+   ============================================================ */
+:root {
+  /* Neutrals */
+  --bg:          #fafafa;
+  --surface:     #ffffff;
+  --surface-alt: #f5f5f5;
+  --hover:       #f0f0f0;
+  --border:      #e5e5e5;
+  --border-hi:   #d4d4d4;
+  --ink:         #0a0a0a;
+  --ink-sec:     #525252;
+  --ink-muted:   #737373;
 
-    /* Accent */
-    --color-accent:   #2563eb;
-    --color-accent-s: #1d4ed8;
-    --color-accent-bg:#eff6ff;
-    --color-accent-br:#bfdbfe;
-    --color-accent-soft:rgba(37,99,235,0.08);
+  /* Accent — 单色黑，无蓝色 */
+  --accent:      #111111;
+  --accent-hover:#333333;
+  --accent-sub:  rgba(17,17,17,0.06);
+  --accent-brd:  rgba(17,17,17,0.12);
 
-    /* Stage colors */
-    --color-stage-1:  #16a34a;  --color-stage-1-bg:#f0fdf4;  --color-stage-1-br:#bbf7d0;  --color-stage-1-soft:rgba(22,163,74,0.08);
-    --color-stage-2:  #ca8a04;  --color-stage-2-bg:#fefce8;  --color-stage-2-br:#fef08a;  --color-stage-2-soft:rgba(202,138,4,0.08);
-    --color-stage-3:  #9333ea;  --color-stage-3-bg:#faf5ff;  --color-stage-3-br:#e9d5ff;  --color-stage-3-soft:rgba(147,51,234,0.08);
-    --color-stage-4:  #dc2626;  --color-stage-4-bg:#fef2f2;  --color-stage-4-br:#fecaca;  --color-stage-4-soft:rgba(220,38,38,0.08);
+  /* Stage colors — 仅 badge/dot/chip */
+  --s1: #15803d;  --s1-bg: #f0fdf4;  --s1-br: #bbf7d0;  --s1-sub: rgba(22,163,74,0.08);
+  --s2: #a16207;  --s2-bg: #fefce8;  --s2-br: #fef08a;  --s2-sub: rgba(202,138,4,0.08);
+  --s3: #7e22ce;  --s3-bg: #faf5ff;  --s3-br: #e9d5ff;  --s3-sub: rgba(147,51,234,0.08);
+  --s4: #b91c1c;  --s4-bg: #fef2f2;  --s4-br: #fecaca;  --s4-sub: rgba(220,38,38,0.08);
 
-    /* Typography */
-    --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    --font-mono: "JetBrains Mono", "SF Mono", "Fira Code", monospace;
-    --text-xs:   0.75rem;
-    --text-sm:   0.8125rem;
-    --text-base: 0.9375rem;
-    --text-lg:   1.125rem;
-    --text-xl:   1.375rem;
-    --text-2xl:  1.75rem;
-    --text-3xl:  2.25rem;
+  /* Typography */
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", "SF Mono", "Fira Code", monospace;
 
-    /* Spacing */
-    --space-1: 0.25rem;  --space-2: 0.5rem;  --space-3: 0.75rem;
-    --space-4: 1rem;     --space-5: 1.25rem; --space-6: 1.5rem;
-    --space-8: 2rem;     --space-10:2.5rem;  --space-12:3rem;
-    --space-16:4rem;     --space-20:5rem;    --space-24:6rem;
+  /* Spacing — 4px 基准 */
+  --sp-1: 0.25rem;  --sp-2: 0.5rem;   --sp-3: 0.75rem;
+  --sp-4: 1rem;     --sp-5: 1.25rem;  --sp-6: 1.5rem;
+  --sp-8: 2rem;     --sp-10: 2.5rem;  --sp-12: 3rem;
+  --sp-16: 4rem;    --sp-20: 5rem;
 
-    /* Radii */
-    --radius-sm: 0.375rem;  --radius-md: 0.5rem;  --radius-lg: 0.75rem;  --radius-xl: 1rem;
+  /* Radii */
+  --r-sm: 6px;  --r-md: 8px;  --r-lg: 12px;  --r-full: 9999px;
 
-    /* Shadows */
-    --shadow-sm: 0 1px 2px rgba(0,0,0,0.04), 0 1px 3px rgba(0,0,0,0.06);
-    --shadow-md: 0 2px 6px rgba(0,0,0,0.05), 0 4px 12px rgba(0,0,0,0.06);
-    --shadow-lg: 0 4px 16px rgba(0,0,0,0.06), 0 8px 24px rgba(0,0,0,0.08);
+  /* Shadows */
+  --sh-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  --sh-md: 0 4px 6px rgba(0,0,0,0.04), 0 2px 4px rgba(0,0,0,0.04);
 
-    /* Transitions */
-    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-    --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
-    --duration-fast: 150ms;
-    --duration-base: 250ms;
-    --duration-slow: 400ms;
+  /* Motion */
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --fast: 150ms;  --base: 250ms;  --slow: 350ms;
 
-    /* Layout */
-    --max-w: 72rem;
-    --timeline-w: 2px;
-    --sidebar-w: 240px;
-  }
+  /* Layout */
+  --max-w: 72rem;
+}
 
-  /* ── Dark Mode ─────────────────────────────────────────────── */
-  [data-theme="dark"] {
-    --color-bg:       #0a0a0a;  --color-surface:  #171717;  --color-surface-alt:#1c1c1c;
-    --color-border:   #262626;  --color-border-hi:#404040;  --color-muted: #737373;
-    --color-text:     #fafafa;  --color-text-sec: #a3a3a3;
-    --color-accent:   #3b82f6;  --color-accent-s: #60a5fa;  --color-accent-bg:#172554;
-    --color-accent-br:#1e3a5f;  --color-accent-soft:rgba(59,130,246,0.12);
-    --color-stage-1:#22c55e; --color-stage-1-bg:#052e16; --color-stage-1-br:#14532d; --color-stage-1-soft:rgba(34,197,94,0.12);
-    --color-stage-2:#eab308; --color-stage-2-bg:#422006; --color-stage-2-br:#713f12; --color-stage-2-soft:rgba(234,179,8,0.12);
-    --color-stage-3:#a855f7; --color-stage-3-bg:#3b0764; --color-stage-3-br:#581c87; --color-stage-3-soft:rgba(168,85,247,0.12);
-    --color-stage-4:#ef4444; --color-stage-4-bg:#450a0a; --color-stage-4-br:#7f1d1d; --color-stage-4-soft:rgba(239,68,68,0.12);
-    --shadow-sm: 0 1px 2px rgba(0,0,0,0.2), 0 1px 3px rgba(0,0,0,0.3);
-    --shadow-md: 0 2px 6px rgba(0,0,0,0.2), 0 4px 12px rgba(0,0,0,0.3);
-    --shadow-lg: 0 4px 16px rgba(0,0,0,0.3), 0 8px 24px rgba(0,0,0,0.4);
-  }
+/* Dark mode */
+[data-theme="dark"] {
+  --bg:          #0a0a0a;
+  --surface:     #141414;
+  --surface-alt: #1c1c1c;
+  --hover:       #262626;
+  --border:      #262626;
+  --border-hi:   #404040;
+  --ink:         #fafafa;
+  --ink-sec:     #a3a3a3;
+  --ink-muted:   #737373;
 
-  /* ── Reset & Base ──────────────────────────────────────────── */
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-  body {
-    font-family: var(--font-sans); font-size: var(--text-base); line-height: 1.6;
-    color: var(--color-text); background: var(--color-bg);
-    transition: background var(--duration-base) var(--ease-out), color var(--duration-base) var(--ease-out);
-  }
-  a { color: var(--color-accent); text-decoration: none; transition: color var(--duration-fast) var(--ease-out); }
-  a:hover { color: var(--color-accent-s); text-decoration: underline; }
+  --accent:      #fafafa;
+  --accent-hover:#e5e5e5;
+  --accent-sub:  rgba(250,250,250,0.06);
+  --accent-brd:  rgba(250,250,250,0.12);
 
-  /* ── Layout ────────────────────────────────────────────────── */
-  .page { max-width: var(--max-w); margin: 0 auto; padding: var(--space-16) var(--space-6); }
-  @media (max-width: 640px) { .page { padding: var(--space-10) var(--space-4); } }
+  --s1: #22c55e;  --s1-bg: #052e16;  --s1-br: #14532d;  --s1-sub: rgba(34,197,94,0.12);
+  --s2: #eab308;  --s2-bg: #422006;  --s2-br: #713f12;  --s2-sub: rgba(234,179,8,0.12);
+  --s3: #a855f7;  --s3-bg: #3b0764;  --s3-br: #581c87;  --s3-sub: rgba(168,85,247,0.12);
+  --s4: #ef4444;  --s4-bg: #450a0a;  --s4-br: #7f1d1d;  --s4-sub: rgba(239,68,68,0.12);
 
-  /* ── Header ────────────────────────────────────────────────── */
-  .header { margin-bottom: var(--space-12); padding-bottom: var(--space-8); border-bottom: 1px solid var(--color-border); }
-  .header__overline {
-    font-size: var(--text-xs); font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em;
-    color: var(--color-accent); margin-bottom: var(--space-4);
-  }
-  .header__title { font-size: var(--text-3xl); font-weight: 700; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: var(--space-4); }
-  .header__desc { font-size: var(--text-lg); color: var(--color-text-sec); max-width: 42rem; line-height: 1.65; }
+  --sh-sm: 0 1px 3px rgba(0,0,0,0.3);
+  --sh-md: 0 4px 6px rgba(0,0,0,0.3);
+}
 
-  /* ── Controls Bar ──────────────────────────────────────────── */
-  .controls { display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-10); gap: var(--space-4); flex-wrap: wrap; }
-  .controls__legend { display: flex; gap: var(--space-6); flex-wrap: wrap; }
-  .legend-item { display: flex; align-items: center; gap: var(--space-2); font-size: var(--text-sm); color: var(--color-text-sec); }
-  .legend-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
-  .theme-toggle {
-    display: flex; align-items: center; gap: var(--space-2); background: none;
-    border: 1px solid var(--color-border); border-radius: var(--radius-md);
-    padding: var(--space-2) var(--space-3); color: var(--color-text-sec); font-size: var(--text-sm);
-    cursor: pointer; font-family: var(--font-sans); transition: border-color var(--duration-fast) var(--ease-out), color var(--duration-fast) var(--ease-out);
-  }
-  .theme-toggle:hover { border-color: var(--color-border-hi); color: var(--color-text); }
-  .theme-toggle__icon { width: 16px; height: 16px; display: block; }
+/* ============================================================
+   Reset & Base
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+body {
+  font-family: var(--font-sans);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--bg);
+  transition: background var(--base) var(--ease), color var(--base) var(--ease);
+}
+a { color: inherit; text-decoration: none; }
+a:hover { text-decoration: underline; }
+button { font-family: inherit; cursor: pointer; }
+ul { list-style: none; }
 
-  /* ── Share Buttons ─────────────────────────────────────────── */
-  .share-group { display: flex; align-items: center; gap: var(--space-2); }
-  .share-btn {
-    display: flex; align-items: center; justify-content: center; background: none;
-    border: 1px solid var(--color-border); border-radius: var(--radius-md);
-    width: 32px; height: 32px; color: var(--color-text-sec); font-size: var(--text-sm);
-    cursor: pointer; font-family: var(--font-sans); transition: border-color var(--duration-fast) var(--ease-out), color var(--duration-fast) var(--ease-out), background var(--duration-fast) var(--ease-out);
-    text-decoration: none;
-  }
-  .share-btn:hover { border-color: var(--color-border-hi); color: var(--color-text); background: var(--color-bg); text-decoration: none; }
-  .share-btn svg { width: 16px; height: 16px; display: block; }
+/* ============================================================
+   Layout
+   ============================================================ */
+.page {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: var(--sp-20) var(--sp-6) var(--sp-16);
+}
+@media (max-width: 640px) {
+  .page { padding: var(--sp-12) var(--sp-4) var(--sp-10); }
+}
 
-  /* ── Footer CTA ────────────────────────────────────────────── */
-  .footer__cta { display: flex; align-items: center; justify-content: center; gap: var(--space-4); margin-bottom: var(--space-6); flex-wrap: wrap; }
-  .footer__cta-text { font-size: var(--text-sm); color: var(--color-text-sec); font-weight: 500; }
-  .star-btn {
-    display: inline-flex; align-items: center; gap: var(--space-2); background: var(--color-accent);
-    color: #fff; border: none; border-radius: var(--radius-md); padding: var(--space-2) var(--space-4);
-    font-size: var(--text-sm); font-weight: 600; cursor: pointer; font-family: var(--font-sans);
-    text-decoration: none; transition: background var(--duration-fast) var(--ease-out);
-  }
-  .star-btn:hover { background: var(--color-accent-s); text-decoration: none; }
-  .star-btn svg { width: 16px; height: 16px; }
+/* ============================================================
+   Header
+   ============================================================ */
+.header {
+  margin-bottom: var(--sp-10);
+  padding-bottom: var(--sp-8);
+  border-bottom: 1px solid var(--border);
+}
+.header__overline {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-muted);
+  margin-bottom: var(--sp-2);
+}
+.header__title {
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.15;
+  margin-bottom: var(--sp-2);
+}
+.header__desc {
+  font-size: 1.125rem;
+  color: var(--ink-sec);
+  max-width: 44rem;
+  line-height: 1.65;
+}
 
-  /* ── Progress Overview ─────────────────────────────────────── */
-  .progress-overview {
-    background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg);
-    padding: var(--space-8); margin-bottom: var(--space-12);
-  }
-  .progress-overview__title { font-size: var(--text-sm); font-weight: 600; margin-bottom: var(--space-6); color: var(--color-text-sec); text-transform: uppercase; letter-spacing: 0.06em; }
-  .progress-bar-track {
-    height: 8px; background: var(--color-bg); border-radius: 4px; overflow: hidden; margin-bottom: var(--space-4);
-  }
-  .progress-bar-fill {
-    height: 100%; border-radius: 4px; background: var(--color-accent);
-    transition: width var(--duration-slow) var(--ease-out); width: 0%;
-  }
-  .progress-stats { display: flex; justify-content: space-between; font-size: var(--text-xs); color: var(--color-muted); }
-  .progress-stages { display: flex; gap: var(--space-4); margin-top: var(--space-6); flex-wrap: wrap; }
-  .progress-stage {
-    display: flex; align-items: center; gap: var(--space-2); font-size: var(--text-xs); color: var(--color-text-sec);
-    padding: var(--space-2) var(--space-3); border-radius: var(--radius-sm);
-    background: var(--color-bg); border: 1px solid var(--color-border);
-  }
-  .progress-stage__dot { width: 6px; height: 6px; border-radius: 50%; }
-  .progress-stage--done .progress-stage__dot { background: var(--color-stage-1); }
-  .progress-stage--active .progress-stage__dot { background: var(--color-accent); animation: pulse 2s infinite; }
-  .progress-stage--locked .progress-stage__dot { background: var(--color-muted); opacity: 0.4; }
-  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
-  @media (prefers-reduced-motion: reduce) { .progress-stage--active .progress-stage__dot { animation: none; } }
+/* ============================================================
+   Controls Bar — 修复：legend 左，buttons 右，lang 不在 share-group 内
+   ============================================================ */
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-4);
+  margin-bottom: var(--sp-8);
+  flex-wrap: wrap;
+}
+.controls__left {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-4);
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+}
+.controls__right {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  flex-shrink: 0;
+}
 
-  /* ── Timeline ──────────────────────────────────────────────── */
-  .timeline { position: relative; padding-left: var(--space-10); }
-  .timeline::before { content: ''; position: absolute; left: 7px; top: 0; bottom: 0; width: var(--timeline-w); background: var(--color-border); border-radius: 1px; }
-  @media (max-width: 640px) { .timeline { padding-left: var(--space-8); } .timeline::before { left: 5px; } }
+/* Legend */
+.legend {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-4);
+  overflow-x: auto;
+  scrollbar-width: none;
+  flex-wrap: nowrap;
+}
+.legend::-webkit-scrollbar { display: none; }
+.legend__item {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--ink-sec);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.legend__dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
 
-  /* ── Stage Node ────────────────────────────────────────────── */
-  .stage { position: relative; margin-bottom: var(--space-12); }
-  .stage:last-child { margin-bottom: 0; }
-  .stage { opacity: 0; transform: translateY(12px); animation: fadeUp 0.5s var(--ease-out) forwards; }
-  .stage:nth-child(1) { animation-delay: 0.1s; } .stage:nth-child(2) { animation-delay: 0.2s; }
-  .stage:nth-child(3) { animation-delay: 0.3s; } .stage:nth-child(4) { animation-delay: 0.4s; }
-  @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
-  @media (prefers-reduced-motion: reduce) { .stage { opacity: 1; transform: none; animation: none; } }
+/* Divider */
+.sep {
+  width: 1px;
+  height: 20px;
+  background: var(--border);
+  flex-shrink: 0;
+}
 
-  /* Node dot */
-  .stage__dot {
-    position: absolute; left: calc(-1 * var(--space-10) + 1px); top: var(--space-6);
-    width: 14px; height: 14px; border-radius: 50%; border: 2px solid var(--color-border);
-    background: var(--color-bg); transition: border-color var(--duration-fast) var(--ease-out), background var(--duration-fast) var(--ease-out), transform var(--duration-fast) var(--ease-out);
-  }
-  .stage:hover .stage__dot { transform: scale(1.2); }
-  .stage--1 .stage__dot { border-color: var(--color-stage-1); background: var(--color-stage-1); }
-  .stage--2 .stage__dot { border-color: var(--color-stage-2); background: var(--color-stage-2); }
-  .stage--3 .stage__dot { border-color: var(--color-stage-3); background: var(--color-stage-3); }
-  .stage--4 .stage__dot { border-color: var(--color-stage-4); background: var(--color-stage-4); }
-  @media (max-width: 640px) { .stage__dot { left: calc(-1 * var(--space-8) + 1px); width: 12px; height: 12px; } }
+/* Icon buttons — 统一 34x34 */
+.btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px; height: 34px;
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  color: var(--ink-sec);
+  transition: border-color var(--fast) var(--ease),
+              color var(--fast) var(--ease),
+              background var(--fast) var(--ease);
+  padding: 0;
+  position: relative;
+}
+.btn-icon:hover {
+  border-color: var(--border-hi);
+  color: var(--ink);
+  background: var(--surface-alt);
+}
+.btn-icon:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.btn-icon svg { width: 16px; height: 16px; display: block; }
 
-  /* ── Stage Card ────────────────────────────────────────────── */
-  .stage__card {
-    background: var(--color-surface); border: 1px solid var(--color-border); border-radius: var(--radius-lg);
-    padding: var(--space-8); transition: border-color var(--duration-fast) var(--ease-out), box-shadow var(--duration-fast) var(--ease-out);
-  }
-  .stage__card:hover { border-color: var(--color-border-hi); box-shadow: var(--shadow-sm); }
+/* Lang button */
+.btn-icon--lang .btn-icon__label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1;
+}
 
-  /* Stage header */
-  .stage__header { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--space-4); margin-bottom: var(--space-6); flex-wrap: wrap; }
-  .stage__badge {
-    display: inline-flex; align-items: center; gap: var(--space-2); font-size: var(--text-xs); font-weight: 600;
-    text-transform: uppercase; letter-spacing: 0.06em; padding: var(--space-1) var(--space-3);
-    border-radius: 100px; border: 1px solid;
-  }
-  .stage--1 .stage__badge { color: var(--color-stage-1); border-color: var(--color-stage-1-br); background: var(--color-stage-1-bg); }
-  .stage--2 .stage__badge { color: var(--color-stage-2); border-color: var(--color-stage-2-br); background: var(--color-stage-2-bg); }
-  .stage--3 .stage__badge { color: var(--color-stage-3); border-color: var(--color-stage-3-br); background: var(--color-stage-3-bg); }
-  .stage--4 .stage__badge { color: var(--color-stage-4); border-color: var(--color-stage-4-br); background: var(--color-stage-4-bg); }
+/* Copy tooltip */
+.btn-icon .tip {
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%) scale(0.95);
+  background: var(--ink);
+  color: var(--bg);
+  font-size: 11px;
+  font-weight: 500;
+  padding: 3px 8px;
+  border-radius: var(--r-sm);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--fast) var(--ease), transform var(--fast) var(--ease);
+}
+.btn-icon .tip.show {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
 
-  .stage__title { font-size: var(--text-xl); font-weight: 600; letter-spacing: -0.02em; margin-bottom: var(--space-1); }
-  .stage__subtitle { font-size: var(--text-sm); color: var(--color-muted); }
-  .stage__time { display: flex; align-items: center; gap: var(--space-2); font-size: var(--text-sm); color: var(--color-muted); white-space: nowrap; padding-top: var(--space-1); }
-  .stage__time svg { width: 14px; height: 14px; flex-shrink: 0; opacity: 0.6; }
+@media (max-width: 640px) {
+  .controls { flex-direction: column; align-items: stretch; }
+  .controls__left { justify-content: flex-start; }
+  .controls__right { justify-content: flex-end; }
+  .sep { display: none; }
+  .legend { gap: var(--sp-3); }
+}
 
-  /* ── Skills Grid ───────────────────────────────────────────── */
-  .skills { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: var(--space-4); }
-  @media (max-width: 480px) { .skills { grid-template-columns: 1fr; } }
+/* ============================================================
+   Progress Panel
+   ============================================================ */
+.progress-panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: var(--sp-5) var(--sp-6);
+  margin-bottom: var(--sp-10);
+}
+.progress-panel__label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-muted);
+  margin-bottom: var(--sp-3);
+}
+.progress-bar {
+  height: 5px;
+  background: var(--surface-alt);
+  border-radius: var(--r-full);
+  overflow: hidden;
+  margin-bottom: var(--sp-2);
+}
+.progress-bar__fill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: var(--r-full);
+  transition: width var(--slow) var(--ease);
+  width: 0%;
+}
+.progress-stats {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: var(--ink-muted);
+}
+.progress-chips {
+  display: flex;
+  gap: var(--sp-2);
+  margin-top: var(--sp-4);
+  flex-wrap: wrap;
+}
+.progress-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--ink-sec);
+  padding: var(--sp-1) var(--sp-3);
+  border-radius: var(--r-full);
+  border: 1px solid var(--border);
+  background: var(--surface-alt);
+  cursor: pointer;
+  user-select: none;
+  transition: border-color var(--fast) var(--ease),
+              background var(--fast) var(--ease);
+}
+.progress-chip:hover {
+  border-color: var(--border-hi);
+  background: var(--hover);
+}
+.progress-chip__dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--border);
+  transition: background var(--fast) var(--ease);
+}
+.progress-chip--done .progress-chip__dot { background: var(--s1); }
+.progress-chip--done {
+  border-color: var(--s1-br);
+  color: var(--s1);
+}
+.progress-chip--active .progress-chip__dot {
+  background: var(--accent);
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
+@media (prefers-reduced-motion: reduce) {
+  .progress-chip--active .progress-chip__dot { animation: none; }
+}
 
-  .skill {
-    padding: var(--space-4); border: 1px solid var(--color-border); border-radius: var(--radius-md);
-    transition: border-color var(--duration-fast) var(--ease-out), background var(--duration-fast) var(--ease-out);
-    cursor: default;
-  }
-  .skill:hover { border-color: var(--color-border-hi); background: var(--color-bg); }
-  .skill__name { font-size: var(--text-sm); font-weight: 600; margin-bottom: var(--space-1); color: var(--color-text); }
-  .skill__desc { font-size: var(--text-xs); color: var(--color-muted); line-height: 1.55; }
-  .skill__tags { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-3); }
-  .tag {
-    font-size: 0.6875rem; font-family: var(--font-mono); padding: 1px var(--space-2);
-    border-radius: var(--radius-sm); background: var(--color-bg); color: var(--color-text-sec);
-    border: 1px solid var(--color-border); letter-spacing: 0.01em;
-  }
+/* ============================================================
+   Timeline
+   ============================================================ */
+.timeline {
+  position: relative;
+  padding-left: 2.75rem;
+}
+.timeline__line {
+  position: absolute;
+  left: 7px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--border);
+  border-radius: 1px;
+}
+@media (max-width: 640px) {
+  .timeline { padding-left: 2rem; }
+  .timeline__line { left: 5px; }
+}
 
-  /* ── Expandable Details ────────────────────────────────────── */
-  .stage__details-toggle {
-    display: flex; align-items: center; gap: var(--space-2); margin-top: var(--space-6);
-    padding: var(--space-3) var(--space-4); border: 1px solid var(--color-border); border-radius: var(--radius-md);
-    background: none; color: var(--color-text-sec); font-size: var(--text-sm); cursor: pointer;
-    font-family: var(--font-sans); width: 100%; text-align: left;
-    transition: border-color var(--duration-fast) var(--ease-out), background var(--duration-fast) var(--ease-out), color var(--duration-fast) var(--ease-out);
-  }
-  .stage__details-toggle:hover { border-color: var(--color-border-hi); background: var(--color-bg); color: var(--color-text); }
-  .stage__details-toggle__icon { width: 16px; height: 16px; transition: transform var(--duration-base) var(--ease-out); flex-shrink: 0; }
-  .stage__details-toggle[aria-expanded="true"] .stage__details-toggle__icon { transform: rotate(180deg); }
-  .stage__details {
-    max-height: 0; overflow: hidden; transition: max-height var(--duration-slow) var(--ease-out), opacity var(--duration-base) var(--ease-out);
-    opacity: 0;
-  }
-  .stage__details[aria-hidden="false"] { max-height: 2000px; opacity: 1; margin-top: var(--space-6); }
+/* ============================================================
+   Stage
+   ============================================================ */
+.stage {
+  position: relative;
+  margin-bottom: var(--sp-8);
+  opacity: 0;
+  transform: translateY(16px);
+  animation: fade-up 0.5s var(--ease) forwards;
+}
+.stage:nth-child(2) { animation-delay: 80ms; }
+.stage:nth-child(3) { animation-delay: 160ms; }
+.stage:nth-child(4) { animation-delay: 240ms; }
+.stage:nth-child(5) { animation-delay: 320ms; }
 
-  .details-section { margin-bottom: var(--space-6); }
-  .details-section:last-child { margin-bottom: 0; }
-  .details-section__title {
-    font-size: var(--text-sm); font-weight: 600; margin-bottom: var(--space-3);
-    padding-bottom: var(--space-2); border-bottom: 1px solid var(--color-border);
-  }
+@keyframes fade-up {
+  to { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .stage { opacity: 1; transform: none; animation: none; }
+}
 
-  /* Resources list */
-  .resources { list-style: none; }
-  .resources li {
-    padding: var(--space-3) var(--space-4); border: 1px solid var(--color-border); border-radius: var(--radius-md);
-    margin-bottom: var(--space-2); display: flex; align-items: flex-start; gap: var(--space-3);
-    transition: border-color var(--duration-fast) var(--ease-out), background var(--duration-fast) var(--ease-out);
-  }
-  .resources li:hover { border-color: var(--color-border-hi); background: var(--color-bg); }
-  .resources li:last-child { margin-bottom: 0; }
-  .resource__icon {
-    width: 28px; height: 28px; border-radius: var(--radius-sm); display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0; font-size: var(--text-xs); font-weight: 700;
-  }
-  .resource__icon--course { background: var(--color-accent-soft); color: var(--color-accent); }
-  .resource__icon--book { background: var(--color-stage-3-soft); color: var(--color-stage-3); }
-  .resource__icon--project { background: var(--color-stage-1-soft); color: var(--color-stage-1); }
-  .resource__content { flex: 1; }
-  .resource__name { font-size: var(--text-sm); font-weight: 600; margin-bottom: 2px; }
-  .resource__name a { color: inherit; }
-  .resource__name a:hover { color: var(--color-accent); text-decoration: underline; }
-  .resource__type { font-size: var(--text-xs); color: var(--color-muted); }
+/* Dot */
+.stage__dot {
+  position: absolute;
+  left: calc(-2.75rem + 8px);
+  top: var(--sp-6);
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  background: var(--bg);
+  cursor: pointer;
+  transition: transform var(--fast) var(--ease),
+              box-shadow var(--fast) var(--ease);
+}
+.stage__dot:hover { transform: scale(1.3); }
+.stage__dot:active { transform: scale(0.9); }
+.stage--1 .stage__dot { border-color: var(--s1); background: var(--s1); }
+.stage--1 .stage__dot:hover { box-shadow: 0 0 0 4px var(--s1-bg); }
+.stage--2 .stage__dot { border-color: var(--s2); background: var(--s2); }
+.stage--2 .stage__dot:hover { box-shadow: 0 0 0 4px var(--s2-bg); }
+.stage--3 .stage__dot { border-color: var(--s3); background: var(--s3); }
+.stage--3 .stage__dot:hover { box-shadow: 0 0 0 4px var(--s3-bg); }
+.stage--4 .stage__dot { border-color: var(--s4); background: var(--s4); }
+.stage--4 .stage__dot:hover { box-shadow: 0 0 0 4px var(--s4-bg); }
 
-  /* Prerequisites */
-  .prerequisites { display: flex; flex-wrap: wrap; gap: var(--space-2); }
-  .prereq {
-    display: inline-flex; align-items: center; gap: var(--space-1); font-size: var(--text-xs);
-    padding: var(--space-1) var(--space-3); border-radius: 100px;
-    background: var(--color-bg); border: 1px solid var(--color-border); color: var(--color-text-sec);
-  }
+@media (max-width: 640px) {
+  .stage__dot { left: calc(-2rem + 6px); width: 12px; height: 12px; }
+}
 
-  /* Projects list */
-  .projects { list-style: none; }
-  .projects li {
-    padding: var(--space-3) var(--space-4); margin-bottom: var(--space-2);
-    border-left: 3px solid var(--color-accent-br); background: var(--color-accent-soft);
-    border-radius: 0 var(--radius-sm) var(--radius-sm) 0; font-size: var(--text-sm);
-  }
-  .projects li:last-child { margin-bottom: 0; }
-  .projects li strong { font-weight: 600; color: var(--color-text); }
+/* ============================================================
+   Stage Card
+   ============================================================ */
+.stage__card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: var(--sp-6);
+  transition: border-color var(--fast) var(--ease),
+              box-shadow var(--fast) var(--ease);
+}
+.stage__card:hover {
+  border-color: var(--border-hi);
+  box-shadow: var(--sh-sm);
+}
 
-  /* ── Footer ────────────────────────────────────────────────── */
-  .footer { margin-top: var(--space-16); padding-top: var(--space-8); border-top: 1px solid var(--color-border); text-align: center; color: var(--color-muted); font-size: var(--text-sm); }
-  .footer__note { max-width: 32rem; margin: 0 auto var(--space-4); line-height: 1.6; }
-  .footer__meta { font-size: var(--text-xs); opacity: 0.7; }
+/* Card header */
+.stage__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--sp-4);
+  margin-bottom: var(--sp-5);
+  flex-wrap: wrap;
+}
+.stage__meta { flex: 1; min-width: 0; }
 
-  /* ── Utility ───────────────────────────────────────────────── */
-  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+/* Badge */
+.stage__badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 2px 10px;
+  border-radius: var(--r-full);
+  border: 1px solid;
+  margin-bottom: var(--sp-2);
+}
+.stage--1 .stage__badge { color: var(--s1); border-color: var(--s1-br); background: var(--s1-bg); }
+.stage--2 .stage__badge { color: var(--s2); border-color: var(--s2-br); background: var(--s2-bg); }
+.stage--3 .stage__badge { color: var(--s3); border-color: var(--s3-br); background: var(--s3-bg); }
+.stage--4 .stage__badge { color: var(--s4); border-color: var(--s4-br); background: var(--s4-bg); }
+
+.stage__title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+  margin-bottom: var(--sp-1);
+}
+.stage__subtitle {
+  font-size: 0.875rem;
+  color: var(--ink-muted);
+  line-height: 1.5;
+}
+.stage__time {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-size: 0.875rem;
+  color: var(--ink-muted);
+  white-space: nowrap;
+  padding-top: 2px;
+  flex-shrink: 0;
+}
+.stage__time svg { width: 15px; height: 15px; opacity: 0.5; flex-shrink: 0; }
+
+@media (max-width: 540px) {
+  .stage__header { flex-direction: column; }
+  .stage__card { padding: var(--sp-4); }
+}
+
+/* ============================================================
+   Skills Grid — minmax(230px) 兼容英文长文本
+   ============================================================ */
+.skills {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: var(--sp-3);
+}
+@media (max-width: 540px) { .skills { grid-template-columns: 1fr; } }
+
+.skill {
+  padding: var(--sp-4);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  transition: border-color var(--fast) var(--ease),
+              background var(--fast) var(--ease);
+}
+.skill:hover {
+  border-color: var(--border-hi);
+  background: var(--surface-alt);
+}
+.skill__name {
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin-bottom: 2px;
+  line-height: 1.35;
+}
+.skill__desc {
+  font-size: 0.75rem;
+  color: var(--ink-muted);
+  line-height: 1.55;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+.skill__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-1);
+  margin-top: var(--sp-3);
+}
+.tag {
+  font-size: 0.6875rem;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  padding: 1px 7px;
+  border-radius: var(--r-sm);
+  background: var(--surface-alt);
+  color: var(--ink-sec);
+  border: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+/* ============================================================
+   Expandable Details
+   ============================================================ */
+.details-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: var(--sp-5);
+  padding: var(--sp-3) var(--sp-4);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: none;
+  color: var(--ink-sec);
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: border-color var(--fast) var(--ease),
+              background var(--fast) var(--ease),
+              color var(--fast) var(--ease);
+}
+.details-toggle:hover {
+  border-color: var(--border-hi);
+  background: var(--surface-alt);
+  color: var(--ink);
+}
+.details-toggle:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.details-toggle__chevron {
+  width: 16px; height: 16px;
+  flex-shrink: 0;
+  transition: transform var(--base) var(--ease);
+}
+.details-toggle[aria-expanded="true"] .details-toggle__chevron {
+  transform: rotate(180deg);
+}
+
+.details-panel {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height var(--slow) var(--ease),
+              opacity var(--base) var(--ease);
+}
+.details-panel[aria-hidden="false"] {
+  max-height: 3000px;
+  opacity: 1;
+  margin-top: var(--sp-4);
+}
+
+.detail-section { margin-bottom: var(--sp-5); }
+.detail-section:last-child { margin-bottom: 0; }
+.detail-section__title {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  margin-bottom: var(--sp-3);
+  padding-bottom: var(--sp-2);
+  border-bottom: 1px solid var(--border);
+}
+
+/* Prereqs */
+.prereqs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+}
+.prereq {
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: var(--sp-1) var(--sp-3);
+  border-radius: var(--r-full);
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  color: var(--ink-sec);
+  white-space: nowrap;
+}
+
+/* Resources */
+.resources { display: flex; flex-direction: column; gap: var(--sp-2); }
+.resource {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-3);
+  padding: var(--sp-3) var(--sp-4);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  transition: border-color var(--fast) var(--ease),
+              background var(--fast) var(--ease);
+}
+.resource:hover {
+  border-color: var(--border-hi);
+  background: var(--surface-alt);
+}
+.resource__icon {
+  width: 26px; height: 26px;
+  border-radius: var(--r-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+}
+.resource__icon--course { background: var(--accent-sub); color: var(--ink); }
+.resource__icon--book { background: var(--s3-bg); color: var(--s3); border: 1px solid var(--s3-br); }
+.resource__body { flex: 1; min-width: 0; }
+.resource__name {
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.35;
+  margin-bottom: 2px;
+  word-break: break-word;
+}
+.resource__name a:hover { text-decoration: underline; text-underline-offset: 2px; }
+.resource__type {
+  font-size: 0.75rem;
+  color: var(--ink-muted);
+}
+
+/* Projects */
+.projects { display: flex; flex-direction: column; gap: var(--sp-2); }
+.project {
+  padding: var(--sp-3) var(--sp-4);
+  border-left: 3px solid var(--accent-brd);
+  background: var(--accent-sub);
+  border-radius: 0 var(--r-sm) var(--r-sm) 0;
+  font-size: 0.875rem;
+  line-height: 1.55;
+}
+.project strong { font-weight: 600; }
+
+/* ============================================================
+   Footer
+   ============================================================ */
+.footer {
+  margin-top: var(--sp-16);
+  padding-top: var(--sp-8);
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
+.footer__cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-3);
+  margin-bottom: var(--sp-6);
+  flex-wrap: wrap;
+}
+.footer__cta-text {
+  font-size: 0.875rem;
+  color: var(--ink-sec);
+  font-weight: 500;
+}
+.star-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  background: var(--accent);
+  color: var(--bg);
+  border: none;
+  border-radius: var(--r-md);
+  padding: var(--sp-2) var(--sp-4);
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--fast) var(--ease), transform var(--fast) var(--ease);
+}
+.star-btn:hover {
+  background: var(--accent-hover);
+  transform: translateY(-1px);
+}
+.star-btn svg { width: 14px; height: 14px; }
+
+.footer__note {
+  max-width: 36rem;
+  margin: 0 auto var(--sp-3);
+  font-size: 0.875rem;
+  color: var(--ink-muted);
+  line-height: 1.6;
+}
+.footer__meta {
+  font-size: 0.75rem;
+  color: var(--ink-muted);
+  opacity: 0.6;
+}
+
+/* ============================================================
+   Utility
+   ============================================================ */
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+}
 </style>
 </head>
 <body>
@@ -339,65 +777,93 @@
     </p>
   </header>
 
-  <!-- Controls -->
+  <!-- Controls — 修复布局：legend 左，buttons 右，lang 独立 -->
   <div class="controls">
-    <div class="controls__legend">
-      <span class="legend-item"><span class="legend-dot" style="background:var(--color-stage-1)"></span><span data-i18n="legend.beginner">基础</span></span>
-      <span class="legend-item"><span class="legend-dot" style="background:var(--color-stage-2)"></span><span data-i18n="legend.intermediate">中级</span></span>
-      <span class="legend-item"><span class="legend-dot" style="background:var(--color-stage-3)"></span><span data-i18n="legend.advanced">高级</span></span>
-      <span class="legend-item"><span class="legend-dot" style="background:var(--color-stage-4)"></span><span data-i18n="legend.specialized">专业</span></span>
+    <div class="controls__left">
+      <div class="legend">
+        <span class="legend__item">
+          <span class="legend__dot" style="background:var(--s1)"></span>
+          <span data-i18n="legend.beginner">基础</span>
+        </span>
+        <span class="legend__item">
+          <span class="legend__dot" style="background:var(--s2)"></span>
+          <span data-i18n="legend.intermediate">中级</span>
+        </span>
+        <span class="legend__item">
+          <span class="legend__dot" style="background:var(--s3)"></span>
+          <span data-i18n="legend.advanced">高级</span>
+        </span>
+        <span class="legend__item">
+          <span class="legend__dot" style="background:var(--s4)"></span>
+          <span data-i18n="legend.specialized">专业</span>
+        </span>
+      </div>
     </div>
-    <button class="theme-toggle" onclick="toggleTheme()" aria-label="切换主题">
-      <svg class="theme-toggle__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="12" cy="12" r="5"/>
-        <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
-        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-        <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
-        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
-      </svg>
-      <span id="theme-label">暗色模式</span>
-    </button>
-    <div class="share-group">
-      <a class="share-btn" href="https://twitter.com/intent/tweet?text=AI%20%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%E5%9B%BE%202026%20%E2%80%94%20%E4%BB%8E%E9%9B%B6%E5%9F%BA%E7%A1%80%E5%88%B0%E4%B8%93%E4%B8%9A%E6%96%B9%E5%90%91%E7%9A%84%E7%B3%BB%E7%BB%9F%E5%8C%96%E5%AD%A6%E4%B9%A0%E8%B7%AF%E5%BE%84&url=https://dray1220.github.io/ai-learning-roadmap/" target="_blank" rel="noopener" aria-label="分享到 Twitter/X">
+    <div class="controls__right">
+      <!-- Theme toggle -->
+      <button class="btn-icon" id="theme-btn" onclick="toggleTheme()" aria-label="切换主题">
+        <svg id="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="5"/>
+          <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+          <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+        </svg>
+        <svg id="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none">
+          <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+        </svg>
+      </button>
+      <!-- Language toggle -->
+      <button class="btn-icon btn-icon--lang" id="lang-btn" onclick="toggleLang()" aria-label="切换语言">
+        <span class="btn-icon__label" id="lang-label">EN</span>
+      </button>
+      <span class="sep" aria-hidden="true"></span>
+      <!-- Share: Twitter -->
+      <a class="btn-icon" href="https://twitter.com/intent/tweet?text=AI%20Learning%20Roadmap%202026%20%E2%80%94%20A%20systematic%20path%20from%20zero%20to%20specialization&url=https://dray1220.github.io/ai-learning-roadmap/" target="_blank" rel="noopener" aria-label="分享到 X/Twitter">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
       </a>
-      <button class="share-btn" onclick="copyLink()" aria-label="复制链接">
-        <svg id="copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+      <!-- Share: Copy link -->
+      <button class="btn-icon" id="copy-btn" onclick="copyLink()" aria-label="复制链接">
+        <span class="tip" id="copy-tip">已复制!</span>
+        <svg id="copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+          <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>
+        </svg>
       </button>
-      <a class="share-btn" href="https://github.com/dray1220/ai-learning-roadmap" target="_blank" rel="noopener" aria-label="GitHub 仓库">
+      <!-- Share: GitHub -->
+      <a class="btn-icon" href="https://github.com/dray1220/ai-learning-roadmap" target="_blank" rel="noopener" aria-label="GitHub 仓库">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
       </a>
-    <button class="lang-toggle" onclick="toggleLang()" aria-label="Switch language">
-      <span id="lang-label">EN</span>
-    </button>
+    </div>
   </div>
 
-  <!-- Progress Overview -->
-  <div class="progress-overview">
-    <div class="progress-overview__title" data-i18n="progress.title">学习进度</div>
-    <div class="progress-bar-track"><div class="progress-bar-fill" id="progress-fill"></div></div>
+  <!-- Progress Panel -->
+  <div class="progress-panel">
+    <div class="progress-panel__label" data-i18n="progress.title">学习进度</div>
+    <div class="progress-bar"><div class="progress-bar__fill" id="progress-fill"></div></div>
     <div class="progress-stats">
       <span id="progress-text" data-i18n="progress.text">0 / 4 阶段</span>
       <span id="progress-pct">0%</span>
     </div>
-    <div class="progress-stages" id="progress-stages">
-      <div class="progress-stage progress-stage--locked"><span class="progress-stage__dot"></span><span data-i18n="progress.stage1">基础阶段</span></div>
-      <div class="progress-stage progress-stage--locked"><span class="progress-stage__dot"></span><span data-i18n="progress.stage2">机器学习</span></div>
-      <div class="progress-stage progress-stage--locked"><span class="progress-stage__dot"></span><span data-i18n="progress.stage3">深度学习</span></div>
-      <div class="progress-stage progress-stage--locked"><span class="progress-stage__dot"></span><span data-i18n="progress.stage4">专业方向</span></div>
+    <div class="progress-chips" id="progress-stages">
+      <div class="progress-chip progress-chip--locked"><span class="progress-chip__dot"></span><span data-i18n="progress.stage1">基础阶段</span></div>
+      <div class="progress-chip progress-chip--locked"><span class="progress-chip__dot"></span><span data-i18n="progress.stage2">机器学习</span></div>
+      <div class="progress-chip progress-chip--locked"><span class="progress-chip__dot"></span><span data-i18n="progress.stage3">深度学习</span></div>
+      <div class="progress-chip progress-chip--locked"><span class="progress-chip__dot"></span><span data-i18n="progress.stage4">专业方向</span></div>
     </div>
   </div>
 
   <!-- Timeline -->
   <div class="timeline" role="list" aria-label="学习阶段">
+    <div class="timeline__line" aria-hidden="true"></div>
 
-    <!-- Stage 1: Beginner -->
+    <!-- Stage 1 -->
     <div class="stage stage--1" role="listitem" data-stage="0">
       <div class="stage__dot" aria-hidden="true"></div>
       <div class="stage__card">
         <div class="stage__header">
-          <div>
-            <span class="stage__badge">Beginner</span>
+          <div class="stage__meta">
+            <span class="stage__badge" data-i18n="legend.beginner">基础</span>
             <h2 class="stage__title" data-i18n="stage1.title">基础阶段</h2>
             <p class="stage__subtitle" data-i18n="stage1.subtitle">构建数学与编程基石</p>
           </div>
@@ -407,47 +873,85 @@
           </div>
         </div>
         <div class="skills">
-          <div class="skill"><div class="skill__name" data-i18n="sk.Python 编程">Python 编程</div><div class="skill__desc" data-i18n="sd.语法基础、数据结构、面向对象、常用库（NumPy ">语法基础、数据结构、面向对象、常用库（NumPy / Pandas）</div><div class="skill__tags"><span class="tag">Python 3</span><span class="tag">NumPy</span><span class="tag">Pandas</span></div></div>
-          <div class="skill"><div class="skill__name" data-i18n="sk.线性代数">线性代数</div><div class="skill__desc" data-i18n="sd.向量与矩阵运算、特征值分解、奇异值分解（SVD）">向量与矩阵运算、特征值分解、奇异值分解（SVD）</div><div class="skill__tags"><span class="tag" data-i18n="tag.矩阵">矩阵</span><span class="tag" data-i18n="tag.向量空间">向量空间</span><span class="tag">SVD</span></div></div>
-          <div class="skill"><div class="skill__name" data-i18n="sk.概率论与数理统计">概率论与数理统计</div><div class="skill__desc" data-i18n="sd.概率分布、贝叶斯定理、假设检验、最大似然估计">概率分布、贝叶斯定理、假设检验、最大似然估计</div><div class="skill__tags"><span class="tag" data-i18n="tag.贝叶斯">贝叶斯</span><span class="tag" data-i18n="tag.分布">分布</span><span class="tag">MLE</span></div></div>
-          <div class="skill"><div class="skill__name" data-i18n="sk.微积分基础">微积分基础</div><div class="skill__desc" data-i18n="sd.导数与偏导、链式法则、梯度、积分基础">导数与偏导、链式法则、梯度、积分基础</div><div class="skill__tags"><span class="tag" data-i18n="tag.导数">导数</span><span class="tag" data-i18n="tag.偏导">偏导</span><span class="tag" data-i18n="tag.梯度">梯度</span></div></div>
-        </div>
-        <button class="stage__details-toggle" onclick="toggleDetails(this)" aria-expanded="false" aria-controls="details-0">
-          <svg class="stage__details-toggle__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-          <span data-i18n="details.expand">展开：学习资源、前置要求、实战项目</span>
-        </button>
-        <div class="stage__details" id="details-0" aria-hidden="true">
-          <div class="details-section">
-            <div class="details-section__title" data-i18n="details.prerequisites">前置要求</div>
-            <div class="prerequisites"><span class="prereq" data-i18n="prereq.高中数学基础">高中数学基础</span><span class="prereq" data-i18n="prereq.基本计算机操作">基本计算机操作</span><span class="prereq" data-i18n="prereq.无需编程经验">无需编程经验</span></div>
+          <div class="skill">
+            <div class="skill__name" data-i18n="sk.Python 编程">Python 编程</div>
+            <div class="skill__desc" data-i18n="sd.语法基础、数据结构、面向对象、常用库（NumPy ">语法基础、数据结构、面向对象、常用库（NumPy / Pandas）</div>
+            <div class="skill__tags"><span class="tag">Python 3</span><span class="tag">NumPy</span><span class="tag">Pandas</span></div>
           </div>
-          <div class="details-section">
-            <div class="details-section__title" data-i18n="details.resources">推荐资源</div>
+          <div class="skill">
+            <div class="skill__name" data-i18n="sk.线性代数">线性代数</div>
+            <div class="skill__desc" data-i18n="sd.向量与矩阵运算、特征值分解、奇异值分解（SVD）">向量与矩阵运算、特征值分解、奇异值分解（SVD）</div>
+            <div class="skill__tags"><span class="tag" data-i18n="tag.矩阵">矩阵</span><span class="tag" data-i18n="tag.向量空间">向量空间</span><span class="tag">SVD</span></div>
+          </div>
+          <div class="skill">
+            <div class="skill__name" data-i18n="sk.概率论与数理统计">概率论与数理统计</div>
+            <div class="skill__desc" data-i18n="sd.概率分布、贝叶斯定理、假设检验、最大似然估计">概率分布、贝叶斯定理、假设检验、最大似然估计</div>
+            <div class="skill__tags"><span class="tag" data-i18n="tag.贝叶斯">贝叶斯</span><span class="tag" data-i18n="tag.分布">分布</span><span class="tag">MLE</span></div>
+          </div>
+          <div class="skill">
+            <div class="skill__name" data-i18n="sk.微积分基础">微积分基础</div>
+            <div class="skill__desc" data-i18n="sd.导数与偏导、链式法则、梯度、积分基础">导数与偏导、链式法则、梯度、积分基础</div>
+            <div class="skill__tags"><span class="tag" data-i18n="tag.导数">导数</span><span class="tag" data-i18n="tag.偏导">偏导</span><span class="tag" data-i18n="tag.梯度">梯度</span></div>
+          </div>
+        </div>
+        <button class="details-toggle" onclick="toggleDetails(this)" aria-expanded="false" aria-controls="details-0">
+          <span data-i18n="details.expand">展开：学习资源、前置要求、实战项目</span>
+          <svg class="details-toggle__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="details-panel" id="details-0" aria-hidden="true">
+          <div class="detail-section">
+            <div class="detail-section__title" data-i18n="details.prerequisites">前置要求</div>
+            <div class="prereqs">
+              <span class="prereq" data-i18n="prereq.高中数学基础">高中数学基础</span>
+              <span class="prereq" data-i18n="prereq.基本计算机操作">基本计算机操作</span>
+              <span class="prereq" data-i18n="prereq.无需编程经验">无需编程经验</span>
+            </div>
+          </div>
+          <div class="detail-section">
+            <div class="detail-section__title" data-i18n="details.resources">推荐资源</div>
             <ul class="resources">
-              <li><span class="resource__icon resource__icon--course" data-i18n="resource.course">课</span><div class="resource__content"><div class="resource__name"><a href="https://www.coursera.org/learn/python" target="_blank" rel="noopener">Python for Everybody (Coursera)</a></div><div class="resource__type" data-i18n="rt.密歇根大学 · 免费">密歇根大学 · 免费旁听</div></div></li>
-              <li><span class="resource__icon resource__icon--course" data-i18n="resource.course">课</span><div class="resource__content"><div class="resource__name"><a href="https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/" target="_blank" rel="noopener">MIT 18.06 线性代数 (OCW)</a></div><div class="resource__type" data-i18n="rt.Gilbert St">Gilbert Strang · 经典课程</div></div></li>
-              <li><span class="resource__icon resource__icon--book" data-i18n="resource.book">书</span><div class="resource__content"><div class="resource__name"><a href="https://nostarch.com/automatestuff2" target="_blank" rel="noopener">Automate the Boring Stuff with Python</a></div><div class="resource__type" data-i18n="rt.Al Sweigar">Al Sweigart · 免费在线版</div></div></li>
+              <li class="resource">
+                <span class="resource__icon resource__icon--course">C</span>
+                <div class="resource__body">
+                  <div class="resource__name"><a href="https://www.coursera.org/learn/python" target="_blank" rel="noopener">Python for Everybody (Coursera)</a></div>
+                  <div class="resource__type" data-i18n="rt.密歇根大学 · 免费">密歇根大学 · 免费旁听</div>
+                </div>
+              </li>
+              <li class="resource">
+                <span class="resource__icon resource__icon--course">C</span>
+                <div class="resource__body">
+                  <div class="resource__name"><a href="https://ocw.mit.edu/courses/18-06-linear-algebra-spring-2010/" target="_blank" rel="noopener">MIT 18.06 Linear Algebra (OCW)</a></div>
+                  <div class="resource__type" data-i18n="rt.Gilbert St">Gilbert Strang · 经典课程</div>
+                </div>
+              </li>
+              <li class="resource">
+                <span class="resource__icon resource__icon--book">B</span>
+                <div class="resource__body">
+                  <div class="resource__name"><a href="https://nostarch.com/automatestuff2" target="_blank" rel="noopener">Automate the Boring Stuff with Python</a></div>
+                  <div class="resource__type" data-i18n="rt.Al Sweigar">Al Sweigart · 免费在线版</div>
+                </div>
+              </li>
             </ul>
           </div>
-          <div class="details-section">
-            <div class="details-section__title" data-i18n="details.projects">实战项目</div>
+          <div class="detail-section">
+            <div class="detail-section__title" data-i18n="details.projects">实战项目</div>
             <ul class="projects">
-              <li><strong data-i18n="pj.数据分析小工具：">Data Analysis Tool: </strong>用 Pandas 读取 CSV，完成清洗、分组聚合、可视化</li>
-              <li><strong data-i18n="pj.概率模拟：">Probability Simulation: </strong>用 Python 模拟掷骰子/抽牌实验，验证大数定律</li>
-              <li><strong data-i18n="pj.矩阵运算器：">Matrix Calculator: </strong>实现矩阵乘法、求逆、特征值计算的 Python 脚本</li>
+              <li class="project"><strong data-i18n="pj.数据分析小工具：">Data Analysis Tool: </strong>用 Pandas 读取 CSV，完成清洗、分组聚合、可视化</li>
+              <li class="project"><strong data-i18n="pj.概率模拟：">Probability Simulation: </strong>用 Python 模拟掷骰子/抽牌实验，验证大数定律</li>
+              <li class="project"><strong data-i18n="pj.矩阵运算器：">Matrix Calculator: </strong>实现矩阵乘法、求逆、特征值计算的 Python 脚本</li>
             </ul>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Stage 2: Intermediate -->
+    <!-- Stage 2 -->
     <div class="stage stage--2" role="listitem" data-stage="1">
       <div class="stage__dot" aria-hidden="true"></div>
       <div class="stage__card">
         <div class="stage__header">
-          <div>
-            <span class="stage__badge">Intermediate</span>
+          <div class="stage__meta">
+            <span class="stage__badge" data-i18n="legend.intermediate">中级</span>
             <h2 class="stage__title" data-i18n="stage2.title">机器学习阶段</h2>
             <p class="stage__subtitle" data-i18n="stage2.subtitle">掌握经典算法与完整建模流程</p>
           </div>
@@ -457,47 +961,86 @@
           </div>
         </div>
         <div class="skills">
-          <div class="skill"><div class="skill__name" data-i18n="sk.经典 ML 算法">经典 ML 算法</div><div class="skill__desc" data-i18n="sd.线性回归、逻辑回归、决策树、随机森林、SVM、K-">线性回归、逻辑回归、决策树、随机森林、SVM、K-Means</div><div class="skill__tags"><span class="tag">sklearn</span><span class="tag" data-i18n="tag.回归">回归</span><span class="tag" data-i18n="tag.分类">分类</span><span class="tag" data-i18n="tag.聚类">聚类</span></div></div>
-          <div class="skill"><div class="skill__name" data-i18n="sk.数据处理">数据处理</div><div class="skill__desc" data-i18n="sd.缺失值处理、数据标准化、类别编码、数据划分">缺失值处理、数据标准化、类别编码、数据划分</div><div class="skill__tags"><span class="tag" data-i18n="tag.清洗">清洗</span><span class="tag" data-i18n="tag.标准化">标准化</span><span class="tag" data-i18n="tag.编码">编码</span></div></div>
-          <div class="skill"><div class="skill__name" data-i18n="sk.特征工程">特征工程</div><div class="skill__desc" data-i18n="sd.特征选择、降维（PCA）、特征构造、交叉特征">特征选择、降维（PCA）、特征构造、交叉特征</div><div class="skill__tags"><span class="tag">PCA</span><span class="tag" data-i18n="tag.特征选择">特征选择</span><span class="tag" data-i18n="tag.构造">构造</span></div></div>
-          <div class="skill"><div class="skill__name" data-i18n="sk.模型评估">模型评估</div><div class="skill__desc" data-i18n="sd.交叉验证、混淆矩阵、ROC/AUC、精确率-召回率">交叉验证、混淆矩阵、ROC/AUC、精确率-召回率、过拟合与正则化</div><div class="skill__tags"><span class="tag">CV</span><span class="tag">AUC</span><span class="tag" data-i18n="tag.正则化">正则化</span></div></div>
-        </div>
-        <button class="stage__details-toggle" onclick="toggleDetails(this)" aria-expanded="false" aria-controls="details-1">
-          <svg class="stage__details-toggle__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-          <span data-i18n="details.expand">展开：学习资源、前置要求、实战项目</span>
-        </button>
-        <div class="stage__details" id="details-1" aria-hidden="true">
-          <div class="details-section">
-            <div class="details-section__title" data-i18n="details.prerequisites">前置要求</div>
-            <div class="prerequisites"><span class="prereq" data-i18n="prereq.Python 熟练">Python 熟练</span><span class="prereq" data-i18n="prereq.线性代数基础">线性代数基础</span><span class="prereq" data-i18n="prereq.概率论基础">概率论基础</span><span class="prereq" data-i18n="prereq.NumPy / Pand">NumPy / Pandas</span></div>
+          <div class="skill">
+            <div class="skill__name" data-i18n="sk.经典 ML 算法">经典 ML 算法</div>
+            <div class="skill__desc" data-i18n="sd.线性回归、逻辑回归、决策树、随机森林、SVM、K-">线性回归、逻辑回归、决策树、随机森林、SVM、K-Means</div>
+            <div class="skill__tags"><span class="tag">sklearn</span><span class="tag" data-i18n="tag.回归">回归</span><span class="tag" data-i18n="tag.分类">分类</span><span class="tag" data-i18n="tag.聚类">聚类</span></div>
           </div>
-          <div class="details-section">
-            <div class="details-section__title" data-i18n="details.resources">推荐资源</div>
+          <div class="skill">
+            <div class="skill__name" data-i18n="sk.数据处理">数据处理</div>
+            <div class="skill__desc" data-i18n="sd.缺失值处理、数据标准化、类别编码、数据划分">缺失值处理、数据标准化、类别编码、数据划分</div>
+            <div class="skill__tags"><span class="tag" data-i18n="tag.清洗">清洗</span><span class="tag" data-i18n="tag.标准化">标准化</span><span class="tag" data-i18n="tag.编码">编码</span></div>
+          </div>
+          <div class="skill">
+            <div class="skill__name" data-i18n="sk.特征工程">特征工程</div>
+            <div class="skill__desc" data-i18n="sd.特征选择、降维（PCA）、特征构造、交叉特征">特征选择、降维（PCA）、特征构造、交叉特征</div>
+            <div class="skill__tags"><span class="tag">PCA</span><span class="tag" data-i18n="tag.特征选择">特征选择</span><span class="tag" data-i18n="tag.构造">构造</span></div>
+          </div>
+          <div class="skill">
+            <div class="skill__name" data-i18n="sk.模型评估">模型评估</div>
+            <div class="skill__desc" data-i18n="sd.交叉验证、混淆矩阵、ROC/AUC、精确率-召回率">交叉验证、混淆矩阵、ROC/AUC、精确率-召回率、过拟合与正则化</div>
+            <div class="skill__tags"><span class="tag">CV</span><span class="tag">AUC</span><span class="tag" data-i18n="tag.正则化">正则化</span></div>
+          </div>
+        </div>
+        <button class="details-toggle" onclick="toggleDetails(this)" aria-expanded="false" aria-controls="details-1">
+          <span data-i18n="details.expand">展开：学习资源、前置要求、实战项目</span>
+          <svg class="details-toggle__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="details-panel" id="details-1" aria-hidden="true">
+          <div class="detail-section">
+            <div class="detail-section__title" data-i18n="details.prerequisites">前置要求</div>
+            <div class="prereqs">
+              <span class="prereq" data-i18n="prereq.Python 熟练">Python 熟练</span>
+              <span class="prereq" data-i18n="prereq.线性代数基础">线性代数基础</span>
+              <span class="prereq" data-i18n="prereq.概率论基础">概率论基础</span>
+              <span class="prereq" data-i18n="prereq.NumPy / Pand">NumPy / Pandas</span>
+            </div>
+          </div>
+          <div class="detail-section">
+            <div class="detail-section__title" data-i18n="details.resources">推荐资源</div>
             <ul class="resources">
-              <li><span class="resource__icon resource__icon--course" data-i18n="resource.course">课</span><div class="resource__content"><div class="resource__name"><a href="https://www.coursera.org/learn/machine-learning" target="_blank" rel="noopener">Machine Learning Specialization (Coursera)</a></div><div class="resource__type" data-i18n="rt.Andrew Ng ">Andrew Ng · 2022 更新版</div></div></li>
-              <li><span class="resource__icon resource__icon--book" data-i18n="resource.book">书</span><div class="resource__content"><div class="resource__name"><a href="https://www.oreilly.com/library/view/hands-on-machine-learning/9781098125974/" target="_blank" rel="noopener">Hands-On ML with Scikit-Learn, Keras & TensorFlow</a></div><div class="resource__type" data-i18n="rt.Aurélien G">Aurélien Géron · 实战导向</div></div></li>
-              <li><span class="resource__icon resource__icon--course" data-i18n="resource.course">课</span><div class="resource__content"><div class="resource__name"><a href="https://www.kaggle.com/learn" target="_blank" rel="noopener">Kaggle Learn — ML Courses</a></div><div class="resource__type" data-i18n="rt.免费 · 交互式学习">免费 · 交互式学习</div></div></li>
+              <li class="resource">
+                <span class="resource__icon resource__icon--course">C</span>
+                <div class="resource__body">
+                  <div class="resource__name"><a href="https://www.coursera.org/learn/machine-learning" target="_blank" rel="noopener">Machine Learning Specialization (Coursera)</a></div>
+                  <div class="resource__type" data-i18n="rt.Andrew Ng ">Andrew Ng · 2022 更新版</div>
+                </div>
+              </li>
+              <li class="resource">
+                <span class="resource__icon resource__icon--book">B</span>
+                <div class="resource__body">
+                  <div class="resource__name"><a href="https://www.oreilly.com/library/view/hands-on-machine-learning/9781098125974/" target="_blank" rel="noopener">Hands-On ML with Scikit-Learn, Keras &amp; TensorFlow</a></div>
+                  <div class="resource__type" data-i18n="rt.Aurélien G">Aurélien Géron · 实战导向</div>
+                </div>
+              </li>
+              <li class="resource">
+                <span class="resource__icon resource__icon--course">C</span>
+                <div class="resource__body">
+                  <div class="resource__name"><a href="https://www.kaggle.com/learn" target="_blank" rel="noopener">Kaggle Learn — ML Courses</a></div>
+                  <div class="resource__type" data-i18n="rt.免费 · 交互式学习">免费 · 交互式学习</div>
+                </div>
+              </li>
             </ul>
           </div>
-          <div class="details-section">
-            <div class="details-section__title" data-i18n="details.projects">实战项目</div>
+          <div class="detail-section">
+            <div class="detail-section__title" data-i18n="details.projects">实战项目</div>
             <ul class="projects">
-              <li><strong data-i18n="pj.房价预测：">House Price Prediction: </strong>用 Kaggle Housing 数据集，完成从数据清洗到模型部署的完整流程</li>
-              <li><strong data-i18n="pj.客户流失分析：">Customer Churn Analysis: </strong>电信/银行数据集，构建分类模型 + 特征重要性分析</li>
-              <li><strong data-i18n="pj.聚类分组：">User Clustering: </strong>对电商用户行为数据进行 K-Means 分群 + 可视化</li>
+              <li class="project"><strong data-i18n="pj.房价预测：">House Price Prediction: </strong>用 Kaggle Housing 数据集，完成从数据清洗到模型部署的完整流程</li>
+              <li class="project"><strong data-i18n="pj.客户流失分析：">Customer Churn Analysis: </strong>电信/银行数据集，构建分类模型 + 特征重要性分析</li>
+              <li class="project"><strong data-i18n="pj.聚类分组：">User Clustering: </strong>对电商用户行为数据进行 K-Means 分群 + 可视化</li>
             </ul>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Stage 3: Advanced -->
+    <!-- Stage 3 -->
     <div class="stage stage--3" role="listitem" data-stage="2">
       <div class="stage__dot" aria-hidden="true"></div>
       <div class="stage__card">
         <div class="stage__header">
-          <div>
-            <span class="stage__badge">Advanced</span>
+          <div class="stage__meta">
+            <span class="stage__badge" data-i18n="legend.advanced">高级</span>
             <h2 class="stage__title" data-i18n="stage3.title">深度学习阶段</h2>
             <p class="stage__subtitle" data-i18n="stage3.subtitle">神经网络架构与现代深度学习框架</p>
           </div>
@@ -507,50 +1050,99 @@
           </div>
         </div>
         <div class="skills">
-          <div class="skill"><div class="skill__name" data-i18n="sk.神经网络基础">神经网络基础</div><div class="skill__desc" data-i18n="sd.感知机、多层网络、反向传播、激活函数、损失函数、优">感知机、多层网络、反向传播、激活函数、损失函数、优化器</div><div class="skill__tags"><span class="tag">BP</span><span class="tag">ReLU</span><span class="tag">SGD</span><span class="tag">Adam</span></div></div>
-          <div class="skill"><div class="skill__name" data-i18n="sk.CNN（卷积神经网络）">CNN（卷积神经网络）</div><div class="skill__desc" data-i18n="sd.卷积层、池化、经典架构（ResNet、VGG）、数">卷积层、池化、经典架构（ResNet、VGG）、数据增强</div><div class="skill__tags"><span class="tag">Conv2D</span><span class="tag">ResNet</span><span class="tag" data-i18n="tag.池化">池化</span></div></div>
-          <div class="skill"><div class="skill__name" data-i18n="sk.RNN / LSTM">RNN / LSTM</div><div class="skill__desc" data-i18n="sd.循环神经网络、长短期记忆网络、序列建模、注意力机制">循环神经网络、长短期记忆网络、序列建模、注意力机制入门</div><div class="skill__tags"><span class="tag">LSTM</span><span class="tag">GRU</span><span class="tag" data-i18n="tag.序列">序列</span></div></div>
-          <div class="skill"><div class="skill__name" data-i18n="sk.Transformer">Transformer</div><div class="skill__desc" data-i18n="sd.Self-Attention、多头注意力、位置编码">Self-Attention、多头注意力、位置编码、Encoder-Decoder 架构</div><div class="skill__tags"><span class="tag">Attention</span><span class="tag">Positional</span><span class="tag">BERT</span></div></div>
-          <div class="skill"><div class="skill__name" data-i18n="sk.深度学习框架">深度学习框架</div><div class="skill__desc" data-i18n="sd.PyTorch 或 TensorFlow 核心 A">PyTorch 或 TensorFlow 核心 API、张量操作、自动求导、模型训练循环</div><div class="skill__tags"><span class="tag">PyTorch</span><span class="tag">TensorFlow</span><span class="tag">Autograd</span></div></div>
-        </div>
-        <button class="stage__details-toggle" onclick="toggleDetails(this)" aria-expanded="false" aria-controls="details-2">
-          <svg class="stage__details-toggle__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-          <span data-i18n="details.expand">展开：学习资源、前置要求、实战项目</span>
-        </button>
-        <div class="stage__details" id="details-2" aria-hidden="true">
-          <div class="details-section">
-            <div class="details-section__title" data-i18n="details.prerequisites">前置要求</div>
-            <div class="prerequisites"><span class="prereq" data-i18n="prereq.机器学习基础">机器学习基础</span><span class="prereq" data-i18n="prereq.Python 熟练">Python 熟练</span><span class="prereq" data-i18n="prereq.微积分（梯度/链式法则）">微积分（梯度/链式法则）</span><span class="prereq" data-i18n="prereq.sklearn 经验">sklearn 经验</span></div>
+          <div class="skill">
+            <div class="skill__name" data-i18n="sk.神经网络基础">神经网络基础</div>
+            <div class="skill__desc" data-i18n="sd.感知机、多层网络、反向传播、激活函数、损失函数、优">感知机、多层网络、反向传播、激活函数、损失函数、优化器</div>
+            <div class="skill__tags"><span class="tag">BP</span><span class="tag">ReLU</span><span class="tag">SGD</span><span class="tag">Adam</span></div>
           </div>
-          <div class="details-section">
-            <div class="details-section__title" data-i18n="details.resources">推荐资源</div>
+          <div class="skill">
+            <div class="skill__name" data-i18n="sk.CNN（卷积神经网络）">CNN（卷积神经网络）</div>
+            <div class="skill__desc" data-i18n="sd.卷积层、池化、经典架构（ResNet、VGG）、数">卷积层、池化、经典架构（ResNet、VGG）、数据增强</div>
+            <div class="skill__tags"><span class="tag">Conv2D</span><span class="tag">ResNet</span><span class="tag" data-i18n="tag.池化">池化</span></div>
+          </div>
+          <div class="skill">
+            <div class="skill__name" data-i18n="sk.RNN / LSTM">RNN / LSTM</div>
+            <div class="skill__desc" data-i18n="sd.循环神经网络、长短期记忆网络、序列建模、注意力机制">循环神经网络、长短期记忆网络、序列建模、注意力机制入门</div>
+            <div class="skill__tags"><span class="tag">LSTM</span><span class="tag">GRU</span><span class="tag" data-i18n="tag.序列">序列</span></div>
+          </div>
+          <div class="skill">
+            <div class="skill__name" data-i18n="sk.Transformer">Transformer</div>
+            <div class="skill__desc" data-i18n="sd.Self-Attention、多头注意力、位置编码">Self-Attention、多头注意力、位置编码、Encoder-Decoder 架构</div>
+            <div class="skill__tags"><span class="tag">Attention</span><span class="tag">Positional</span><span class="tag">BERT</span></div>
+          </div>
+          <div class="skill">
+            <div class="skill__name" data-i18n="sk.深度学习框架">深度学习框架</div>
+            <div class="skill__desc" data-i18n="sd.PyTorch 或 TensorFlow 核心 A">PyTorch 或 TensorFlow 核心 API、张量操作、自动求导、模型训练循环</div>
+            <div class="skill__tags"><span class="tag">PyTorch</span><span class="tag">TensorFlow</span><span class="tag">Autograd</span></div>
+          </div>
+        </div>
+        <button class="details-toggle" onclick="toggleDetails(this)" aria-expanded="false" aria-controls="details-2">
+          <span data-i18n="details.expand">展开：学习资源、前置要求、实战项目</span>
+          <svg class="details-toggle__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="details-panel" id="details-2" aria-hidden="true">
+          <div class="detail-section">
+            <div class="detail-section__title" data-i18n="details.prerequisites">前置要求</div>
+            <div class="prereqs">
+              <span class="prereq" data-i18n="prereq.机器学习基础">机器学习基础</span>
+              <span class="prereq" data-i18n="prereq.Python 熟练">Python 熟练</span>
+              <span class="prereq" data-i18n="prereq.微积分（梯度/链式法则）">微积分（梯度/链式法则）</span>
+              <span class="prereq" data-i18n="prereq.sklearn 经验">sklearn 经验</span>
+            </div>
+          </div>
+          <div class="detail-section">
+            <div class="detail-section__title" data-i18n="details.resources">推荐资源</div>
             <ul class="resources">
-              <li><span class="resource__icon resource__icon--course" data-i18n="resource.course">课</span><div class="resource__content"><div class="resource__name"><a href="https://www.fast.ai/" target="_blank" rel="noopener">Practical Deep Learning (fast.ai)</a></div><div class="resource__type" data-i18n="rt.Jeremy How">Jeremy Howard · 实战优先 · 免费</div></div></li>
-              <li><span class="resource__icon resource__icon--course" data-i18n="resource.course">课</span><div class="resource__content"><div class="resource__name"><a href="https://cs231n.stanford.edu/" target="_blank" rel="noopener">CS231n — CNN for Visual Recognition</a></div><div class="resource__type" data-i18n="rt.Stanford ·">Stanford · Andrej Karpathy</div></div></li>
-              <li><span class="resource__icon resource__icon--book" data-i18n="resource.book">书</span><div class="resource__content"><div class="resource__name"><a href="https://d2l.ai/" target="_blank" rel="noopener">动手学深度学习 (Dive into Deep Learning)</a></div><div class="resource__type" data-i18n="rt.李沐 · PyTor">李沐 · PyTorch 版 · 免费在线</div></div></li>
-              <li><span class="resource__icon resource__icon--course" data-i18n="resource.course">课</span><div class="resource__content"><div class="resource__name"><a href="https://www.youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi" target="_blank" rel="noopener">Neural Networks (3Blue1Brown)</a></div><div class="resource__type" data-i18n="rt.直观理解 · 数学可">直观理解 · 数学可视化</div></div></li>
+              <li class="resource">
+                <span class="resource__icon resource__icon--course">C</span>
+                <div class="resource__body">
+                  <div class="resource__name"><a href="https://www.fast.ai/" target="_blank" rel="noopener">Practical Deep Learning (fast.ai)</a></div>
+                  <div class="resource__type" data-i18n="rt.Jeremy How">Jeremy Howard · 实战优先 · 免费</div>
+                </div>
+              </li>
+              <li class="resource">
+                <span class="resource__icon resource__icon--course">C</span>
+                <div class="resource__body">
+                  <div class="resource__name"><a href="https://cs231n.stanford.edu/" target="_blank" rel="noopener">CS231n — CNN for Visual Recognition</a></div>
+                  <div class="resource__type" data-i18n="rt.Stanford ·">Stanford · Andrej Karpathy</div>
+                </div>
+              </li>
+              <li class="resource">
+                <span class="resource__icon resource__icon--book">B</span>
+                <div class="resource__body">
+                  <div class="resource__name"><a href="https://d2l.ai/" target="_blank" rel="noopener">Dive into Deep Learning</a></div>
+                  <div class="resource__type" data-i18n="rt.李沐 · PyTor">李沐 · PyTorch 版 · 免费在线</div>
+                </div>
+              </li>
+              <li class="resource">
+                <span class="resource__icon resource__icon--course">C</span>
+                <div class="resource__body">
+                  <div class="resource__name"><a href="https://www.youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi" target="_blank" rel="noopener">Neural Networks (3Blue1Brown)</a></div>
+                  <div class="resource__type" data-i18n="rt.直观理解 · 数学可">直观理解 · 数学可视化</div>
+                </div>
+              </li>
             </ul>
           </div>
-          <div class="details-section">
-            <div class="details-section__title" data-i18n="details.projects">实战项目</div>
+          <div class="detail-section">
+            <div class="detail-section__title" data-i18n="details.projects">实战项目</div>
             <ul class="projects">
-              <li><strong data-i18n="pj.手写数字识别：">Handwritten Digit Recognition: </strong>从零搭建 MNIST 分类器，理解反向传播和训练循环</li>
-              <li><strong data-i18n="pj.猫狗分类器：">Cat vs Dog Classifier: </strong>CNN + 数据增强，对比不同架构（VGG / ResNet）的效果</li>
-              <li><strong data-i18n="pj.文本生成：">Text Generation: </strong>用 LSTM 训练莎士比亚风格文本生成模型</li>
-              <li><strong data-i18n="pj.图像风格迁移：">Neural Style Transfer: </strong>实现 Neural Style Transfer，理解内容损失与风格损失</li>
+              <li class="project"><strong data-i18n="pj.手写数字识别：">Handwritten Digit Recognition: </strong>从零搭建 MNIST 分类器，理解反向传播和训练循环</li>
+              <li class="project"><strong data-i18n="pj.猫狗分类器：">Cat vs Dog Classifier: </strong>CNN + 数据增强，对比不同架构（VGG / ResNet）的效果</li>
+              <li class="project"><strong data-i18n="pj.文本生成：">Text Generation: </strong>用 LSTM 训练莎士比亚风格文本生成模型</li>
+              <li class="project"><strong data-i18n="pj.图像风格迁移：">Neural Style Transfer: </strong>实现 Neural Style Transfer，理解内容损失与风格损失</li>
             </ul>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Stage 4: Specialization -->
+    <!-- Stage 4 -->
     <div class="stage stage--4" role="listitem" data-stage="3">
       <div class="stage__dot" aria-hidden="true"></div>
       <div class="stage__card">
         <div class="stage__header">
-          <div>
-            <span class="stage__badge">Specialization</span>
+          <div class="stage__meta">
+            <span class="stage__badge" data-i18n="legend.specialized">专业</span>
             <h2 class="stage__title" data-i18n="stage4.title">专业方向</h2>
             <p class="stage__subtitle" data-i18n="stage4.subtitle">选择细分领域深入钻研</p>
           </div>
@@ -560,45 +1152,94 @@
           </div>
         </div>
         <div class="skills">
-          <div class="skill"><div class="skill__name" data-i18n="sk.自然语言处理 (NLP)">自然语言处理 (NLP)</div><div class="skill__desc" data-i18n="sd.文本分类、命名实体识别、机器翻译、Prompt E">文本分类、命名实体识别、机器翻译、Prompt Engineering</div><div class="skill__tags"><span class="tag">HuggingFace</span><span class="tag">LLM</span><span class="tag">Prompt</span></div></div>
-          <div class="skill"><div class="skill__name" data-i18n="sk.计算机视觉 (CV)">计算机视觉 (CV)</div><div class="skill__desc" data-i18n="sd.目标检测（YOLO）、图像分割、图像生成、多模态">目标检测（YOLO）、图像分割、图像生成、多模态</div><div class="skill__tags"><span class="tag">YOLO</span><span class="tag">Segmentation</span><span class="tag">Diffusion</span></div></div>
-          <div class="skill"><div class="skill__name" data-i18n="sk.强化学习 (RL)">强化学习 (RL)</div><div class="skill__desc" data-i18n="sd.MDP、Q-Learning、策略梯度、PPO、多">MDP、Q-Learning、策略梯度、PPO、多智能体</div><div class="skill__tags"><span class="tag">PPO</span><span class="tag">Q-Learning</span><span class="tag">Gym</span></div></div>
-          <div class="skill"><div class="skill__name" data-i18n="sk.生成式 AI (LLM)">生成式 AI (LLM)</div><div class="skill__desc" data-i18n="sd.大模型微调（LoRA / QLoRA）、RAG 架">大模型微调（LoRA / QLoRA）、RAG 架构、Agent 开发、模型部署</div><div class="skill__tags"><span class="tag">LoRA</span><span class="tag">RAG</span><span class="tag">Agent</span><span class="tag">vLLM</span></div></div>
-          <div class="skill"><div class="skill__name" data-i18n="sk.MLOps">MLOps</div><div class="skill__desc" data-i18n="sd.模型版本管理、CI/CD for ML、监控与漂移">模型版本管理、CI/CD for ML、监控与漂移检测、容器化部署</div><div class="skill__tags"><span class="tag">MLflow</span><span class="tag">Docker</span><span class="tag">K8s</span></div></div>
-        </div>
-        <button class="stage__details-toggle" onclick="toggleDetails(this)" aria-expanded="false" aria-controls="details-3">
-          <svg class="stage__details-toggle__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-          <span data-i18n="details.expand">展开：学习资源、前置要求、实战项目</span>
-        </button>
-        <div class="stage__details" id="details-3" aria-hidden="true">
-          <div class="details-section">
-            <div class="details-section__title" data-i18n="details.prerequisites">前置要求</div>
-            <div class="prerequisites"><span class="prereq" data-i18n="prereq.深度学习基础">深度学习基础</span><span class="prereq" data-i18n="prereq.PyTorch 熟练">PyTorch 熟练</span><span class="prereq" data-i18n="prereq.理解 Transform">理解 Transformer</span><span class="prereq" data-i18n="prereq.选择 1-2 个方向">选择 1-2 个方向</span></div>
+          <div class="skill">
+            <div class="skill__name" data-i18n="sk.自然语言处理 (NLP)">自然语言处理 (NLP)</div>
+            <div class="skill__desc" data-i18n="sd.文本分类、命名实体识别、机器翻译、Prompt E">文本分类、命名实体识别、机器翻译、Prompt Engineering</div>
+            <div class="skill__tags"><span class="tag">HuggingFace</span><span class="tag">LLM</span><span class="tag">Prompt</span></div>
           </div>
-          <div class="details-section">
-            <div class="details-section__title" data-i18n="details.resources">推荐资源</div>
+          <div class="skill">
+            <div class="skill__name" data-i18n="sk.计算机视觉 (CV)">计算机视觉 (CV)</div>
+            <div class="skill__desc" data-i18n="sd.目标检测（YOLO）、图像分割、图像生成、多模态">目标检测（YOLO）、图像分割、图像生成、多模态</div>
+            <div class="skill__tags"><span class="tag">YOLO</span><span class="tag">Segmentation</span><span class="tag">Diffusion</span></div>
+          </div>
+          <div class="skill">
+            <div class="skill__name" data-i18n="sk.强化学习 (RL)">强化学习 (RL)</div>
+            <div class="skill__desc" data-i18n="sd.MDP、Q-Learning、策略梯度、PPO、多">MDP、Q-Learning、策略梯度、PPO、多智能体</div>
+            <div class="skill__tags"><span class="tag">PPO</span><span class="tag">Q-Learning</span><span class="tag">Gym</span></div>
+          </div>
+          <div class="skill">
+            <div class="skill__name" data-i18n="sk.生成式 AI (LLM)">生成式 AI (LLM)</div>
+            <div class="skill__desc" data-i18n="sd.大模型微调（LoRA / QLoRA）、RAG 架">大模型微调（LoRA / QLoRA）、RAG 架构、Agent 开发、模型部署</div>
+            <div class="skill__tags"><span class="tag">LoRA</span><span class="tag">RAG</span><span class="tag">Agent</span><span class="tag">vLLM</span></div>
+          </div>
+          <div class="skill">
+            <div class="skill__name" data-i18n="sk.MLOps">MLOps</div>
+            <div class="skill__desc" data-i18n="sd.模型版本管理、CI/CD for ML、监控与漂移">模型版本管理、CI/CD for ML、监控与漂移检测、容器化部署</div>
+            <div class="skill__tags"><span class="tag">MLflow</span><span class="tag">Docker</span><span class="tag">K8s</span></div>
+          </div>
+        </div>
+        <button class="details-toggle" onclick="toggleDetails(this)" aria-expanded="false" aria-controls="details-3">
+          <span data-i18n="details.expand">展开：学习资源、前置要求、实战项目</span>
+          <svg class="details-toggle__chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="details-panel" id="details-3" aria-hidden="true">
+          <div class="detail-section">
+            <div class="detail-section__title" data-i18n="details.prerequisites">前置要求</div>
+            <div class="prereqs">
+              <span class="prereq" data-i18n="prereq.深度学习基础">深度学习基础</span>
+              <span class="prereq" data-i18n="prereq.PyTorch 熟练">PyTorch 熟练</span>
+              <span class="prereq" data-i18n="prereq.理解 Transform">理解 Transformer</span>
+              <span class="prereq" data-i18n="prereq.选择 1-2 个方向">选择 1-2 个方向</span>
+            </div>
+          </div>
+          <div class="detail-section">
+            <div class="detail-section__title" data-i18n="details.resources">推荐资源</div>
             <ul class="resources">
-              <li><span class="resource__icon resource__icon--course" data-i18n="resource.course">课</span><div class="resource__content"><div class="resource__name"><a href="https://www.deeplearning.ai/short-courses/" target="_blank" rel="noopener">DeepLearning.AI Short Courses</a></div><div class="resource__type" data-i18n="rt.LLM / RAG ">LLM / RAG / LangChain · 免费</div></div></li>
-              <li><span class="resource__icon resource__icon--book" data-i18n="resource.book">书</span><div class="resource__content"><div class="resource__name"><a href="https://huggingface.co/learn" target="_blank" rel="noopener">HuggingFace NLP Course</a></div><div class="resource__type" data-i18n="rt.免费在线 · Tra">免费在线 · Transformer 实战</div></div></li>
-              <li><span class="resource__icon resource__icon--course" data-i18n="resource.course">课</span><div class="resource__content"><div class="resource__name"><a href="https://spinningup.openai.com/" target="_blank" rel="noopener">Spinning Up in Deep RL (OpenAI)</a></div><div class="resource__type" data-i18n="rt.强化学习入门 · 免">强化学习入门 · 免费</div></div></li>
-              <li><span class="resource__icon resource__icon--course" data-i18n="resource.course">课</span><div class="resource__content"><div class="resource__name"><a href="https://fullstackdeeplearning.com/llm-bootcamp/" target="_blank" rel="noopener">Full Stack LLM Bootcamp</a></div><div class="resource__type" data-i18n="rt.LLM 应用开发实战">LLM 应用开发实战</div></div></li>
+              <li class="resource">
+                <span class="resource__icon resource__icon--course">C</span>
+                <div class="resource__body">
+                  <div class="resource__name"><a href="https://www.deeplearning.ai/short-courses/" target="_blank" rel="noopener">DeepLearning.AI Short Courses</a></div>
+                  <div class="resource__type" data-i18n="rt.LLM / RAG ">LLM / RAG / LangChain · 免费</div>
+                </div>
+              </li>
+              <li class="resource">
+                <span class="resource__icon resource__icon--book">B</span>
+                <div class="resource__body">
+                  <div class="resource__name"><a href="https://huggingface.co/learn" target="_blank" rel="noopener">HuggingFace NLP Course</a></div>
+                  <div class="resource__type" data-i18n="rt.免费在线 · Tra">免费在线 · Transformer 实战</div>
+                </div>
+              </li>
+              <li class="resource">
+                <span class="resource__icon resource__icon--course">C</span>
+                <div class="resource__body">
+                  <div class="resource__name"><a href="https://spinningup.openai.com/" target="_blank" rel="noopener">Spinning Up in Deep RL (OpenAI)</a></div>
+                  <div class="resource__type" data-i18n="rt.强化学习入门 · 免">强化学习入门 · 免费</div>
+                </div>
+              </li>
+              <li class="resource">
+                <span class="resource__icon resource__icon--course">C</span>
+                <div class="resource__body">
+                  <div class="resource__name"><a href="https://fullstackdeeplearning.com/llm-bootcamp/" target="_blank" rel="noopener">Full Stack LLM Bootcamp</a></div>
+                  <div class="resource__type" data-i18n="rt.LLM 应用开发实战">LLM 应用开发实战</div>
+                </div>
+              </li>
             </ul>
           </div>
-          <div class="details-section">
-            <div class="details-section__title" data-i18n="details.projects">实战项目</div>
+          <div class="detail-section">
+            <div class="detail-section__title" data-i18n="details.projects">实战项目</div>
             <ul class="projects">
-              <li><strong data-i18n="pj.RAG 知识库：">RAG Knowledge Base: </strong>用 LangChain + 向量数据库构建文档问答系统</li>
-              <li><strong data-i18n="pj.LLM 微调：">LLM Fine-tuning: </strong>用 LoRA 在开源模型上微调特定领域任务</li>
-              <li><strong data-i18n="pj.目标检测系统：">Object Detection System: </strong>用 YOLOv8 训练自定义数据集的物体检测模型</li>
-              <li><strong data-i18n="pj.ML Pipeline：">ML Pipeline: </strong>用 MLflow + Docker 搭建端到端模型训练/部署流水线</li>
-              <li><strong data-i18n="pj.AI Agent：">AI Agent: </strong>构建能调用工具（搜索、API、文件读写）的自主 Agent</li>
+              <li class="project"><strong data-i18n="pj.RAG 知识库：">RAG Knowledge Base: </strong>用 LangChain + 向量数据库构建文档问答系统</li>
+              <li class="project"><strong data-i18n="pj.LLM 微调：">LLM Fine-tuning: </strong>用 LoRA 在开源模型上微调特定领域任务</li>
+              <li class="project"><strong data-i18n="pj.目标检测系统：">Object Detection System: </strong>用 YOLOv8 训练自定义数据集的物体检测模型</li>
+              <li class="project"><strong data-i18n="pj.ML Pipeline：">ML Pipeline: </strong>用 MLflow + Docker 搭建端到端模型训练/部署流水线</li>
+              <li class="project"><strong data-i18n="pj.AI Agent：">AI Agent: </strong>构建能调用工具（搜索、API、文件读写）的自主 Agent</li>
             </ul>
           </div>
         </div>
       </div>
     </div>
 
-  </div>
+  </div><!-- /timeline -->
 
   <!-- Footer -->
   <footer class="footer">
@@ -612,419 +1253,473 @@
     <p class="footer__note" data-i18n="footer.note">
       时间预估基于每天 2 — 3 小时的学习节奏。实际进度因人而异，建议以掌握核心概念而非完成时长为目标。
     </p>
-    <p class="footer__meta" data-i18n="footer.meta">Generated by Open Design + Hermes Agent · 2026</p>
+    <p class="footer__meta" data-i18n="footer.meta">Generated by DESIGN.md + Hermes Agent · 2026</p>
   </footer>
 
-</div>
+</div><!-- /page -->
 
 <script>
-  /* ── i18n ─────────────────────────────────────────────────── */
-  var I18N = {
-    en: {
-      'header.overline': 'Learning Path',
-      'header.title': 'AI Learning Roadmap',
-      'header.desc': 'A systematic learning path from fundamentals to specialization. Four progressive stages, each covering core skills, recommended resources, and hands-on projects.',
-      'legend.beginner': 'Beginner',
-      'legend.intermediate': 'Intermediate',
-      'legend.advanced': 'Advanced',
-      'legend.specialized': 'Specialized',
-      'progress.title': 'Learning Progress',
-      'progress.text': '0 / 4 stages',
-      'progress.stage1': 'Fundamentals',
-      'progress.stage2': 'Machine Learning',
-      'progress.stage3': 'Deep Learning',
-      'progress.stage4': 'Specializations',
-      'stage1.title': 'Fundamentals',
-      'stage1.subtitle': 'Build the math and programming foundation',
-      'stage1.time': 'Est. 2 — 3 months',
-      'stage2.title': 'Machine Learning',
-      'stage2.subtitle': 'Master classic algorithms and the full modeling pipeline',
-      'stage2.time': 'Est. 3 — 4 months',
-      'stage3.title': 'Deep Learning',
-      'stage3.subtitle': 'Neural network architectures and modern deep learning frameworks',
-      'stage3.time': 'Est. 4 — 6 months',
-      'stage4.title': 'Specializations',
-      'stage4.subtitle': 'Choose a niche area and go deep',
-      'stage4.time': 'Est. 6+ months (per track)',
-      'details.expand': 'Expand: Resources, Prerequisites & Projects',
-      'details.prerequisites': 'Prerequisites',
-      'details.resources': 'Recommended Resources',
-      'details.projects': 'Hands-on Projects',
-      'resource.course': 'Course',
-      'resource.book': 'Book',
-      'footer.cta': 'Find this useful?',
-      'footer.star': 'Star on GitHub',
-      'footer.note': 'Time estimates assume 2–3 hours of study per day. Actual progress varies — focus on mastering core concepts, not just clocking hours.',
-      'footer.meta': 'Generated by Open Design + Hermes Agent · 2026',
-      'theme.light': 'Dark Mode',
-      'theme.dark': 'Light Mode',
-      'sd.MDP、Q-Learning、策略梯度、PPO、多': 'MDP, Q-Learning, policy gradients, PPO, multi-agent',
-      'sd.PyTorch 或 TensorFlow 核心 A': 'PyTorch or TensorFlow core APIs, tensor operations, autograd, training loops',
-      'sd.Self-Attention、多头注意力、位置编码': 'Self-Attention, multi-head attention, positional encoding, Encoder-Decoder architecture',
-      'sd.交叉验证、混淆矩阵、ROC/AUC、精确率-召回率': 'Cross-validation, confusion matrix, ROC/AUC, precision-recall, overfitting & regularization',
-      'sd.卷积层、池化、经典架构（ResNet、VGG）、数': 'Convolutional layers, pooling, classic architectures (ResNet, VGG), data augmentation',
-      'sd.向量与矩阵运算、特征值分解、奇异值分解（SVD）': 'Vector & matrix operations, eigenvalue decomposition, SVD',
-      'sd.大模型微调（LoRA / QLoRA）、RAG 架': 'LLM fine-tuning (LoRA/QLoRA), RAG architecture, Agent development, model deployment',
-      'sd.导数与偏导、链式法则、梯度、积分基础': 'Derivatives & partial derivatives, chain rule, gradients, integral basics',
-      'sd.循环神经网络、长短期记忆网络、序列建模、注意力机制': 'Recurrent neural networks, LSTM, sequence modeling, intro to attention',
-      'sd.感知机、多层网络、反向传播、激活函数、损失函数、优': 'Perceptrons, multi-layer networks, backpropagation, activation/loss functions, optimizers',
-      'sd.文本分类、命名实体识别、机器翻译、Prompt E': 'Text classification, NER, machine translation, Prompt Engineering',
-      'sd.概率分布、贝叶斯定理、假设检验、最大似然估计': "Probability distributions, Bayes' theorem, hypothesis testing, MLE",
-      'sd.模型版本管理、CI/CD for ML、监控与漂移': 'Model versioning, CI/CD for ML, monitoring & drift detection, containerized deployment',
-      'sd.特征选择、降维（PCA）、特征构造、交叉特征': 'Feature selection, dimensionality reduction (PCA), feature construction, cross-features',
-      'sd.目标检测（YOLO）、图像分割、图像生成、多模态': 'Object detection (YOLO), image segmentation, image generation, multimodal',
-      'sd.线性回归、逻辑回归、决策树、随机森林、SVM、K-': 'Linear/logistic regression, decision trees, random forests, SVM, K-Means',
-      'sd.缺失值处理、数据标准化、类别编码、数据划分': 'Missing values, data standardization, categorical encoding, data splitting',
-      'sd.语法基础、数据结构、面向对象、常用库（NumPy ': 'Syntax basics, data structures, OOP, essential libraries (NumPy/Pandas)',
-      'sk.CNN（卷积神经网络）': 'CNN (Convolutional Neural Networks)',
-      'sk.MLOps': 'MLOps',
-      'sk.Python 编程': 'Python Programming',
-      'sk.RNN / LSTM': 'RNN / LSTM',
-      'sk.Transformer': 'Transformer',
-      'sk.强化学习 (RL)': 'Reinforcement Learning (RL)',
-      'sk.微积分基础': 'Calculus Basics',
-      'sk.数据处理': 'Data Processing',
-      'sk.概率论与数理统计': 'Probability & Statistics',
-      'sk.模型评估': 'Model Evaluation',
-      'sk.深度学习框架': 'Deep Learning Frameworks',
-      'sk.特征工程': 'Feature Engineering',
-      'sk.生成式 AI (LLM)': 'Generative AI (LLM)',
-      'sk.神经网络基础': 'Neural Network Fundamentals',
-      'sk.线性代数': 'Linear Algebra',
-      'sk.经典 ML 算法': 'Classic ML Algorithms',
-      'sk.自然语言处理 (NLP)': 'Natural Language Processing (NLP)',
-      'sk.计算机视觉 (CV)': 'Computer Vision (CV)',
-      'tag.偏导': 'Partial Derivatives',
-      'tag.分布': 'Distributions',
-      'tag.分类': 'Classification',
-      'tag.向量空间': 'Vector Spaces',
-      'tag.回归': 'Regression',
-      'tag.导数': 'Derivatives',
-      'tag.序列': 'Sequences',
-      'tag.构造': 'Construction',
-      'tag.标准化': 'Standardization',
-      'tag.梯度': 'Gradients',
-      'tag.池化': 'Pooling',
-      'tag.清洗': 'Cleaning',
-      'tag.特征选择': 'Feature Selection',
-      'tag.矩阵': 'Matrices',
-      'tag.编码': 'Encoding',
-      'tag.聚类': 'Clustering',
-      'tag.贝叶斯': 'Bayes',
-      'tag.序列': 'Sequences',
-      'tag.正则化': 'Regularization',
-      'prereq.高中数学基础': 'High school math',
-      'prereq.基本计算机操作': 'Basic computer skills',
-      'prereq.无需编程经验': 'No coding experience needed',
-      'prereq.Python 熟练': 'Python proficiency',
-      'prereq.线性代数基础': 'Linear algebra basics',
-      'prereq.概率论基础': 'Probability basics',
-      'prereq.NumPy / Pand': 'NumPy / Pandas',
-      'prereq.机器学习基础': 'ML fundamentals',
-      'prereq.微积分（梯度/链式法则）': 'Calculus (gradients/chain rule)',
-      'prereq.sklearn 经验': 'sklearn experience',
-      'prereq.深度学习基础': 'DL fundamentals',
-      'prereq.PyTorch 熟练': 'PyTorch proficiency',
-      'prereq.理解 Transform': 'Understanding of Transformers',
-      'prereq.选择 1-2 个方向': 'Pick 1-2 tracks',
-      'rt.密歇根大学 · 免费': 'Univ. of Michigan · Free audit',
-      'rt.Gilbert St': 'Gilbert Strang · Classic course',
-      'rt.Al Sweigar': 'Al Sweigart · Free online',
-      'rt.Andrew Ng ': 'Andrew Ng · 2022 edition',
-      'rt.Aurélien G': 'Aurélien Géron · Hands-on',
-      'rt.免费 · 交互式学习': 'Free · Interactive',
-      'rt.Jeremy How': 'Jeremy Howard · Code-first · Free',
-      'rt.Stanford ·': 'Stanford · Andrej Karpathy',
-      'rt.李沐 · PyTor': 'Mu Li · PyTorch · Free online',
-      'rt.直观理解 · 数学可': 'Intuitive · Math visualization',
-      'rt.LLM / RAG ': 'LLM / RAG / LangChain · Free',
-      'rt.免费在线 · Tra': 'Free online · Transformer hands-on',
-      'rt.强化学习入门 · 免': 'RL intro · Free',
-      'rt.LLM 应用开发实战': 'LLM app dev hands-on',
-      'lang.btn': '中文',
-    },
-    zh: {
-      'header.overline': 'Learning Path',
-      'header.title': 'AI 学习路线图',
-      'header.desc': '从编程基础到专业方向的系统化学习路径。四个阶段循序渐进，每个阶段涵盖核心技能、推荐资源与实战项目。',
-      'legend.beginner': '基础',
-      'legend.intermediate': '中级',
-      'legend.advanced': '高级',
-      'legend.specialized': '专业',
-      'progress.title': '学习进度',
-      'progress.text': '0 / 4 阶段',
-      'progress.stage1': '基础阶段',
-      'progress.stage2': '机器学习',
-      'progress.stage3': '深度学习',
-      'progress.stage4': '专业方向',
-      'stage1.title': '基础阶段',
-      'stage1.subtitle': '构建数学与编程基石',
-      'stage1.time': '预计 2 — 3 个月',
-      'stage2.title': '机器学习阶段',
-      'stage2.subtitle': '掌握经典算法与完整建模流程',
-      'stage2.time': '预计 3 — 4 个月',
-      'stage3.title': '深度学习阶段',
-      'stage3.subtitle': '神经网络架构与现代深度学习框架',
-      'stage3.time': '预计 4 — 6 个月',
-      'stage4.title': '专业方向',
-      'stage4.subtitle': '选择细分领域深入钻研',
-      'stage4.time': '预计 6 个月+（按方向）',
-      'details.expand': '展开：学习资源、前置要求、实战项目',
-      'details.prerequisites': '前置要求',
-      'details.resources': '推荐资源',
-      'details.projects': '实战项目',
-      'resource.course': '课',
-      'resource.book': '书',
-      'footer.cta': '觉得有用？',
-      'footer.star': 'Star on GitHub',
-      'footer.note': '时间预估基于每天 2 — 3 小时的学习节奏。实际进度因人而异，建议以掌握核心概念而非完成时长为目标。',
-      'footer.meta': 'Generated by Open Design + Hermes Agent · 2026',
-      'theme.light': '暗色模式',
-      'theme.dark': '浅色模式',
-      'sd.MDP、Q-Learning、策略梯度、PPO、多': 'MDP、Q-Learning、策略梯度、PPO、多智能体',
-      'sd.PyTorch 或 TensorFlow 核心 A': 'PyTorch 或 TensorFlow 核心 API、张量操作、自动求导、模型训练循环',
-      'sd.Self-Attention、多头注意力、位置编码': 'Self-Attention、多头注意力、位置编码、Encoder-Decoder 架构',
-      'sd.交叉验证、混淆矩阵、ROC/AUC、精确率-召回率': '交叉验证、混淆矩阵、ROC/AUC、精确率-召回率、过拟合与正则化',
-      'sd.卷积层、池化、经典架构（ResNet、VGG）、数': '卷积层、池化、经典架构（ResNet、VGG）、数据增强',
-      'sd.向量与矩阵运算、特征值分解、奇异值分解（SVD）': '向量与矩阵运算、特征值分解、奇异值分解（SVD）',
-      'sd.大模型微调（LoRA / QLoRA）、RAG 架': '大模型微调（LoRA / QLoRA）、RAG 架构、Agent 开发、模型部署',
-      'sd.导数与偏导、链式法则、梯度、积分基础': '导数与偏导、链式法则、梯度、积分基础',
-      'sd.循环神经网络、长短期记忆网络、序列建模、注意力机制': '循环神经网络、长短期记忆网络、序列建模、注意力机制入门',
-      'sd.感知机、多层网络、反向传播、激活函数、损失函数、优': '感知机、多层网络、反向传播、激活函数、损失函数、优化器',
-      'sd.文本分类、命名实体识别、机器翻译、Prompt E': '文本分类、命名实体识别、机器翻译、Prompt Engineering',
-      'sd.概率分布、贝叶斯定理、假设检验、最大似然估计': '概率分布、贝叶斯定理、假设检验、最大似然估计',
-      'sd.模型版本管理、CI/CD for ML、监控与漂移': '模型版本管理、CI/CD for ML、监控与漂移检测、容器化部署',
-      'sd.特征选择、降维（PCA）、特征构造、交叉特征': '特征选择、降维（PCA）、特征构造、交叉特征',
-      'sd.目标检测（YOLO）、图像分割、图像生成、多模态': '目标检测（YOLO）、图像分割、图像生成、多模态',
-      'sd.线性回归、逻辑回归、决策树、随机森林、SVM、K-': '线性回归、逻辑回归、决策树、随机森林、SVM、K-Means',
-      'sd.缺失值处理、数据标准化、类别编码、数据划分': '缺失值处理、数据标准化、类别编码、数据划分',
-      'sd.语法基础、数据结构、面向对象、常用库（NumPy ': '语法基础、数据结构、面向对象、常用库（NumPy / Pandas）',
-      'sk.CNN（卷积神经网络）': 'CNN（卷积神经网络）',
-      'sk.MLOps': 'MLOps',
-      'sk.Python 编程': 'Python 编程',
-      'sk.RNN / LSTM': 'RNN / LSTM',
-      'sk.Transformer': 'Transformer',
-      'sk.强化学习 (RL)': '强化学习 (RL)',
-      'sk.微积分基础': '微积分基础',
-      'sk.数据处理': '数据处理',
-      'sk.概率论与数理统计': '概率论与数理统计',
-      'sk.模型评估': '模型评估',
-      'sk.深度学习框架': '深度学习框架',
-      'sk.特征工程': '特征工程',
-      'sk.生成式 AI (LLM)': '生成式 AI (LLM)',
-      'sk.神经网络基础': '神经网络基础',
-      'sk.线性代数': '线性代数',
-      'sk.经典 ML 算法': '经典 ML 算法',
-      'sk.自然语言处理 (NLP)': '自然语言处理 (NLP)',
-      'sk.计算机视觉 (CV)': '计算机视觉 (CV)',
-      'tag.偏导': '偏导',
-      'tag.分布': '分布',
-      'tag.分类': '分类',
-      'tag.向量空间': '向量空间',
-      'tag.回归': '回归',
-      'tag.导数': '导数',
-      'tag.序列': '序列',
-      'tag.构造': '构造',
-      'tag.标准化': '标准化',
-      'tag.梯度': '梯度',
-      'tag.池化': '池化',
-      'tag.清洗': '清洗',
-      'tag.特征选择': '特征选择',
-      'tag.矩阵': '矩阵',
-      'tag.编码': '编码',
-      'tag.聚类': '聚类',
-      'tag.贝叶斯': '贝叶斯',
-      'tag.序列': '序列',
-      'tag.正则化': '正则化',
-      'prereq.高中数学基础': '高中数学基础',
-      'prereq.基本计算机操作': '基本计算机操作',
-      'prereq.无需编程经验': '无需编程经验',
-      'prereq.Python 熟练': 'Python 熟练',
-      'prereq.线性代数基础': '线性代数基础',
-      'prereq.概率论基础': '概率论基础',
-      'prereq.NumPy / Pand': 'NumPy / Pandas',
-      'prereq.机器学习基础': '机器学习基础',
-      'prereq.微积分（梯度/链式法则）': '微积分（梯度/链式法则）',
-      'prereq.sklearn 经验': 'sklearn 经验',
-      'prereq.深度学习基础': '深度学习基础',
-      'prereq.PyTorch 熟练': 'PyTorch 熟练',
-      'prereq.理解 Transform': '理解 Transformer',
-      'prereq.选择 1-2 个方向': '选择 1-2 个方向',
-      'rt.密歇根大学 · 免费': '密歇根大学 · 免费旁听',
-      'rt.Gilbert St': 'Gilbert Strang · 经典课程',
-      'rt.Al Sweigar': 'Al Sweigart · 免费在线版',
-      'rt.Andrew Ng ': 'Andrew Ng · 2022 更新版',
-      'rt.Aurélien G': 'Aurélien Géron · 实战导向',
-      'rt.免费 · 交互式学习': '免费 · 交互式学习',
-      'rt.Jeremy How': 'Jeremy Howard · 实战优先 · 免费',
-      'rt.Stanford ·': 'Stanford · Andrej Karpathy',
-      'rt.李沐 · PyTor': '李沐 · PyTorch 版 · 免费在线',
-      'rt.直观理解 · 数学可': '直观理解 · 数学可视化',
-      'rt.LLM / RAG ': 'LLM / RAG / LangChain · 免费',
-      'rt.免费在线 · Tra': '免费在线 · Transformer 实战',
-      'rt.强化学习入门 · 免': '强化学习入门 · 免费',
-      'rt.LLM 应用开发实战': 'LLM 应用开发实战',
-      'lang.btn': 'EN',
-    }
+/* ============================================================
+   i18n
+   ============================================================ */
+var I18N = {
+  en: {
+    'header.overline': 'Learning Path',
+    'header.title': 'AI Learning Roadmap',
+    'header.desc': "A systematic learning path from fundamentals to specialization. Four progressive stages, each covering core skills, recommended resources, and hands-on projects.",
+    'legend.beginner': 'Beginner',
+    'legend.intermediate': 'Intermediate',
+    'legend.advanced': 'Advanced',
+    'legend.specialized': 'Specialized',
+    'progress.title': 'Learning Progress',
+    'progress.text': '0 / 4 stages',
+    'progress.stage1': 'Fundamentals',
+    'progress.stage2': 'Machine Learning',
+    'progress.stage3': 'Deep Learning',
+    'progress.stage4': 'Specializations',
+    'stage1.title': 'Fundamentals',
+    'stage1.subtitle': "Build the math and programming foundation",
+    'stage1.time': 'Est. 2 — 3 months',
+    'stage2.title': 'Machine Learning',
+    'stage2.subtitle': "Master classic algorithms and the full modeling pipeline",
+    'stage2.time': 'Est. 3 — 4 months',
+    'stage3.title': 'Deep Learning',
+    'stage3.subtitle': "Neural network architectures and modern deep learning frameworks",
+    'stage3.time': 'Est. 4 — 6 months',
+    'stage4.title': 'Specializations',
+    'stage4.subtitle': "Choose a niche area and go deep",
+    'stage4.time': 'Est. 6+ months (per track)',
+    'details.expand': 'Show resources, prerequisites & projects',
+    'details.prerequisites': 'Prerequisites',
+    'details.resources': 'Recommended Resources',
+    'details.projects': 'Hands-on Projects',
+    'resource.course': 'Course',
+    'resource.book': 'Book',
+    'footer.cta': 'Find this useful?',
+    'footer.star': 'Star on GitHub',
+    'footer.note': "Time estimates assume 2-3 hours of study per day. Actual progress varies — focus on mastering core concepts, not just clocking hours.",
+    'footer.meta': 'Generated by DESIGN.md + Hermes Agent · 2026',
+    'theme.light': 'Dark Mode',
+    'theme.dark': 'Light Mode',
+    'lang.btn': '中文',
+    // Skill descriptions (EN)
+    'sd.语法基础、数据结构、面向对象、常用库（NumPy ': "Syntax basics, data structures, OOP, essential libraries (NumPy/Pandas)",
+    'sd.向量与矩阵运算、特征值分解、奇异值分解（SVD）': "Vector & matrix operations, eigenvalue decomposition, SVD",
+    'sd.概率分布、贝叶斯定理、假设检验、最大似然估计': "Probability distributions, Bayes' theorem, hypothesis testing, maximum likelihood estimation",
+    'sd.导数与偏导、链式法则、梯度、积分基础': "Derivatives & partial derivatives, chain rule, gradients, integral basics",
+    'sd.线性回归、逻辑回归、决策树、随机森林、SVM、K-': "Linear/logistic regression, decision trees, random forests, SVM, K-Means",
+    'sd.缺失值处理、数据标准化、类别编码、数据划分': "Missing value handling, data standardization, categorical encoding, data splitting",
+    'sd.特征选择、降维（PCA）、特征构造、交叉特征': "Feature selection, dimensionality reduction (PCA), feature construction, cross-features",
+    'sd.交叉验证、混淆矩阵、ROC/AUC、精确率-召回率': "Cross-validation, confusion matrix, ROC/AUC, precision-recall, overfitting & regularization",
+    'sd.感知机、多层网络、反向传播、激活函数、损失函数、优': "Perceptrons, multi-layer networks, backpropagation, activation & loss functions, optimizers",
+    'sd.卷积层、池化、经典架构（ResNet、VGG）、数': "Convolutional layers, pooling, classic architectures (ResNet, VGG), data augmentation",
+    'sd.循环神经网络、长短期记忆网络、序列建模、注意力机制': "Recurrent neural networks, LSTM, sequence modeling, intro to attention",
+    'sd.Self-Attention、多头注意力、位置编码': "Self-Attention, multi-head attention, positional encoding, Encoder-Decoder",
+    'sd.PyTorch 或 TensorFlow 核心 A': "PyTorch or TensorFlow core APIs, tensor operations, autograd, training loops",
+    'sd.文本分类、命名实体识别、机器翻译、Prompt E': "Text classification, NER, machine translation, Prompt Engineering",
+    'sd.目标检测（YOLO）、图像分割、图像生成、多模态': "Object detection (YOLO), image segmentation, image generation, multimodal",
+    'sd.MDP、Q-Learning、策略梯度、PPO、多': "MDP, Q-Learning, policy gradients, PPO, multi-agent",
+    'sd.大模型微调（LoRA / QLoRA）、RAG 架': "LLM fine-tuning (LoRA/QLoRA), RAG architecture, Agent development, deployment",
+    'sd.模型版本管理、CI/CD for ML、监控与漂移': "Model versioning, CI/CD for ML, monitoring & drift detection, containerized deployment",
+    // Skill names (EN)
+    'sk.Python 编程': 'Python Programming',
+    'sk.线性代数': 'Linear Algebra',
+    'sk.概率论与数理统计': 'Probability & Statistics',
+    'sk.微积分基础': 'Calculus Basics',
+    'sk.经典 ML 算法': 'Classic ML Algorithms',
+    'sk.数据处理': 'Data Processing',
+    'sk.特征工程': 'Feature Engineering',
+    'sk.模型评估': 'Model Evaluation',
+    'sk.神经网络基础': 'Neural Network Fundamentals',
+    'sk.CNN（卷积神经网络）': 'CNN (Convolutional Neural Networks)',
+    'sk.RNN / LSTM': 'RNN / LSTM',
+    'sk.Transformer': 'Transformer',
+    'sk.深度学习框架': 'Deep Learning Frameworks',
+    'sk.自然语言处理 (NLP)': 'Natural Language Processing (NLP)',
+    'sk.计算机视觉 (CV)': 'Computer Vision (CV)',
+    'sk.强化学习 (RL)': 'Reinforcement Learning (RL)',
+    'sk.生成式 AI (LLM)': 'Generative AI (LLM)',
+    'sk.MLOps': 'MLOps',
+    // Tags (EN)
+    'tag.矩阵': 'Matrices',
+    'tag.向量空间': 'Vector Spaces',
+    'tag.贝叶斯': "Bayes'",
+    'tag.分布': 'Distributions',
+    'tag.导数': 'Derivatives',
+    'tag.偏导': 'Partial Derivatives',
+    'tag.梯度': 'Gradients',
+    'tag.回归': 'Regression',
+    'tag.分类': 'Classification',
+    'tag.聚类': 'Clustering',
+    'tag.清洗': 'Cleaning',
+    'tag.标准化': 'Standardization',
+    'tag.编码': 'Encoding',
+    'tag.特征选择': 'Feature Selection',
+    'tag.构造': 'Construction',
+    'tag.正则化': 'Regularization',
+    'tag.池化': 'Pooling',
+    'tag.序列': 'Sequences',
+    // Prereqs (EN)
+    'prereq.高中数学基础': 'High school math',
+    'prereq.基本计算机操作': 'Basic computer skills',
+    'prereq.无需编程经验': 'No coding experience needed',
+    'prereq.Python 熟练': 'Python proficiency',
+    'prereq.线性代数基础': 'Linear algebra basics',
+    'prereq.概率论基础': 'Probability basics',
+    'prereq.NumPy / Pand': 'NumPy / Pandas',
+    'prereq.机器学习基础': 'ML fundamentals',
+    'prereq.微积分（梯度/链式法则）': 'Calculus (gradients / chain rule)',
+    'prereq.sklearn 经验': 'sklearn experience',
+    'prereq.深度学习基础': 'DL fundamentals',
+    'prereq.PyTorch 熟练': 'PyTorch proficiency',
+    'prereq.理解 Transform': 'Understanding of Transformers',
+    'prereq.选择 1-2 个方向': 'Pick 1-2 tracks',
+    // Resource types (EN)
+    'rt.密歇根大学 · 免费': 'Univ. of Michigan · Free audit',
+    'rt.Gilbert St': 'Gilbert Strang · Classic course',
+    'rt.Al Sweigar': 'Al Sweigart · Free online',
+    'rt.Andrew Ng ': 'Andrew Ng · 2022 edition',
+    'rt.Aurélien G': 'Aurélien Géron · Hands-on',
+    'rt.免费 · 交互式学习': 'Free · Interactive',
+    'rt.Jeremy How': 'Jeremy Howard · Code-first · Free',
+    'rt.Stanford ·': 'Stanford · Andrej Karpathy',
+    'rt.李沐 · PyTor': 'Mu Li · PyTorch · Free online',
+    'rt.直观理解 · 数学可': 'Intuitive · Math visualization',
+    'rt.LLM / RAG ': 'LLM / RAG / LangChain · Free',
+    'rt.免费在线 · Tra': 'Free online · Transformer hands-on',
+    'rt.强化学习入门 · 免': 'RL intro · Free',
+    'rt.LLM 应用开发实战': 'LLM app dev hands-on',
+    // Project labels (EN)
+    'pj.数据分析小工具：': 'Data Analysis Tool: ',
+    'pj.概率模拟：': 'Probability Simulation: ',
+    'pj.矩阵运算器：': 'Matrix Calculator: ',
+    'pj.房价预测：': 'House Price Prediction: ',
+    'pj.客户流失分析：': 'Customer Churn Analysis: ',
+    'pj.聚类分组：': 'User Clustering: ',
+    'pj.手写数字识别：': 'Handwritten Digit Recognition: ',
+    'pj.猫狗分类器：': 'Cat vs Dog Classifier: ',
+    'pj.文本生成：': 'Text Generation: ',
+    'pj.图像风格迁移：': 'Neural Style Transfer: ',
+    'pj.RAG 知识库：': 'RAG Knowledge Base: ',
+    'pj.LLM 微调：': 'LLM Fine-tuning: ',
+    'pj.目标检测系统：': 'Object Detection System: ',
+    'pj.ML Pipeline：': 'ML Pipeline: ',
+    'pj.AI Agent：': 'AI Agent: ',
+  },
+  zh: {
+    'header.overline': 'Learning Path',
+    'header.title': 'AI 学习路线图',
+    'header.desc': '从编程基础到专业方向的系统化学习路径。四个阶段循序渐进，每个阶段涵盖核心技能、推荐资源与实战项目。',
+    'legend.beginner': '基础',
+    'legend.intermediate': '中级',
+    'legend.advanced': '高级',
+    'legend.specialized': '专业',
+    'progress.title': '学习进度',
+    'progress.text': '0 / 4 阶段',
+    'progress.stage1': '基础阶段',
+    'progress.stage2': '机器学习',
+    'progress.stage3': '深度学习',
+    'progress.stage4': '专业方向',
+    'stage1.title': '基础阶段',
+    'stage1.subtitle': '构建数学与编程基石',
+    'stage1.time': '预计 2 — 3 个月',
+    'stage2.title': '机器学习阶段',
+    'stage2.subtitle': '掌握经典算法与完整建模流程',
+    'stage2.time': '预计 3 — 4 个月',
+    'stage3.title': '深度学习阶段',
+    'stage3.subtitle': '神经网络架构与现代深度学习框架',
+    'stage3.time': '预计 4 — 6 个月',
+    'stage4.title': '专业方向',
+    'stage4.subtitle': '选择细分领域深入钻研',
+    'stage4.time': '预计 6 个月+（按方向）',
+    'details.expand': '展开：学习资源、前置要求、实战项目',
+    'details.prerequisites': '前置要求',
+    'details.resources': '推荐资源',
+    'details.projects': '实战项目',
+    'resource.course': '课',
+    'resource.book': '书',
+    'footer.cta': '觉得有用？',
+    'footer.star': 'Star on GitHub',
+    'footer.note': '时间预估基于每天 2 — 3 小时的学习节奏。实际进度因人而异，建议以掌握核心概念而非完成时长为目标。',
+    'footer.meta': 'Generated by DESIGN.md + Hermes Agent · 2026',
+    'theme.light': '暗色模式',
+    'theme.dark': '浅色模式',
+    'lang.btn': 'EN',
+    'sd.语法基础、数据结构、面向对象、常用库（NumPy ': '语法基础、数据结构、面向对象、常用库（NumPy / Pandas）',
+    'sd.向量与矩阵运算、特征值分解、奇异值分解（SVD）': '向量与矩阵运算、特征值分解、奇异值分解（SVD）',
+    'sd.概率分布、贝叶斯定理、假设检验、最大似然估计': '概率分布、贝叶斯定理、假设检验、最大似然估计',
+    'sd.导数与偏导、链式法则、梯度、积分基础': '导数与偏导、链式法则、梯度、积分基础',
+    'sd.线性回归、逻辑回归、决策树、随机森林、SVM、K-': '线性回归、逻辑回归、决策树、随机森林、SVM、K-Means',
+    'sd.缺失值处理、数据标准化、类别编码、数据划分': '缺失值处理、数据标准化、类别编码、数据划分',
+    'sd.特征选择、降维（PCA）、特征构造、交叉特征': '特征选择、降维（PCA）、特征构造、交叉特征',
+    'sd.交叉验证、混淆矩阵、ROC/AUC、精确率-召回率': '交叉验证、混淆矩阵、ROC/AUC、精确率-召回率、过拟合与正则化',
+    'sd.感知机、多层网络、反向传播、激活函数、损失函数、优': '感知机、多层网络、反向传播、激活函数、损失函数、优化器',
+    'sd.卷积层、池化、经典架构（ResNet、VGG）、数': '卷积层、池化、经典架构（ResNet、VGG）、数据增强',
+    'sd.循环神经网络、长短期记忆网络、序列建模、注意力机制': '循环神经网络、长短期记忆网络、序列建模、注意力机制入门',
+    'sd.Self-Attention、多头注意力、位置编码': 'Self-Attention、多头注意力、位置编码、Encoder-Decoder 架构',
+    'sd.PyTorch 或 TensorFlow 核心 A': 'PyTorch 或 TensorFlow 核心 API、张量操作、自动求导、模型训练循环',
+    'sd.文本分类、命名实体识别、机器翻译、Prompt E': '文本分类、命名实体识别、机器翻译、Prompt Engineering',
+    'sd.目标检测（YOLO）、图像分割、图像生成、多模态': '目标检测（YOLO）、图像分割、图像生成、多模态',
+    'sd.MDP、Q-Learning、策略梯度、PPO、多': 'MDP、Q-Learning、策略梯度、PPO、多智能体',
+    'sd.大模型微调（LoRA / QLoRA）、RAG 架': '大模型微调（LoRA / QLoRA）、RAG 架构、Agent 开发、模型部署',
+    'sd.模型版本管理、CI/CD for ML、监控与漂移': '模型版本管理、CI/CD for ML、监控与漂移检测、容器化部署',
+    'sk.Python 编程': 'Python 编程',
+    'sk.线性代数': '线性代数',
+    'sk.概率论与数理统计': '概率论与数理统计',
+    'sk.微积分基础': '微积分基础',
+    'sk.经典 ML 算法': '经典 ML 算法',
+    'sk.数据处理': '数据处理',
+    'sk.特征工程': '特征工程',
+    'sk.模型评估': '模型评估',
+    'sk.神经网络基础': '神经网络基础',
+    'sk.CNN（卷积神经网络）': 'CNN（卷积神经网络）',
+    'sk.RNN / LSTM': 'RNN / LSTM',
+    'sk.Transformer': 'Transformer',
+    'sk.深度学习框架': '深度学习框架',
+    'sk.自然语言处理 (NLP)': '自然语言处理 (NLP)',
+    'sk.计算机视觉 (CV)': '计算机视觉 (CV)',
+    'sk.强化学习 (RL)': '强化学习 (RL)',
+    'sk.生成式 AI (LLM)': '生成式 AI (LLM)',
+    'sk.MLOps': 'MLOps',
+    'tag.矩阵': '矩阵',
+    'tag.向量空间': '向量空间',
+    'tag.贝叶斯': '贝叶斯',
+    'tag.分布': '分布',
+    'tag.导数': '导数',
+    'tag.偏导': '偏导',
+    'tag.梯度': '梯度',
+    'tag.回归': '回归',
+    'tag.分类': '分类',
+    'tag.聚类': '聚类',
+    'tag.清洗': '清洗',
+    'tag.标准化': '标准化',
+    'tag.编码': '编码',
+    'tag.特征选择': '特征选择',
+    'tag.构造': '构造',
+    'tag.正则化': '正则化',
+    'tag.池化': '池化',
+    'tag.序列': '序列',
+    'prereq.高中数学基础': '高中数学基础',
+    'prereq.基本计算机操作': '基本计算机操作',
+    'prereq.无需编程经验': '无需编程经验',
+    'prereq.Python 熟练': 'Python 熟练',
+    'prereq.线性代数基础': '线性代数基础',
+    'prereq.概率论基础': '概率论基础',
+    'prereq.NumPy / Pand': 'NumPy / Pandas',
+    'prereq.机器学习基础': '机器学习基础',
+    'prereq.微积分（梯度/链式法则）': '微积分（梯度/链式法则）',
+    'prereq.sklearn 经验': 'sklearn 经验',
+    'prereq.深度学习基础': '深度学习基础',
+    'prereq.PyTorch 熟练': 'PyTorch 熟练',
+    'prereq.理解 Transform': '理解 Transformer',
+    'prereq.选择 1-2 个方向': '选择 1-2 个方向',
+    'rt.密歇根大学 · 免费': '密歇根大学 · 免费旁听',
+    'rt.Gilbert St': 'Gilbert Strang · 经典课程',
+    'rt.Al Sweigar': 'Al Sweigart · 免费在线版',
+    'rt.Andrew Ng ': 'Andrew Ng · 2022 更新版',
+    'rt.Aurélien G': 'Aurélien Géron · 实战导向',
+    'rt.免费 · 交互式学习': '免费 · 交互式学习',
+    'rt.Jeremy How': 'Jeremy Howard · 实战优先 · 免费',
+    'rt.Stanford ·': 'Stanford · Andrej Karpathy',
+    'rt.李沐 · PyTor': '李沐 · PyTorch 版 · 免费在线',
+    'rt.直观理解 · 数学可': '直观理解 · 数学可视化',
+    'rt.LLM / RAG ': 'LLM / RAG / LangChain · 免费',
+    'rt.免费在线 · Tra': '免费在线 · Transformer 实战',
+    'rt.强化学习入门 · 免': '强化学习入门 · 免费',
+    'rt.LLM 应用开发实战': 'LLM 应用开发实战',
+    'pj.数据分析小工具：': '数据分析小工具：',
+    'pj.概率模拟：': '概率模拟：',
+    'pj.矩阵运算器：': '矩阵运算器：',
+    'pj.房价预测：': '房价预测：',
+    'pj.客户流失分析：': '客户流失分析：',
+    'pj.聚类分组：': '聚类分组：',
+    'pj.手写数字识别：': '手写数字识别：',
+    'pj.猫狗分类器：': '猫狗分类器：',
+    'pj.文本生成：': '文本生成：',
+    'pj.图像风格迁移：': '图像风格迁移：',
+    'pj.RAG 知识库：': 'RAG 知识库：',
+    'pj.LLM 微调：': 'LLM 微调：',
+    'pj.目标检测系统：': '目标检测系统：',
+    'pj.ML Pipeline：': 'ML Pipeline：',
+    'pj.AI Agent：': 'AI Agent：',
+  }
+};
+
+var currentLang = 'zh';
+
+function detectLang() {
+  var saved = localStorage.getItem('lang');
+  if (saved && (saved === 'en' || saved === 'zh')) return saved;
+  return (navigator.language || '').toLowerCase().includes('zh') ? 'zh' : 'en';
+}
+
+function applyLang(lang) {
+  currentLang = lang;
+  localStorage.setItem('lang', lang);
+  var t = I18N[lang];
+  document.querySelectorAll('[data-i18n]').forEach(function(el) {
+    var key = el.getAttribute('data-i18n');
+    if (t[key] !== undefined) el.textContent = t[key];
+  });
+  // Update lang button
+  var langLabel = document.getElementById('lang-label');
+  if (langLabel) langLabel.textContent = t['lang.btn'];
+  // Update theme icon
+  updateThemeIcon();
+  // SEO meta
+  if (lang === 'en') {
+    document.title = 'AI Learning Roadmap 2026 | From Zero to Specialized';
+    var dm = document.querySelector('meta[name="description"]');
+    if (dm) dm.setAttribute('content', 'Systematic AI learning path: Python basics -> Machine Learning -> Deep Learning -> NLP/CV/LLM specializations. Each stage includes recommended courses, hands-on projects, and time estimates.');
+  } else {
+    document.title = 'AI 学习路线图 2026 | 从零基础到专业方向';
+    var dm = document.querySelector('meta[name="description"]');
+    if (dm) dm.setAttribute('content', '系统化 AI 学习路径：Python 基础 -> 机器学习 -> 深度学习 -> NLP/CV/LLM 专业方向。每个阶段含推荐课程、实战项目、预计时间。');
+  }
+  document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+  if (typeof updateProgressText === 'function') updateProgressText();
+}
+
+function toggleLang() {
+  applyLang(currentLang === 'en' ? 'zh' : 'en');
+}
+
+/* ============================================================
+   Theme
+   ============================================================ */
+function updateThemeIcon() {
+  var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+  var sun = document.getElementById('icon-sun');
+  var moon = document.getElementById('icon-moon');
+  if (sun && moon) {
+    sun.style.display = isDark ? 'none' : 'block';
+    moon.style.display = isDark ? 'block' : 'none';
+  }
+}
+
+function toggleTheme() {
+  var html = document.documentElement;
+  var current = html.getAttribute('data-theme');
+  if (current === 'dark') {
+    html.removeAttribute('data-theme');
+    localStorage.setItem('theme', 'light');
+  } else {
+    html.setAttribute('data-theme', 'dark');
+    localStorage.setItem('theme', 'dark');
+  }
+  updateThemeIcon();
+}
+
+// Init theme
+(function() {
+  var saved = localStorage.getItem('theme');
+  if (saved === 'dark') {
+    document.documentElement.setAttribute('data-theme', 'dark');
+  } else if (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+  }
+})();
+
+/* ============================================================
+   Copy Link
+   ============================================================ */
+function copyLink() {
+  var url = window.location.href;
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(url).then(showCopyTip);
+  } else {
+    var ta = document.createElement('textarea');
+    ta.value = url;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    showCopyTip();
+  }
+}
+
+function showCopyTip() {
+  var tip = document.getElementById('copy-tip');
+  if (tip) {
+    tip.classList.add('show');
+    setTimeout(function() { tip.classList.remove('show'); }, 1500);
+  }
+}
+
+/* ============================================================
+   Expandable Details
+   ============================================================ */
+function toggleDetails(btn) {
+  var expanded = btn.getAttribute('aria-expanded') === 'true';
+  btn.setAttribute('aria-expanded', String(!expanded));
+  var detailsId = btn.getAttribute('aria-controls');
+  var details = document.getElementById(detailsId);
+  details.setAttribute('aria-hidden', String(expanded));
+}
+
+/* ============================================================
+   Progress Tracking
+   ============================================================ */
+(function() {
+  var STORAGE_KEY = 'ai-learning-progress';
+  var stages = document.querySelectorAll('.stage');
+  var fill = document.getElementById('progress-fill');
+  var text = document.getElementById('progress-text');
+  var pct = document.getElementById('progress-pct');
+  var stageEls = document.querySelectorAll('#progress-stages .progress-chip');
+
+  function loadProgress() {
+    try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [false,false,false,false]; } catch(e) { return [false,false,false,false]; }
+  }
+
+  function saveProgress(p) { localStorage.setItem(STORAGE_KEY, JSON.stringify(p)); }
+
+  window.updateProgressText = function() {
+    var t = I18N[currentLang] || I18N.zh;
+    var p = loadProgress();
+    var done = p.filter(Boolean).length;
+    var label = done + ' / ' + p.length;
+    label += currentLang === 'en' ? ' stages' : ' 阶段';
+    if (text) text.textContent = label;
+    if (pct) pct.textContent = Math.round((done / p.length) * 100) + '%';
+    if (fill) fill.style.width = Math.round((done / p.length) * 100) + '%';
+    stageEls.forEach(function(el, i) {
+      el.className = 'progress-chip';
+      if (p[i]) el.classList.add('progress-chip--done');
+      else if (i === done) el.classList.add('progress-chip--active');
+      else el.classList.add('progress-chip--locked');
+    });
   };
 
-  var currentLang = 'zh';
-
-  function detectLang() {
-    var saved = localStorage.getItem('lang');
-    if (saved && (saved === 'en' || saved === 'zh')) return saved;
-    return (navigator.language || '').toLowerCase().includes('zh') ? 'zh' : 'en';
+  function toggleStage(idx) {
+    var p = loadProgress();
+    p[idx] = !p[idx];
+    saveProgress(p);
+    updateProgressText();
   }
 
-  function applyLang(lang) {
-    currentLang = lang;
-    localStorage.setItem('lang', lang);
-    var t = I18N[lang];
-    document.querySelectorAll('[data-i18n]').forEach(function(el) {
-      var key = el.getAttribute('data-i18n');
-      if (t[key] !== undefined) {
-        el.textContent = t[key];
-      }
+  stages.forEach(function(stage, i) {
+    stage.querySelector('.stage__dot').addEventListener('click', function() {
+      toggleStage(i);
     });
-    // Theme label
-    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-    var themeLabel = document.getElementById('theme-label');
-    if (themeLabel) themeLabel.textContent = isDark ? t['theme.dark'] : t['theme.light'];
-    // Lang button
-    var langLabel = document.getElementById('lang-label');
-    if (langLabel) langLabel.textContent = t['lang.btn'];
-    // SEO meta tags
-    if (lang === 'en') {
-      document.title = 'AI Learning Roadmap 2026 | From Zero to Specialized';
-      var dm = document.querySelector('meta[name="description"]');
-      if (dm) dm.setAttribute('content', 'Systematic AI learning path: Python basics → Machine Learning → Deep Learning → NLP/CV/LLM specializations. Each stage includes recommended courses, hands-on projects, and time estimates.');
-      var ot = document.querySelector('meta[property="og:title"]');
-      if (ot) ot.setAttribute('content', 'AI Learning Roadmap 2026');
-      var od = document.querySelector('meta[property="og:description"]');
-      if (od) od.setAttribute('content', 'Systematic learning path from zero to specialized tracks, with curated resources and hands-on projects');
-      var tt = document.querySelector('meta[name="twitter:title"]');
-      if (tt) tt.setAttribute('content', 'AI Learning Roadmap 2026');
-      var td = document.querySelector('meta[name="twitter:description"]');
-      if (td) td.setAttribute('content', 'Systematic learning path from zero to specialized tracks');
-    } else {
-      document.title = 'AI 学习路线图 2026 | 从零基础到专业方向';
-      var dm = document.querySelector('meta[name="description"]');
-      if (dm) dm.setAttribute('content', '系统化 AI 学习路径：Python 基础 → 机器学习 → 深度学习 → NLP/CV/LLM 专业方向。每个阶段含推荐课程、实战项目、预计时间。');
-      var ot = document.querySelector('meta[property="og:title"]');
-      if (ot) ot.setAttribute('content', 'AI 学习路线图 2026');
-      var od = document.querySelector('meta[property="og:description"]');
-      if (od) od.setAttribute('content', '从零基础到专业方向的系统化学习路径，含推荐资源与实战项目');
-      var tt = document.querySelector('meta[name="twitter:title"]');
-      if (tt) tt.setAttribute('content', 'AI 学习路线图 2026');
-      var td = document.querySelector('meta[name="twitter:description"]');
-      if (td) td.setAttribute('content', '从零基础到专业方向的系统化学习路径');
-    }
-    document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
-  }
+  });
 
-  function toggleLang() {
-    applyLang(currentLang === 'en' ? 'zh' : 'en');
-  }
-
-
-  /* ── Theme Toggle ──────────────────────────────────────────── */
-  function toggleTheme() {
-    var html = document.documentElement;
-    var current = html.getAttribute('data-theme');
-    var label = document.getElementById('theme-label');
-    var t = I18N[currentLang] || I18N.zh;
-    if (current === 'dark') {
-      html.removeAttribute('data-theme');
-      label.textContent = t['theme.light'];
-      localStorage.setItem('theme', 'light');
-    } else {
-      html.setAttribute('data-theme', 'dark');
-      label.textContent = t['theme.dark'];
-      localStorage.setItem('theme', 'dark');
-    }
-  }
-  (function() {
-    const saved = localStorage.getItem('theme');
-    if (saved === 'dark') {
-      document.documentElement.setAttribute('data-theme', 'dark');
-      document.getElementById('theme-label').textContent = '浅色模式';
-    }
-  })();
-
-  /* ── Copy Link ─────────────────────────────────────────────── */
-  function copyLink() {
-    const url = window.location.href;
-    if (navigator.clipboard) {
-      navigator.clipboard.writeText(url).then(function() { showCopyFeedback(); });
-    } else {
-      var ta = document.createElement('textarea'); ta.value = url; document.body.appendChild(ta);
-      ta.select(); document.execCommand('copy'); document.body.removeChild(ta); showCopyFeedback();
-    }
-  }
-  function showCopyFeedback() {
-    var icon = document.getElementById('copy-icon');
-    icon.innerHTML = '<polyline points="20 6 9 17 4 12"/>';
-    setTimeout(function() {
-      icon.innerHTML = '<rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>';
-    }, 1500);
-  }
-
-  /* ── Expandable Details ───────────────────────────────────── */
-  function toggleDetails(btn) {
-    const expanded = btn.getAttribute('aria-expanded') === 'true';
-    btn.setAttribute('aria-expanded', String(!expanded));
-    const detailsId = btn.getAttribute('aria-controls');
-    const details = document.getElementById(detailsId);
-    details.setAttribute('aria-hidden', String(expanded));
-  }
-
-  /* ── Progress Tracking ────────────────────────────────────── */
-  (function() {
-    const STORAGE_KEY = 'ai-learning-progress';
-    const stages = document.querySelectorAll('.stage');
-    const fill = document.getElementById('progress-fill');
-    const text = document.getElementById('progress-text');
-    const pct = document.getElementById('progress-pct');
-    const stageEls = document.querySelectorAll('#progress-stages .progress-stage');
-
-    function loadProgress() {
-      try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [false,false,false,false]; } catch { return [false,false,false,false]; }
-    }
-
-    function saveProgress(p) { localStorage.setItem(STORAGE_KEY, JSON.stringify(p)); }
-
-    function render(p) {
-      const done = p.filter(Boolean).length;
-      const percentage = Math.round((done / p.length) * 100);
-      fill.style.width = percentage + '%';
-      text.textContent = done + ' / ' + p.length + ' 阶段';
-      pct.textContent = percentage + '%';
-      stageEls.forEach(function(el, i) {
-        el.className = 'progress-stage';
-        if (p[i]) el.classList.add('progress-stage--done');
-        else if (i === done) el.classList.add('progress-stage--active');
-        else el.classList.add('progress-stage--locked');
-      });
-    }
-
-    // Click a stage dot to toggle
-    stages.forEach(function(stage, i) {
-      var dot = stage.querySelector('.stage__dot');
-      dot.style.cursor = 'pointer';
-      dot.title = '点击标记此阶段为' + (loadProgress()[i] ? '未完成' : '已完成');
-      dot.addEventListener('click', function() {
-        var p = loadProgress();
-        p[i] = !p[i];
-        saveProgress(p);
-        render(p);
-        // Update dot title
-        dot.title = '点击标记此阶段为' + (p[i] ? '未完成' : '已完成');
-      });
+  stageEls.forEach(function(chip, i) {
+    chip.addEventListener('click', function() {
+      toggleStage(i);
     });
+  });
 
-    render(loadProgress());
-  })();
+  updateProgressText();
+})();
+
+/* ============================================================
+   Init
+   ============================================================ */
+(function() {
+  var lang = detectLang();
+  applyLang(lang);
+  updateThemeIcon();
+})();
 </script>
-
-</body>
 </html>
